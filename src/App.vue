@@ -1,15 +1,15 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <HomePage msg="Welcome to Your Vue.js App" />
+  <HomeView msg="Welcome to Your Vue.js App" />
 </template>
 
 <script>
-import HomePage from "./views/HomePage/HomePage.vue";
+import HomeView from "./views/HomeView/HomeView.vue";
 
 export default {
   name: "App",
   components: {
-    HomePage,
+    HomeView,
   },
 };
 </script>

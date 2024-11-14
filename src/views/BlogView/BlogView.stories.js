@@ -1,17 +1,17 @@
-import HomePage from "./HomePage.vue";
+import BlogView from "./BlogView.vue";
 
 export default {
-  title: "Views/HomePage", // Adjusted to ensure it’s consistent with Storybook’s naming conventions
-  component: HomePage,
+  title: "Views/BlogView", // Adjusted to ensure it’s consistent with Storybook’s naming conventions
+  component: BlogView,
 };
 
 // Create a template for rendering the component
 const Template = (args) => ({
-  components: { HomePage },
+  components: { BlogView },
   setup() {
     return { args };
   },
-  template: '<HomePage v-bind="args" />',
+  template: '<BlogView v-bind="args" />',
 });
 
 // Define a default story
