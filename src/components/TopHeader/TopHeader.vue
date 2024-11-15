@@ -4,7 +4,6 @@
   </nav>
 </template>
 <script>
-// import { reactive, computed } from "vue";
 export default {
   name: "TopHeader",
   props: {
