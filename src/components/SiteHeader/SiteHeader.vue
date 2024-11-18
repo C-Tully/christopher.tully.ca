@@ -1,17 +1,18 @@
 <template>
-  <nav v-if="linkCollection.length > 0">
-    <RouterLink
+  <nav>
+    SiteHeader
+    <!-- <RouterLink
       v-for="(item, index) in linkCollection"
       :key="index"
       :to="item.href"
     >
       {{ item.label }}
-    </RouterLink>
+    </RouterLink> -->
   </nav>
 </template>
 <script>
 export default {
-  name: "TopHeader",
+  name: "SiteHeader",
   props: {
     linkCollection: { type: Array, required: false },
   },

@@ -1,12 +1,15 @@
 <template>
   <div class="home-wrapper">
-    <h1>Home View:: Coming Soon</h1>
+    <h1>Test View:: Coming Soon</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: "HomeView",
+  name: "TestView",
+  props: {
+    msg: String,
+  },
 };
 </script>
 

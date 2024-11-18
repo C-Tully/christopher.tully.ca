@@ -1,17 +1,17 @@
-import TopHeader from "./TopHeader.vue";
+import SiteHeader from "./SiteHeader.vue";
 
 export default {
-  title: "Components/Top Header", // Adjusted to ensure it’s consistent with Storybook’s naming conventions
-  component: TopHeader,
+  title: "Components/Site Header", // Adjusted to ensure it’s consistent with Storybook’s naming conventions
+  component: SiteHeader,
 };
 
 // Create a template for rendering the component
 const Template = (args) => ({
-  components: { TopHeader },
+  components: { SiteHeader },
   setup() {
     return { args };
   },
-  template: '<TopHeader v-bind="args" />',
+  template: '<SiteHeader v-bind="args" />',
 });
 
 // Define a default story

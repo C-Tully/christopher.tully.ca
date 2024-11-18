@@ -1,7 +1,7 @@
 import { shallowMount } from "@vue/test-utils";
-import TopHeader from "@/components/TopHeader.vue";
+import SiteFooter from "@/components/SiteFooter.vue";
 
-describe("TopHeader", () => {
+describe("SiteFooter", () => {
   const mockLinkCollection = [
     {
       route: "home",
@@ -16,7 +16,7 @@ describe("TopHeader", () => {
       label: "dollar",
     },
   ];
-  const wrapper = shallowMount(TopHeader, {
+  const wrapper = shallowMount(SiteFooter, {
     props: {
       linkCollection: mockLinkCollection,
     },
