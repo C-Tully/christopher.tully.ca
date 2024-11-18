@@ -1,15 +1,23 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HomePage msg="Welcome to Your Vue.js App" />
+  <h1>Hello App!</h1>
+  <p><strong>Current route path:</strong> {{ $route.fullPath }}</p>
+  <SiteHeader />
+  <main>
+    <RouterView />
+  </main>
+  <SiteFooter />
 </template>
-
 <script>
-import HomePage from "./views/HomePage/HomePage.vue";
+// import HomePage from "./views/HomePage/HomePage.vue";
+import SiteHeader from "./components/SiteHeader/SiteHeader.vue";
+import SiteFooter from "./components/SiteFooter/SiteFooter.vue";
 
 export default {
   name: "App",
   components: {
-    HomePage,
+    // HomePage,
+    SiteHeader,
+    SiteFooter,
   },
 };
 </script>
