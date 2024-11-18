@@ -1,17 +1,17 @@
-import HomePage from "./HomePage.vue";
+import Home from "./Home.vue";
 
 export default {
-  title: "Views/HomePage", // Adjusted to ensure it’s consistent with Storybook’s naming conventions
-  component: HomePage,
+  title: "Views/Home", // Adjusted to ensure it’s consistent with Storybook’s naming conventions
+  component: Home,
 };
 
 // Create a template for rendering the component
 const Template = (args) => ({
-  components: { HomePage },
+  components: { Home },
   setup() {
     return { args };
   },
-  template: '<HomePage v-bind="args" />',
+  template: '<Home v-bind="args" />',
 });
 
 // Define a default story
