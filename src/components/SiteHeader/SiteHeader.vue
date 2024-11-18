@@ -1,13 +1,11 @@
 <template>
   <nav>
     SiteHeader
-    <!-- <RouterLink
+    <RouterLink
       v-for="(item, index) in linkCollection"
       :key="index"
       :to="item.href"
-    >
-      {{ item.label }}
-    </RouterLink> -->
+    />
   </nav>
 </template>
 <script>

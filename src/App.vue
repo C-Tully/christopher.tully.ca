@@ -1,22 +1,23 @@
 <template>
   <h1>Hello App!</h1>
   <p><strong>Current route path:</strong> {{ $route.fullPath }}</p>
-  <!-- <nav>
-    <RouterLink to="/">Go to Home</RouterLink>
-    <RouterLink to="/about">Go to About</RouterLink>
-  </nav> -->
+  <SiteHeader />
   <main>
     <RouterView />
   </main>
+  <SiteFooter />
 </template>
 <script>
-import HomePage from "./views/HomePage/HomePage.vue";
-import TopHeader from "./components/SiteHeader/TopHEader.vue";
+// import HomePage from "./views/HomePage/HomePage.vue";
+import SiteHeader from "./components/SiteHeader/SiteHeader.vue";
+import SiteFooter from "./components/SiteFooter/SiteFooter.vue";
 
 export default {
   name: "App",
   components: {
-    HomePage,
+    // HomePage,
+    SiteHeader,
+    SiteFooter,
   },
 };
 </script>
