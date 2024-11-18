@@ -1,17 +1,17 @@
-import AboutView from "./SkillsView.vue";
+import SkillsView from "./SkillsView.vue";
 
 export default {
-  title: "Views/AboutView", // Adjusted to ensure it’s consistent with Storybook’s naming conventions
-  component: AboutView,
+  title: "Views/SkillsView", // Adjusted to ensure it’s consistent with Storybook’s naming conventions
+  component: SkillsView,
 };
 
 // Create a template for rendering the component
 const Template = (args) => ({
-  components: { AboutView },
+  components: { SkillsView },
   setup() {
     return { args };
   },
-  template: '<AboutView v-bind="args" />',
+  template: '<SkillsView v-bind="args" />',
 });
 
 // Define a default story

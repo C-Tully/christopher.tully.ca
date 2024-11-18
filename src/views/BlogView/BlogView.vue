@@ -1,6 +1,6 @@
 <template>
   <div class="blog-wrapper">
-    <p>Coming Soon</p>
+    <p>Blog Coming Soon</p>
   </div>
 </template>
 

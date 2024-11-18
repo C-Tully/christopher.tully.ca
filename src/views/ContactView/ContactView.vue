@@ -1,6 +1,6 @@
 <template>
   <div class="contact-wrapper">
-    <p>Coming Soon</p>
+    <p>Contact View - Coming Soon</p>
   </div>
 </template>
 

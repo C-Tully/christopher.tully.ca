@@ -1,6 +1,6 @@
 <template>
   <div class="skills-wrapper">
-    <p>Coming Soon</p>
+    <p>Skills Coming Soon</p>
   </div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
   <div class="experience-wrapper">
-    <p>Coming Soon</p>
+    <p>Experiences View - Coming Soon</p>
   </div>
 </template>
 
