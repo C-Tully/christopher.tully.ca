@@ -1,9 +1,10 @@
 <template>
   <nav>
     <ul>
-      <li v-for="route in filteredRoutes" :key="route.name">
+      <!-- todo:: SB router not mocking -->
+      <!-- <li v-for="route in filteredRoutes" :key="route.name">
         <router-link :to="route.path">{{ route.name }}</router-link>
-      </li>
+      </li> -->
     </ul>
   </nav>
 </template>
@@ -12,23 +13,45 @@ import { useRouter, useRoute } from "vue-router";
 
 export default {
   name: "SiteHeader",
-  props: {
-    linkCollection: { type: Array, required: false },
-  },
+  props: {},
   setup() {
     const router = useRouter(); // Access to router instance
     const route = useRoute(); // Access to current route
-    console.log("SiteHeader::route::", route);
+    if (route && router) {
+      const allRoutes = router.getRoutes();
+      const filteredRoutes = allRoutes.filter((r) => r.path !== route.path);
+      return (
+        { filteredRoutes } || [
+          {
+            name: "test",
+            path: "/",
+          },
+        ]
+      );
+    }
+
+    return [];
+
+    //Todo:: it's failing here, the router isn't being used.
+    // console.log("SiteHeader::route::", route);
 
     // Get all registered routes
-    const allRoutes = router.getRoutes();
-    console.log("SiteHeader::allRoutes::", allRoutes);
+    // const allRoutes = router.getRoutes();
+    // console.log("SiteHeader::allRoutes::", allRoutes);
     // Filter out the current route
-    const filteredRoutes = allRoutes.filter((r) => r.path !== route.path);
-    console.log("filteredRoutes::", filteredRoutes);
-    return {
-      filteredRoutes,
-    };
+
+    // console.log("filteredRoutes::", filteredRoutes);
+    // return {
+    //   filteredRoutes,
+    // };
   },
 };
 </script>
+<style lang="scss" scoped>
+@import "@/assets/styles/vars";
+nav {
+  width: 100%;
+  height: 10vh;
+  background-color: $background-blue;
+}
+</style>

@@ -4,7 +4,7 @@ import CustomButton from "./CustomButton.vue";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
-  title: "Component/CustomButton",
+  title: "Components/CustomButton",
   component: CustomButton,
   tags: ["autodocs"],
   argTypes: {

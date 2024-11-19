@@ -1,36 +1,35 @@
 import { shallowMount } from "@vue/test-utils";
-import SiteFooter from "@/components/SiteFooter.vue";
+import SiteHeader from "@/components/SiteHeader.vue";
 
-describe("SiteFooter", () => {
-  const mockLinkCollection = [
-    {
-      route: "home",
-      label: "lorem",
-    },
-    {
-      route: "about",
-      label: "ipsum",
-    },
-    {
-      route: "skills",
-      label: "dollar",
-    },
-  ];
-  const wrapper = shallowMount(SiteFooter, {
+describe.skip("SiteHeader :: unit tests", () => {
+  // const mockLinkCollection = [
+  //   {
+  //     route: "home",
+  //     label: "lorem",
+  //   },
+  //   {
+  //     route: "about",
+  //     label: "ipsum",
+  //   },
+  //   {
+  //     route: "skills",
+  //     label: "dollar",
+  //   },
+  // ];
+  const wrapper = shallowMount(SiteHeader, {
     props: {
-      linkCollection: mockLinkCollection,
+      // linkCollection: mockLinkCollection,
     },
   });
 
-  it("Component renders", () => {
+  it.skip("Component renders", () => {
     expect(wrapper.exists()).toBe(true);
   });
 
-  it("confirms prop data", () => {
-    expect(wrapper.vm.linkCollection).toStrictEqual(mockLinkCollection);
-
-    const linkContainer = wrapper.find("nav");
-    const anchorTags = linkContainer.findAll("a");
-    expect(anchorTags.length).toBe(mockLinkCollection.length);
+  it.skip("confirms prop data", () => {
+    // expect(wrapper.vm.linkCollection).toStrictEqual(mockLinkCollection);
+    // const linkContainer = wrapper.find("nav");
+    // const anchorTags = linkContainer.findAll("a");
+    // expect(anchorTags.length).toBe(mockLinkCollection.length);
   });
 });

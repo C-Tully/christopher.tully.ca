@@ -10,7 +10,7 @@
 <script>
 // import HomePage from "./views/HomePage/HomePage.vue";
 import SiteHeader from "./components/SiteHeader/SiteHeader.vue";
-import SiteFooter from "./components/SiteFooter/SiteFooter.vue";
+import SiteFooter from "./components/Footer.vue/Footer.vue";
 
 export default {
   name: "App",

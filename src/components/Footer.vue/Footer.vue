@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-  name: "SiteFooter",
+  name: "Footer",
   props: {},
 };
 </script>

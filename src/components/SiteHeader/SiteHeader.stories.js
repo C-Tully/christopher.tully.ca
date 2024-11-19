@@ -16,6 +16,4 @@ const Template = (args) => ({
 
 // Define a default story
 export const Default = Template.bind({});
-Default.args = {
-  msg: "Welcome to the Home Page!",
-};
+Default.args = {};
