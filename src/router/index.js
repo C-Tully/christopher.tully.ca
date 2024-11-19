@@ -1,19 +1,20 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomePage from "@/views/Home/Home.vue";
+import Home from "@/views/Home/Home.vue";
 
-// import AboutView from "./views/AboutView.vue";
+import About from "@/views/About/About.vue";
+import Blog from "@/views/Blog/Blog.vue";
 // import BlogView from "./views/BlogView.vue";
-// import ContactView from "./views/ContactView.vue";
-// import ExperienceView from "./views/ContactView.vue";
-// import SkillsView from "./views/SkillsView.vue";
+import Contact from "@/views/Contact/Contact.vue";
+import Experience from "@/views/Experience/Experience.vue";
+import Skills from "@/views/Skills/Skills.vue";
 
 const routes = [
-  { path: "/", component: HomePage, name: "Home" },
-  // { path: "/about", component: AboutView },
-  // { path: "/blog", component: BlogView },
-  // { path: "/contact", component: ContactView },
-  // { path: "/experience", component: ExperienceView },
-  // { path: "/skills", component: SkillsView },
+  { path: "/", component: Home, name: "Home" },
+  { path: "/about", component: About, name: "About" },
+  { path: "/blog", component: Blog, name: "Blog" },
+  { path: "/contact", component: Contact, name: "Contact" },
+  { path: "/experience", component: Experience, name: "Experience" },
+  { path: "/skills", component: Skills, name: "Skills" },
 ];
 
 const router = createRouter({
