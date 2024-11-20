@@ -10,7 +10,6 @@ import { reactive, computed } from "vue";
 
 export default {
   name: "CustomButton",
-
   props: {
     label: {
       type: String,
@@ -30,9 +29,7 @@ export default {
       type: String,
     },
   },
-
   emits: ["click"],
-
   setup(props, { emit }) {
     props = reactive(props);
     return {

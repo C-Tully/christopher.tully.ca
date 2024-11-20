@@ -1,4 +1,5 @@
 <template>
+  SiteLogo::
   <img src="" alt="" />
 </template>
 <script>
