@@ -6,7 +6,6 @@
         <p>I'm a <u>Software developer</u> with 13 years experience.</p>
       </header>
       <div class="description-wrap">
-        <p><b></b></p>
         <p>
           I specialize in creating user-friendly, accessible interfaces that
           meet modern web standards. My goal is to ensure every project delivers
@@ -72,6 +71,7 @@ export default {
   align-items: center;
   height: 100vh;
   width: 100%;
+  padding: 3em;
 
   .copy-wrap {
     flex-flow: row;
@@ -81,8 +81,22 @@ export default {
     // box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
     header {
+      display: flex;
+      flex-wrap: nowrap;
       flex: 4;
+      flex-flow: column;
+      justify-content: flex-start;
+      text-align: right;
+      padding-left: 5em;
+      padding: 0 3em;
+
+      // text-align: right;
+
+      p {
+        color: #ffff;
+      }
     }
+
     .description-wrap {
       flex: 4;
       text-align: left;
@@ -91,7 +105,14 @@ export default {
 
     h1 {
       color: #73bbd3;
-      font-size: 15px;
+      font-size: 9.2vw;
+      font-family: "Bebas Neue", serif;
+      font-weight: 400;
+      font-style: normal;
+      line-height: 0.9em;
+    }
+    b {
+      font-weight: 700;
     }
   }
 }
