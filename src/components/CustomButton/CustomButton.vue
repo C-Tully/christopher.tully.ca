@@ -29,7 +29,7 @@ export default {
       type: String,
     },
   },
-  emits: ["click"],
+  emits: ["onClick"],
   setup(props, { emit }) {
     props = reactive(props);
     return {
@@ -42,8 +42,8 @@ export default {
       style: computed(() => ({
         backgroundColor: props.backgroundColor,
       })),
-      onClick() {
-        emit("click");
+      onClick(event) {
+        emit("onClick", event);
       },
     };
   },

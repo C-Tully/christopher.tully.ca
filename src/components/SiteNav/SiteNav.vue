@@ -1,23 +1,17 @@
 <template>
-  <div>
-    <SiteLogo />
-    <nav>
-      <ul>
-        <!-- todo:: SB router not mocking -->
-        <!-- <li v-for="route in filteredRoutes" :key="route.name">
+  <nav class="nav-wrap">
+    <ul>
+      <li v-for="route in filteredRoutes" :key="route.name">
         <router-link :to="route.path">{{ route.name }}</router-link>
-      </li> -->
-      </ul>
-    </nav>
-  </div>
+      </li>
+    </ul>
+  </nav>
 </template>
 <script>
 import { useRouter, useRoute } from "vue-router";
-import SiteLogo from "@/components/SiteLogo/SiteLogo.vue";
 
 export default {
-  name: "SiteHeader",
-  components: { SiteLogo },
+  name: "SiteNav",
   props: {},
   setup() {
     const router = useRouter();
@@ -40,11 +34,8 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-// @import "@/assets/styles/vars";
-nav {
-  width: 100%;
-  height: 10vh;
-  // background-color: $background-blue;
-  background-color: #00008b;
-}
+// // @import "@/assets/styles/vars";
+// nav {
+
+// }
 </style>
