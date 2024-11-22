@@ -50,11 +50,40 @@ nav {
   ul {
     li {
       a {
+        font-size: 20px;
+
         &.bold {
           font-family: "Spectral", serif;
           font-weight: 700;
           font-style: normal;
         }
+
+        &:hover {
+          color: #ffff;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .flex-container {
+    .copy-wrap {
+      flex-flow: column;
+    }
+  }
+  .nav-wrap {
+    flex: 1;
+    display: inline-flex;
+    width: 100%;
+
+    ul {
+      width: 100%;
+      display: flex;
+      flex-flow: row;
+      justify-content: space-evenly;
+
+      li {
       }
     }
   }
