@@ -4,10 +4,13 @@
     v-for="n in TOTAL_BUBBLES"
     :key="n"
     v-memo="[TOTAL_BUBBLES]"
+    aria-hidden="true"
+    tab-index="-1"
   ></div>
 </template>
 <script>
 export default {
+  //Note:: Background bubbles are just for visual effects.
   name: "BackgroundBubbles",
   data() {
     return {
