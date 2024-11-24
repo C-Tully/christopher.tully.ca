@@ -1,5 +1,6 @@
 <template>
   <RouterView />
+  <SiteFooter />
 </template>
 <script>
 export default {
@@ -9,9 +10,13 @@ export default {
 
 <style>
 #app {
+  /* font-family: Avenir, Helvetica, Arial, sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-align: center;
   margin-top: 60px;
+  /* background-color: #00008b; */
+
   height: 100%;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
