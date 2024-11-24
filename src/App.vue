@@ -1,7 +1,4 @@
-<template>
-  <RouterView />
-  <SiteFooter />
-</template>
+<template><RouterView /></template>
 <script>
 export default {
   name: "App",
@@ -15,7 +12,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   margin-top: 60px;
-  /* background-color: #00008b; */
+  background-color: #00008b;
 
   height: 100%;
   margin: 0;

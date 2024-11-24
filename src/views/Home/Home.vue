@@ -14,33 +14,40 @@
             across diverse industries, I bring a broad skill set and unique
             perspectives that set me apart from the rest.
           </p>
-          <CustomButton
+          <!-- <CustomButton
             @onClick="handleOnClick"
             label="Contact me!"
             primary
             size="medium"
-          />
+          /> -->
         </div>
       </div>
       <SiteNav customFontClass="bold" />
     </div>
-    <BackgroundBubbles />
+    <div
+      class="bubble"
+      v-for="n in TOTAL_BUBBLES"
+      :key="n"
+      v-memo="[TOTAL_BUBBLES]"
+      aria-hidden="true"
+      tab-index="-1"
+    ></div>
   </div>
 </template>
 
 <script>
 import SiteNav from "@/components/SiteNav/SiteNav.vue";
-import BackgroundBubbles from "@components/BackgroundBubbles/BackgroundBubbles.vue";
+
 export default {
   name: "Home",
   components: {
     SiteNav,
-    BackgroundBubbles,
   },
   props: {},
   data() {
     return {
       modalVisibility: false,
+      TOTAL_BUBBLES: 59,
     };
   },
   methods: {
@@ -56,11 +63,10 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-//temp
 .home-wrap {
-  height: 100%;
+  height: 100vh;
   margin: 0;
-  background: rgb(12, 12, 131);
+  background: $primary-background-blue;
   background: linear-gradient(
     90deg,
     rgba(12, 12, 131, 1) 0%,
@@ -70,15 +76,13 @@ export default {
   position: relative;
 }
 
-::v-deep {
-  .nav-wrap {
-    flex: 2;
+:deep(.nav-wrap) {
+  flex: 2;
 
-    ul {
-      list-style-type: none;
-      padding-left: 0;
-      text-align: right;
-    }
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+    text-align: right;
   }
 }
 
@@ -146,6 +150,91 @@ export default {
         text-align: inherit;
         padding: 0;
       }
+    }
+  }
+}
+
+$bubble-count: 50;
+$sway-type: "sway-left-to-right", "sway-right-to-left";
+
+@function random_range($min, $max) {
+  $rand: random();
+  $random_range: $min + floor($rand * (($max - $min) + 1));
+  @return $random_range;
+}
+
+@function sample($list) {
+  @return nth($list, random(length($list)));
+}
+:deep {
+  .bubbles {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .bubble {
+    position: absolute;
+    pointer-events: none;
+    left: var(--bubble-left-offset);
+    bottom: -75%;
+    display: block;
+    width: var(--bubble-radius);
+    height: var(--bubble-radius);
+    border-radius: 50%;
+    animation: float-up var(--bubble-float-duration) var(--bubble-float-delay)
+      ease-in infinite;
+
+    &::before {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: hsla(240, 72%, 52%, 0.3);
+      border-radius: inherit;
+      animation: var(--bubble-sway-type) var(--bubble-sway-duration)
+        var(--bubble-sway-delay) ease-in-out alternate infinite;
+    }
+
+    @for $i from 0 through $bubble-count {
+      &:nth-child(#{$i}) {
+        --bubble-left-offset: #{random_range(0vw, 100vw)};
+        --bubble-radius: #{random_range(1vw, 10vw)};
+        --bubble-float-duration: #{random_range(6s, 12s)};
+        --bubble-sway-duration: #{random_range(4s, 6s)};
+        --bubble-float-delay: #{random_range(0s, 4s)};
+        --bubble-sway-delay: #{random_range(0s, 4s)};
+        --bubble-sway-type: #{sample($sway-type)};
+      }
+    }
+  }
+
+  @keyframes float-up {
+    to {
+      transform: translateY(-175vh);
+    }
+  }
+
+  @keyframes sway-left-to-right {
+    from {
+      transform: translateX(-100%);
+    }
+
+    to {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes sway-right-to-left {
+    from {
+      transform: translateX(100%);
+    }
+
+    to {
+      transform: translateX(-100%);
     }
   }
 }

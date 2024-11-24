@@ -13,10 +13,10 @@ module.exports = defineConfig({
   css: {
     loaderOptions: {
       sass: {
-        additionalData: `@import "@/assets/styles/vars";`,
+        additionalData: `@use "@/assets/styles/vars" as *;`, // Expose all variables directly
       },
       scss: {
-        additionalData: `@import "@/assets/styles/vars";`,
+        additionalData: `@use "@/assets/styles/vars" as *;`, // Expose all variables directly
       },
     },
   },
