@@ -3,9 +3,7 @@ import Home from "@/views/Home/Home.vue";
 
 describe.skip("Home Page :: unit tests", () => {
   const wrapper = shallowMount(Home, {
-    props: {
-      // linkCollection: mockLinkCollection,
-    },
+    props: {},
   });
 
   it.skip("Component renders", () => {
