@@ -1,6 +1,27 @@
+//Semi Stable//
+
+// import { createApp } from "vue";
+// import App from "./App.vue";
+// import router from "./router";
+// import BootstrapVueNext from "bootstrap-vue-next";
+
+// import "bootstrap/dist/css/bootstrap.css";
+// import "bootstrap-vue-next/dist/bootstrap-vue-next.css";
+
+// createApp(App).use(router).use(BootstrapVueNext).mount("#app");
+
+//End semi stable //
+
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
+import { BButton, BModal } from "bootstrap-vue-next";
 
-// createApp(App).mount('#app')
-createApp(App).use(router).mount("#app");
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue-next/dist/bootstrap-vue-next.css";
+
+createApp(App)
+  .use(router)
+  .use("BModal", BModal)
+  .use("BButton", BButton)
+  .mount("#app");

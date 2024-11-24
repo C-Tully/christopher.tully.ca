@@ -1,17 +1,17 @@
-import Skills from "./Skills.vue";
+import BackgroundBubbles from "@/components/BackgroundBubbles.vue";
 
 export default {
-  title: "Views/Skills", // Adjusted to ensure it’s consistent with Storybook’s naming conventions
-  component: Skills,
+  title: "Components/Background bubbles",
+  component: BackgroundBubbles,
 };
 
 // Create a template for rendering the component
 const Template = (args) => ({
-  components: { Skills },
+  components: { BackgroundBubbles },
   setup() {
     return { args };
   },
-  template: '<Skills v-bind="args" />',
+  template: '<BackgroundBubbles v-bind="args" />',
 });
 
 // Define a default story

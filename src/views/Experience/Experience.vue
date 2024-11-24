@@ -1,12 +1,12 @@
 <template>
   <div class="hello">
-    <h1>This is the Experiences Page component</h1>
+    <h1>This is the Experience Page component</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Experiences",
+  name: "Experience",
   props: {
     msg: String,
   },
