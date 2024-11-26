@@ -1,31 +1,27 @@
 # christopher.tully.ca
 
-This will be a Vue3 CLI project. It will use WebPack as its packager
+A portfolio project for my upcoming website. Feel free to review and feel free to get in contact with me should you have any questions.
 
-## Project setup
+### Features
 
-```
-npm install
-```
+- Vue Router Included.
+- Webpack
+- Bootstrap 5.
+- Pre-configured with code quality tools: Storybook, Jest,
+- Basic tests included.
 
-### Compiles and hot-reloads for development
+### Requirements
 
-```
-npm run serve
-```
+- [Node.js](https://nodejs.org/) v22.5.1
 
-### Compiles and minifies for production
+### Installation
 
-```
-npm run build
-```
+- Clone the repo.
+- Install project dependencies — `npm install`.
+- Do a quick build - `npm run build`
+- Run Storybook - `npm run storybook`
 
-### Lints and fixes files
+### Related Projects
 
-```
-npm run lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- [Vue3 Starter](https://vuejs.org/).
+- [Vue3 router](https://v3.router.vuejs.org/).
