@@ -1,4 +1,5 @@
-import BackgroundBubbles from "@/components/BackgroundBubbles.vue";
+// import BackgroundBubbles from "@/components/BackgroundBubbles.vue";
+import BackgroundBubbles from "./BackgroundBubbles.vue";
 
 export default {
   title: "Components/Background bubbles",
