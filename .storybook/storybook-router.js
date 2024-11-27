@@ -6,6 +6,7 @@ import { createRouter, createWebHistory } from "vue-router";
 const routes = [
   // { path: "/", component: Home, name: "Home" }
   { path: "/", name: "Home", template: "<div>Home Component</div>" },
+  { path: "/about", name: "About", template: "<div>About component</div>" },
 ];
 
 const router = createRouter({
