@@ -5,6 +5,7 @@ A portfolio project for my upcoming website. Feel free to review and feel free t
 ### Features
 
 - Vue Router Included.
+- Vue composition API
 - Webpack
 - Bootstrap 5.
 - Pre-configured with code quality tools: Storybook, Jest,
