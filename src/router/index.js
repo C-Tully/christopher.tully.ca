@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import Home from "@/views/Home/Home.vue";
+import NotFound from "@/views/NotFound/NotFound.vue";
 // import About from "@/views/About/About.vue";
 // import Blog from "@/views/Blog/Blog.vue";
 // import Contact from "@/views/Contact/Contact.vue";
@@ -9,6 +10,11 @@ import Home from "@/views/Home/Home.vue";
 
 const routes = [
   { path: "/", component: Home, name: "Home" },
+  {
+    path: "/:pathMatch(.*)*", // Catch-all route
+    name: "NotFound",
+    component: NotFound,
+  },
   // { path: "/about", component: About, name: "About" },
   // { path: "/blog", component: Blog, name: "Blog" },
   // { path: "/contact", component: Contact, name: "Contact" },
