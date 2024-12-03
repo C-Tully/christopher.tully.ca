@@ -1,5 +1,12 @@
 $primary-background-blue: #00008b;
+$primary-background-gradient: linear-gradient(
+  90deg,
+  rgba(12, 12, 131, 1) 0%,
+  rgba(46, 46, 221, 1) 54%,
+  rgba(12, 12, 131, 1) 100%
+);
 
 :export {
   primary-background-blue: $primary-background-blue;
+  primary-background-gradient: $primary-background-gradient;
 }

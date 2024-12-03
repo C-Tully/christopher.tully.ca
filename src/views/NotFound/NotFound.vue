@@ -1,10 +1,16 @@
 <template>
-  <div class="hello">
-    <h1>
-      Ooops, there's nothing here! Please head back to the
-      <router-link :to="`/`"> Home page </router-link>
-      for now.
-    </h1>
+  <div class="d-flex notFound-wrap">
+    <div>
+      <h1>
+        Ooops, there's nothing here! Please head back to the
+        <router-link :to="`/`"> Home page </router-link>
+        for now.
+      </h1>
+      <img
+        src="@/assets/images/404.gif"
+        alt="An animation of the numbers 404 beig redrawn"
+      />
+    </div>
   </div>
 </template>
 
@@ -14,19 +20,12 @@ export default {
   props: {},
 };
 </script>
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+<style lang="scss" scoped>
+.notFound-wrap {
+  height: 100vh;
+  margin: 0;
+  background: $primary-background-blue;
+  background: $primary-background-gradient;
+  position: relative;
 }
 </style>

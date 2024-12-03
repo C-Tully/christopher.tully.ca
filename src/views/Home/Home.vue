@@ -67,12 +67,7 @@ export default {
   height: 100vh;
   margin: 0;
   background: $primary-background-blue;
-  background: linear-gradient(
-    90deg,
-    rgba(12, 12, 131, 1) 0%,
-    rgba(46, 46, 221, 1) 54%,
-    rgba(12, 12, 131, 1) 100%
-  );
+  background: $primary-background-gradient;
   position: relative;
 }
 
