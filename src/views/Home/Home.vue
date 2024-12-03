@@ -2,10 +2,10 @@
   <div class="home-wrap bubbles">
     <div class="flex-container">
       <div class="copy-wrap">
-        <header class="">
+        <div class="main-copy">
           <h1>Hi, I'm <b>Chris</b></h1>
           <p>I'm a <u>Software developer</u> with 13 years experience.</p>
-        </header>
+        </div>
         <div class="description-wrap">
           <p>
             I specialize in creating user-friendly, accessible interfaces that
@@ -14,12 +14,6 @@
             across diverse industries, I bring a broad skill set and unique
             perspectives that set me apart from the rest.
           </p>
-          <!-- <CustomButton
-            @onClick="handleOnClick"
-            label="Contact me!"
-            primary
-            size="medium"
-          /> -->
         </div>
       </div>
       <SiteNav customFontClass="bold" />
@@ -95,7 +89,7 @@ export default {
     flex-flow: row;
     display: flex;
 
-    header {
+    .main-copy {
       display: flex;
       flex-wrap: nowrap;
       flex: 4;
@@ -113,16 +107,7 @@ export default {
     .description-wrap {
       flex: 4;
       text-align: left;
-      color: #fafafa;
-    }
-
-    h1 {
-      color: #a6cff2;
-      font-size: 9.2vw;
-      font-family: "Bebas Neue", serif;
-      font-weight: 400;
-      font-style: normal;
-      line-height: 0.9em;
+      color: $primary-font-white;
     }
 
     b {
@@ -141,7 +126,7 @@ export default {
       flex-flow: column;
       width: 100%;
 
-      header {
+      .main-copy {
         text-align: inherit;
         padding: 0;
       }
