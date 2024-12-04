@@ -1,10 +1,10 @@
 <template>
-  <div class="notFound-wrap flex-container">
+  <div class="notFound-wrap flex-container" role="main">
     <div class="copy-wrap">
       <h1>Ooops, there's nothing here!</h1>
       <p>
         Please head back to the
-        <!-- <router-link :to="`/`"> Home page </router-link> -->
+        <router-link :to="`/`"> Home page </router-link>
         for now.
       </p>
 
@@ -34,6 +34,13 @@ export default {
 .copy-wrap {
   display: flex;
   flex-direction: column;
+
+  a {
+    color: $primary-link-blue;
+    font-size: 24px;
+    font-weight: 500;
+    font-family: $primary-font-family;
+  }
 }
 
 h1 {
@@ -45,7 +52,7 @@ img {
 }
 
 p {
-  color: #ffff;
+  color: $primary-font-white;
 }
 
 @media only screen and (max-width: 600px) {

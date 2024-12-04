@@ -8,6 +8,7 @@ $primary-background-gradient: linear-gradient(
 
 $primary-font-white: #fafafa;
 $primary-font-blue: #a6cff2;
+$primary-link-blue: #00fbff;
 $primary-font-family: "Bebas Neue", serif;
 
 body {
@@ -40,4 +41,5 @@ h1 {
   primary-font-blue: $primary-font-blue;
   primary-font-family: $primary-font-family;
   primary-font-white: $primary-font-white;
+  primary-link-blue: $primary-link-blue;
 }

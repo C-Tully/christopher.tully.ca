@@ -1,5 +1,5 @@
 <template>
-  <nav class="nav-wrap">
+  <nav class="nav-wrap" role="navigation">
     <ul>
       <li v-for="route in filteredRoutes" :key="route.name">
         <router-link :to="route.path" :class="customFontClass">{{
@@ -29,7 +29,10 @@ export default {
     const route = useRoute(); // Access to current route
     if (route && router) {
       const allRoutes = router.getRoutes();
-      const filteredRoutes = allRoutes.filter((r) => r.path !== route.path);
+      console.log("siteNAv:allRoutes:", allRoutes);
+      const filteredRoutes = allRoutes.filter(
+        (r) => r.path !== route.path && r.name !== "404"
+      );
       return (
         { filteredRoutes } || [
           {

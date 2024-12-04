@@ -12,7 +12,7 @@ const routes = [
   { path: "/", component: Home, name: "Home" },
   {
     path: "/:pathMatch(.*)*", // Catch-all route
-    name: "NotFound",
+    name: "404",
     component: NotFound,
   },
   // { path: "/about", component: About, name: "About" },
