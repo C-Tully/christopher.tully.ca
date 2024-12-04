@@ -4,10 +4,9 @@
       <h1>Ooops, there's nothing here!</h1>
       <p>
         Please head back to the
-        <router-link :to="`/`"> Home page </router-link>
+        <router-link :to="`/`">Home page</router-link>
         for now.
       </p>
-
       <img
         src="@/assets/images/404.gif"
         alt="An animation of the numbers 404 beig redrawn"

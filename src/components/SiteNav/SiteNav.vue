@@ -27,12 +27,13 @@ export default {
   setup() {
     const router = useRouter();
     const route = useRoute(); // Access to current route
+
     if (route && router) {
       const allRoutes = router.getRoutes();
-      console.log("siteNAv:allRoutes:", allRoutes);
       const filteredRoutes = allRoutes.filter(
         (r) => r.path !== route.path && r.name !== "404"
       );
+
       return (
         { filteredRoutes } || [
           {
@@ -61,7 +62,7 @@ nav {
         }
 
         &:hover {
-          color: #ffff;
+          color: $primary-font-white;
         }
       }
     }
@@ -74,6 +75,7 @@ nav {
       flex-flow: column;
     }
   }
+
   .nav-wrap {
     flex: 1;
     display: inline-flex;
@@ -84,9 +86,6 @@ nav {
       display: flex;
       flex-flow: row;
       justify-content: space-evenly;
-
-      li {
-      }
     }
   }
 }
