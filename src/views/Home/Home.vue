@@ -1,11 +1,11 @@
 <template>
-  <div class="home-wrap bubbles">
+  <div class="home-wrap bubbles" role="main">
     <div class="flex-container">
       <div class="copy-wrap">
-        <header class="">
+        <div class="main-copy">
           <h1>Hi, I'm <b>Chris</b></h1>
           <p>I'm a <u>Software developer</u> with 13 years experience.</p>
-        </header>
+        </div>
         <div class="description-wrap">
           <p>
             I specialize in creating user-friendly, accessible interfaces that
@@ -14,12 +14,7 @@
             across diverse industries, I bring a broad skill set and unique
             perspectives that set me apart from the rest.
           </p>
-          <!-- <CustomButton
-            @onClick="handleOnClick"
-            label="Contact me!"
-            primary
-            size="medium"
-          /> -->
+          <p>Stay tuned there's more to come</p>
         </div>
       </div>
       <SiteNav customFontClass="bold" />
@@ -67,12 +62,7 @@ export default {
   height: 100vh;
   margin: 0;
   background: $primary-background-blue;
-  background: linear-gradient(
-    90deg,
-    rgba(12, 12, 131, 1) 0%,
-    rgba(46, 46, 221, 1) 54%,
-    rgba(12, 12, 131, 1) 100%
-  );
+  background: $primary-background-gradient;
   position: relative;
 }
 
@@ -100,7 +90,7 @@ export default {
     flex-flow: row;
     display: flex;
 
-    header {
+    .main-copy {
       display: flex;
       flex-wrap: nowrap;
       flex: 4;
@@ -118,16 +108,7 @@ export default {
     .description-wrap {
       flex: 4;
       text-align: left;
-      color: #fafafa;
-    }
-
-    h1 {
-      color: #a6cff2;
-      font-size: 9.2vw;
-      font-family: "Bebas Neue", serif;
-      font-weight: 400;
-      font-style: normal;
-      line-height: 0.9em;
+      color: $primary-font-white;
     }
 
     b {
@@ -146,7 +127,7 @@ export default {
       flex-flow: column;
       width: 100%;
 
-      header {
+      .main-copy {
         text-align: inherit;
         padding: 0;
       }
@@ -166,76 +147,75 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 @function sample($list) {
   @return nth($list, random(length($list)));
 }
-:deep {
-  .bubbles {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-  }
 
-  .bubble {
+.bubbles {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.bubble {
+  position: absolute;
+  pointer-events: none;
+  left: var(--bubble-left-offset);
+  bottom: -75%;
+  display: block;
+  width: var(--bubble-radius);
+  height: var(--bubble-radius);
+  border-radius: 50%;
+  animation: float-up var(--bubble-float-duration) var(--bubble-float-delay)
+    ease-in infinite;
+
+  &::before {
     position: absolute;
-    pointer-events: none;
-    left: var(--bubble-left-offset);
-    bottom: -75%;
-    display: block;
-    width: var(--bubble-radius);
-    height: var(--bubble-radius);
-    border-radius: 50%;
-    animation: float-up var(--bubble-float-duration) var(--bubble-float-delay)
-      ease-in infinite;
-
-    &::before {
-      position: absolute;
-      content: "";
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: hsla(240, 72%, 52%, 0.3);
-      border-radius: inherit;
-      animation: var(--bubble-sway-type) var(--bubble-sway-duration)
-        var(--bubble-sway-delay) ease-in-out alternate infinite;
-    }
-
-    @for $i from 0 through $bubble-count {
-      &:nth-child(#{$i}) {
-        --bubble-left-offset: #{random_range(0vw, 100vw)};
-        --bubble-radius: #{random_range(1vw, 10vw)};
-        --bubble-float-duration: #{random_range(6s, 12s)};
-        --bubble-sway-duration: #{random_range(4s, 6s)};
-        --bubble-float-delay: #{random_range(0s, 4s)};
-        --bubble-sway-delay: #{random_range(0s, 4s)};
-        --bubble-sway-type: #{sample($sway-type)};
-      }
-    }
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: hsla(240, 72%, 52%, 0.3);
+    border-radius: inherit;
+    animation: var(--bubble-sway-type) var(--bubble-sway-duration)
+      var(--bubble-sway-delay) ease-in-out alternate infinite;
   }
 
-  @keyframes float-up {
-    to {
-      transform: translateY(-175vh);
+  @for $i from 0 through $bubble-count {
+    &:nth-child(#{$i}) {
+      --bubble-left-offset: #{random_range(0vw, 100vw)};
+      --bubble-radius: #{random_range(1vw, 10vw)};
+      --bubble-float-duration: #{random_range(6s, 12s)};
+      --bubble-sway-duration: #{random_range(4s, 6s)};
+      --bubble-float-delay: #{random_range(0s, 4s)};
+      --bubble-sway-delay: #{random_range(0s, 4s)};
+      --bubble-sway-type: #{sample($sway-type)};
     }
   }
+}
 
-  @keyframes sway-left-to-right {
-    from {
-      transform: translateX(-100%);
-    }
+@keyframes float-up {
+  to {
+    transform: translateY(-175vh);
+  }
+}
 
-    to {
-      transform: translateX(100%);
-    }
+@keyframes sway-left-to-right {
+  from {
+    transform: translateX(-100%);
   }
 
-  @keyframes sway-right-to-left {
-    from {
-      transform: translateX(100%);
-    }
+  to {
+    transform: translateX(100%);
+  }
+}
 
-    to {
-      transform: translateX(-100%);
-    }
+@keyframes sway-right-to-left {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(-100%);
   }
 }
 </style>
