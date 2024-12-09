@@ -1,0 +1,45 @@
+$primary-background-blue: #00008b;
+$primary-background-gradient: linear-gradient(
+  90deg,
+  rgba(12, 12, 131, 1) 0%,
+  rgba(46, 46, 221, 1) 54%,
+  rgba(12, 12, 131, 1) 100%
+);
+
+$primary-font-white: #fafafa;
+$primary-font-blue: #a6cff2;
+$primary-link-blue: #00fbff;
+$primary-font-family: "Bebas Neue", serif;
+
+body {
+  font-family: $primary-font-family;
+}
+
+.flex-container {
+  position: absolute;
+  top: 25%;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 3em;
+}
+
+h1 {
+  color: $primary-font-blue;
+  font-size: 9.2vw;
+  font-family: $primary-font-family;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 0.9em;
+}
+
+:export {
+  primary-background-blue: $primary-background-blue;
+  primary-background-gradient: $primary-background-gradient;
+  primary-font-blue: $primary-font-blue;
+  primary-font-family: $primary-font-family;
+  primary-font-white: $primary-font-white;
+  primary-link-blue: $primary-link-blue;
+}

@@ -1,20 +1,44 @@
-// .storybook/main.js
-import { mergeConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
+const path = require("path");
 
-/** @type { import('@storybook/vue3-vite').StorybookConfig } */
-const config = {
+module.exports = {
   stories: ["../src/**/*.stories.@(js|jsx|ts|tsx|vue)"],
-  addons: ["@chromatic-com/storybook", "@storybook/addon-interactions"],
+  addons: [
+    "@storybook/addon-essentials",
+    "@storybook/addon-links",
+    "@storybook/addon-interactions",
+    "@storybook/addon-webpack5-compiler-babel",
+    "@chromatic-com/storybook",
+  ],
   framework: {
-    name: "@storybook/vue3-vite",
+    name: "@storybook/vue3-webpack5",
     options: {},
   },
-  async viteFinal(config) {
-    return mergeConfig(config, {
-      plugins: [vue()],
+  webpackFinal: async (config) => {
+    // Resolves alias for easier imports
+    config.resolve.alias = {
+      ...(config.resolve.alias || {}),
+      "@": path.resolve(__dirname, "../src"),
+    };
+
+    // Add SCSS loader with global variables
+    config.module.rules.push({
+      test: /\.scss$/,
+      use: [
+        "style-loader",
+        "css-loader",
+        {
+          loader: "sass-loader",
+          options: {
+            implementation: require("sass"),
+            additionalData: `@import "@/assets/styles/vars.scss";`,
+          },
+        },
+      ],
     });
+
+    return config;
+  },
+  docs: {
+    autodocs: true,
   },
 };
-
-export default config;

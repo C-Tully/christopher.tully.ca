@@ -1,24 +1,27 @@
 # christopher.tully.ca
 
-## Project setup
-```
-npm install
-```
+A portfolio project for my upcoming website. Feel free to review and feel free to get in contact with me should you have any questions.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### Features
 
-### Compiles and minifies for production
-```
-npm run build
-```
+- Vue Router Included.
+- Webpack
+- Bootstrap 5.
+- Pre-configured with code quality tools: Storybook, Jest,
+- Basic tests included.
 
-### Lints and fixes files
-```
-npm run lint
-```
+### Requirements
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- [Node.js](https://nodejs.org/) v22.5.1
+
+### Installation
+
+- Clone the repo.
+- Install project dependencies — `npm install`.
+- Do a quick build - `npm run build`
+- Run Storybook - `npm run storybook`
+
+### Related Projects
+
+- [Vue3 Starter](https://vuejs.org/).
+- [Vue3 router](https://v3.router.vuejs.org/).
