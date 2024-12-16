@@ -1,7 +1,7 @@
 import SiteNav from "./SiteNav.vue";
 
 export default {
-  title: "Components/Site Header", // Adjusted to ensure it’s consistent with Storybook’s naming conventions
+  title: "Components/Site Nav", // Adjusted to ensure it’s consistent with Storybook’s naming conventions
   component: SiteNav,
 };
 
