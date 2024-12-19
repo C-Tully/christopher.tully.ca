@@ -9,11 +9,12 @@ import NotFound from "@/views/NotFound/NotFound.vue";
 // import Skills from "@/views/Skills/Skills.vue";
 
 const routes = [
-  { path: "/", component: Home, name: "Home" },
+  { path: "/", component: Home, name: "Home", meta: { gtm: "Home" } },
   {
     path: "/:pathMatch(.*)*", // Catch-all route
     name: "404",
     component: NotFound,
+    meta: { gtm: "404" },
   },
   // { path: "/about", component: About, name: "About" },
   // { path: "/blog", component: Blog, name: "Blog" },
@@ -25,6 +26,16 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
+});
+
+router.afterEach((to) => {
+  if (window.dataLayer) {
+    window.dataLayer.push({
+      event: "pageview",
+      page_path: to.fullPath,
+      page_title: to.meta.gtm || document.title,
+    });
+  }
 });
 
 export default router;
