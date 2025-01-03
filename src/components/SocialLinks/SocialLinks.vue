@@ -1,12 +1,16 @@
 <template>
   <ul>
-    <li v-for="(index, linkItem) in linkCollection" :key="index">
+    <li v-for="(linkItem, index) in linkCollection" :key="index">
       <a
         target="_blank"
         :href="linkItem.href"
         :ariaLabel="`${linkItem.ariaLabel}`"
       >
-        <img :src="linkItem.imgSrc" :alt="linkItem?.imgAlt || ''" />
+        <img
+          v-if="linkItem.imgSrc"
+          :src="linkItem.imgSrc"
+          :alt="linkItem?.imgAlt || ''"
+        />
       </a>
     </li>
   </ul>
@@ -26,6 +30,9 @@ export default {
           },
         ];
       },
+    },
+    setup(props) {
+      console.log("linkCollection!!", props.linkCollection);
     },
     // customFontClass: {
     //   type: String,

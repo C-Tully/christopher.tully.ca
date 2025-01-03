@@ -1,4 +1,5 @@
 import SocialLinks from "./SocialLinks.vue";
+import linkedinIcon from "@/assets/images/social/icons/linkedin.png";
 
 export default {
   title: "Components/Social Links", // Adjusted to ensure it’s consistent with Storybook’s naming conventions
@@ -16,12 +17,13 @@ const Template = (args) => ({
 
 // Define a default story
 export const Default = Template.bind({});
+
 Default.args = {
   linkCollection: [
     {
       ariaLabel: "Test Aria Label",
       href: "https://TestUrl.com",
-      imgSrc: "/assets/images/social/linkedin.png",
+      imgSrc: linkedinIcon,
     },
   ],
 };

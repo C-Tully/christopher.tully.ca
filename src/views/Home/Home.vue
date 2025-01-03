@@ -17,6 +17,7 @@
           <p>Stay tuned there's more to come</p>
         </div>
       </div>
+      <SocialLinks :linkCollection="socialLinkCollection" />
       <SiteNav customFontClass="bold" />
     </div>
     <div
@@ -32,17 +33,29 @@
 
 <script>
 import SiteNav from "@/components/SiteNav/SiteNav.vue";
+import SocialLinks from "@/components/SocialLinks/SocialLinks.vue";
 
 export default {
   name: "Home",
   components: {
     SiteNav,
+    SocialLinks,
   },
   props: {},
   data() {
     return {
       modalVisibility: false,
       TOTAL_BUBBLES: 59,
+      socialLinkCollection: [
+        {
+          linkedIn: {
+            href: "https://www.linkedin.com/in/christopher-tully-17509b46/",
+            ariaLabel: "Checkout my LinkedIn Profile.",
+            imgSrc: "@/assets/images/social/icons/linkedin.png",
+            imgAlt: "LinkedIn Logo",
+          },
+        },
+      ],
     };
   },
   methods: {
