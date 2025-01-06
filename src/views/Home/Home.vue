@@ -50,9 +50,24 @@ export default {
         {
           linkedIn: {
             href: "https://www.linkedin.com/in/christopher-tully-17509b46/",
-            ariaLabel: "Checkout my LinkedIn Profile.",
+            ariaLabel: "Click here to check out my LinkedIn Profile.",
             imgSrc: "@/assets/images/social/icons/linkedin.png",
             imgAlt: "LinkedIn Logo",
+          },
+          leetCode: {
+            href: "https://leetcode.com/u/c-tully/",
+            ariaLabel: "Click here to check out my leetCode profile",
+            imgSrc: "@/assets/images/social/icons/linkedin.png",
+            imgAlt: "leetCode Logo",
+            hasWarning: true,
+            warningMessage:
+              "Just a quick heads up! This is a early on account, please bare with me.",
+          },
+          gitHub: {
+            href: "https://github.com/C-Tully",
+            ariaLabel: "Click here to check out my leetCode profile",
+            imgSrc: "@/assets/images/social/icons/linkedin.png",
+            imgAlt: "Github Logo",
           },
         },
       ],
