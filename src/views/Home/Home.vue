@@ -1,6 +1,6 @@
 <template>
-  <div class="home-wrap bubbles" role="main">
-    <div class="flex-container">
+  <div class="home-wrap bubbles flex-container" role="main">
+    <div>
       <div class="copy-wrap">
         <div class="main-copy">
           <h1>Hi, I'm <b>Chris</b></h1>
@@ -17,7 +17,7 @@
           <p>Stay tuned there's more to come</p>
         </div>
       </div>
-      <SiteNav customFontClass="bold" />
+      <SocialLinks :linkCollection="socialLinkCollection" />
     </div>
     <div
       class="bubble"
@@ -31,18 +31,45 @@
 </template>
 
 <script>
-import SiteNav from "@/components/SiteNav/SiteNav.vue";
+import SocialLinks from "@/components/SocialLinks/SocialLinks.vue";
+import linkedinIcon from "@/assets/images/social/icons/linkedin.png";
+import gitHubIcon from "@/assets/images/social/icons/github.png";
+import leetCodeIcon from "@/assets/images/social/icons/leetcode.png";
 
 export default {
   name: "Home",
   components: {
-    SiteNav,
+    SocialLinks,
   },
-  props: {},
   data() {
     return {
       modalVisibility: false,
       TOTAL_BUBBLES: 59,
+      socialLinkCollection: [
+        {
+          href: "https://www.linkedin.com/in/christopher-tully-17509b46/",
+          ariaLabel: "Click here to check out my LinkedIn Profile.",
+          imgSrc: linkedinIcon,
+          imgAlt: "LinkedIn Logo",
+          class: "linkedIn",
+        },
+        {
+          href: "https://leetcode.com/u/c-tully/",
+          ariaLabel: "Click here to check out my leetCode profile",
+          imgSrc: leetCodeIcon,
+          imgAlt: "leetCode Logo",
+          class: "leetCode",
+          imgTitle:
+            "Just a quick heads up! This is an early account, please bear with me.",
+        },
+        {
+          href: "https://github.com/C-Tully",
+          ariaLabel: "Click here to check out my GitHub profile",
+          class: "gitHub",
+          imgSrc: gitHubIcon,
+          imgAlt: "GitHub Logo",
+        },
+      ],
     };
   },
   methods: {
@@ -64,16 +91,6 @@ export default {
   background: $primary-background-blue;
   background: $primary-background-gradient;
   position: relative;
-}
-
-:deep(.nav-wrap) {
-  flex: 2;
-
-  ul {
-    list-style-type: none;
-    padding-left: 0;
-    text-align: right;
-  }
 }
 
 .flex-container {
@@ -114,6 +131,15 @@ export default {
     b {
       font-weight: 700;
     }
+  }
+}
+
+:deep(.nav-wrap) {
+  flex: 2;
+
+  ul {
+    padding-left: 0;
+    text-align: right;
   }
 }
 
