@@ -1,6 +1,6 @@
 <template>
-  <div class="home-wrap bubbles" role="main">
-    <div class="flex-container">
+  <div class="home-wrap bubbles flex-container" role="main">
+    <div>
       <div class="copy-wrap">
         <div class="main-copy">
           <h1>Hi, I'm <b>Chris</b></h1>
@@ -18,7 +18,7 @@
         </div>
       </div>
       <SocialLinks :linkCollection="socialLinkCollection" />
-      <SiteNav customFontClass="bold" />
+      <!-- <SiteNav customFontClass="bold" /> -->
     </div>
     <div
       class="bubble"
@@ -32,13 +32,13 @@
 </template>
 
 <script>
-import SiteNav from "@/components/SiteNav/SiteNav.vue";
+// import SiteNav from "@/components/SiteNav/SiteNav.vue";
 import SocialLinks from "@/components/SocialLinks/SocialLinks.vue";
 
 export default {
   name: "Home",
   components: {
-    SiteNav,
+    // SiteNav,
     SocialLinks,
   },
   props: {},
@@ -48,27 +48,25 @@ export default {
       TOTAL_BUBBLES: 59,
       socialLinkCollection: [
         {
-          linkedIn: {
-            href: "https://www.linkedin.com/in/christopher-tully-17509b46/",
-            ariaLabel: "Click here to check out my LinkedIn Profile.",
-            imgSrc: "@/assets/images/social/icons/linkedin.png",
-            imgAlt: "LinkedIn Logo",
-          },
-          leetCode: {
-            href: "https://leetcode.com/u/c-tully/",
-            ariaLabel: "Click here to check out my leetCode profile",
-            imgSrc: "@/assets/images/social/icons/linkedin.png",
-            imgAlt: "leetCode Logo",
-            hasWarning: true,
-            warningMessage:
-              "Just a quick heads up! This is a early on account, please bare with me.",
-          },
-          gitHub: {
-            href: "https://github.com/C-Tully",
-            ariaLabel: "Click here to check out my leetCode profile",
-            imgSrc: "@/assets/images/social/icons/linkedin.png",
-            imgAlt: "Github Logo",
-          },
+          href: "https://www.linkedin.com/in/christopher-tully-17509b46/",
+          ariaLabel: "Click here to check out my LinkedIn Profile.",
+          imgSrc: "@/assets/images/social/icons/linkedin.png",
+          imgAlt: "LinkedIn Logo",
+        },
+        {
+          href: "https://leetcode.com/u/c-tully/",
+          ariaLabel: "Click here to check out my leetCode profile",
+          imgSrc: "@/assets/images/social/icons/leetcode.png",
+          imgAlt: "leetCode Logo",
+          hasWarning: true,
+          warningMessage:
+            "Just a quick heads up! This is an early account, please bear with me.",
+        },
+        {
+          href: "https://github.com/C-Tully",
+          ariaLabel: "Click here to check out my GitHub profile",
+          imgSrc: "@/assets/images/social/icons/github.png",
+          imgAlt: "GitHub Logo",
         },
       ],
     };

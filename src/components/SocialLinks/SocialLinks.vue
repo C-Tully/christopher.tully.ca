@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul class="d-flex">
     <li v-for="(linkItem, index) in linkCollection" :key="index">
       <a
         target="_blank"
@@ -45,4 +45,15 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+ul {
+  list-style: none;
+  li {
+    a {
+      img {
+        max-width: 50px;
+      }
+    }
+  }
+}
+</style>
