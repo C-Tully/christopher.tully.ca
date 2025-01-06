@@ -18,7 +18,6 @@
         </div>
       </div>
       <SocialLinks :linkCollection="socialLinkCollection" />
-      <!-- <SiteNav customFontClass="bold" /> -->
     </div>
     <div
       class="bubble"
@@ -32,16 +31,16 @@
 </template>
 
 <script>
-// import SiteNav from "@/components/SiteNav/SiteNav.vue";
 import SocialLinks from "@/components/SocialLinks/SocialLinks.vue";
+import linkedinIcon from "@/assets/images/social/icons/linkedin.png";
+import gitHubIcon from "@/assets/images/social/icons/github.png";
+import leetCodeIcon from "@/assets/images/social/icons/leetcode.png";
 
 export default {
   name: "Home",
   components: {
-    // SiteNav,
     SocialLinks,
   },
-  props: {},
   data() {
     return {
       modalVisibility: false,
@@ -50,22 +49,24 @@ export default {
         {
           href: "https://www.linkedin.com/in/christopher-tully-17509b46/",
           ariaLabel: "Click here to check out my LinkedIn Profile.",
-          imgSrc: "@/assets/images/social/icons/linkedin.png",
+          imgSrc: linkedinIcon,
           imgAlt: "LinkedIn Logo",
+          class: "linkedIn",
         },
         {
           href: "https://leetcode.com/u/c-tully/",
           ariaLabel: "Click here to check out my leetCode profile",
-          imgSrc: "@/assets/images/social/icons/leetcode.png",
+          imgSrc: leetCodeIcon,
           imgAlt: "leetCode Logo",
-          hasWarning: true,
-          warningMessage:
+          class: "leetCode",
+          imgTitle:
             "Just a quick heads up! This is an early account, please bear with me.",
         },
         {
           href: "https://github.com/C-Tully",
           ariaLabel: "Click here to check out my GitHub profile",
-          imgSrc: "@/assets/images/social/icons/github.png",
+          class: "gitHub",
+          imgSrc: gitHubIcon,
           imgAlt: "GitHub Logo",
         },
       ],
@@ -90,16 +91,6 @@ export default {
   background: $primary-background-blue;
   background: $primary-background-gradient;
   position: relative;
-}
-
-:deep(.nav-wrap) {
-  flex: 2;
-
-  ul {
-    list-style-type: none;
-    padding-left: 0;
-    text-align: right;
-  }
 }
 
 .flex-container {
@@ -140,6 +131,15 @@ export default {
     b {
       font-weight: 700;
     }
+  }
+}
+
+:deep(.nav-wrap) {
+  flex: 2;
+
+  ul {
+    padding-left: 0;
+    text-align: right;
   }
 }
 
