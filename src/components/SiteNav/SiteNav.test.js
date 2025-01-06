@@ -1,7 +1,7 @@
 import { shallowMount } from "@vue/test-utils";
-import SiteHeader from "@/components/SiteHeader.vue";
+import SiteNav from "@/components/SiteNav.vue";
 
-describe.skip("SiteHeader :: unit tests", () => {
+describe.skip("Site Nav :: unit tests", () => {
   // const mockLinkCollection = [
   //   {
   //     route: "home",
@@ -16,7 +16,7 @@ describe.skip("SiteHeader :: unit tests", () => {
   //     label: "dollar",
   //   },
   // ];
-  const wrapper = shallowMount(SiteHeader, {
+  const wrapper = shallowMount(SiteNav, {
     props: {
       // linkCollection: mockLinkCollection,
     },
