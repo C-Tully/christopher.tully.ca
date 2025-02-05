@@ -4,7 +4,7 @@
       <div class="copy-wrap">
         <div class="main-copy">
           <h1>Hi, I'm <b>Chris</b></h1>
-          <p>I'm a <u>Software developer</u> with 13 years experience.</p>
+          <p>I'm a <u>Software developer</u> with 14 years experience.</p>
         </div>
         <div class="description-wrap">
           <p>
