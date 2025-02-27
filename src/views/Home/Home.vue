@@ -1,40 +1,54 @@
 <template>
-  <div class="home-wrap bubbles flex-container" role="main">
+  <div class="svg-container">
+    <!-- SVG generated using: https://codepen.io/anthonydugois/pen/mewdyZ -->
+    <svg viewBox="0 0 800 400" class="svg">
+      <path
+        id="curve"
+        fill="#800014"
+        d="M 800 300 Q 400 350 0 300 L 0 0 L 800 0 L 800 300 Z"
+      ></path>
+    </svg>
+  </div>
+
+  <header>
+    <h1>Hi, I'm <b>Chris Tully</b></h1>
+    <h3>I'm a <u>Software developer</u> with 14 years experience.</h3>
+  </header>
+
+  <main>
     <div>
-      <div class="copy-wrap">
-        <div class="main-copy">
-          <h1>Hi, I'm <b>Chris</b></h1>
-          <p>I'm a <u>Software developer</u> with 14 years experience.</p>
-        </div>
-        <div class="description-wrap">
-          <p>
-            I specialize in creating user-friendly, accessible interfaces that
-            meet modern web standards. My goal is to ensure every project
-            delivers a polished, high-quality end product. With experience
-            across diverse industries, I bring a broad skill set and unique
-            perspectives that set me apart from the rest.
-          </p>
-          <p>Stay tuned there's more to come</p>
-        </div>
-      </div>
+      <b-img v-bind="mainProps" rounded="circle" alt="Circle image"></b-img>
+    </div>
+    <p>
+      I specialize in creating user-friendly, accessible interfaces that meet
+      modern web standards. My goal is to ensure every project delivers a
+      polished, high-quality end product. With experience across diverse
+      industries, I bring a broad skill set and unique perspectives that set me
+      apart from the rest.
+    </p>
+    <div class="">
+      <h4>My Work</h4>
+      <div>this is going to be item one</div>
+      <div>this is going to be item two</div>
+      <div>this is going to be item three</div>
+    </div>
+    <div>
+      <h5>My Links</h5>
       <SocialLinks :linkCollection="socialLinkCollection" />
     </div>
-    <div
-      class="bubble"
-      v-for="n in TOTAL_BUBBLES"
-      :key="n"
-      v-memo="[TOTAL_BUBBLES]"
-      aria-hidden="true"
-      tab-index="-1"
-    ></div>
-  </div>
+  </main>
+
+  <footer>
+    <p>And, the footer.</p>
+  </footer>
 </template>
 
 <script>
-import SocialLinks from "@/components/SocialLinks/SocialLinks.vue";
 import linkedinIcon from "@/assets/images/social/icons/linkedin.png";
 import gitHubIcon from "@/assets/images/social/icons/github.png";
 import leetCodeIcon from "@/assets/images/social/icons/leetcode.png";
+import { useScrollCurve } from "@/composables/useScrollCurve";
+import SocialLinks from "@/components/SocialLinks/SocialLinks.vue";
 
 export default {
   name: "Home",
@@ -44,7 +58,6 @@ export default {
   data() {
     return {
       modalVisibility: false,
-      TOTAL_BUBBLES: 59,
       socialLinkCollection: [
         {
           href: "https://www.linkedin.com/in/christopher-tully-17509b46/",
@@ -79,169 +92,101 @@ export default {
       }
     },
     toggleModalVisibility() {
-      return (this.modalVisibility = !this.modalVisibility);
+      this.modalVisibility = !this.modalVisibility;
     },
+  },
+  mounted() {
+    useScrollCurve("curve"); // Call composable inside mounted()
   },
 };
 </script>
+
 <style lang="scss" scoped>
-.home-wrap {
-  height: 100vh;
+// @import "https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700";
+@import "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inclusive+Sans:ital@0;1&family=Spectral:wght@300;400;700&display=swap";
+
+h1 {
+  b {
+    color: #05f7ff;
+  }
+}
+
+*,
+*:after,
+*:before {
   margin: 0;
-  background: $primary-background-blue;
-  background: $primary-background-gradient;
-  position: relative;
+  padding: 0;
 }
 
-.flex-container {
+.svg-container {
   position: absolute;
-  top: 25%;
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 3em;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: -1;
+}
 
-  .copy-wrap {
-    flex-flow: row;
-    display: flex;
+svg {
+  path {
+    transition: 0.1s;
+  }
 
-    .main-copy {
-      display: flex;
-      flex-wrap: nowrap;
-      flex: 4;
-      flex-flow: column;
-      justify-content: flex-start;
-      text-align: right;
-      padding-left: 5em;
-      padding: 0 3em;
-
-      p {
-        color: #ffff;
-      }
-    }
-
-    .description-wrap {
-      flex: 4;
-      text-align: left;
-      color: $primary-font-white;
-    }
-
-    b {
-      font-weight: 700;
-    }
+  &:hover path {
+    d: path("M 800 300 Q 400 250 0 300 L 0 0 L 800 0 L 800 300 Z");
   }
 }
 
-:deep(.nav-wrap) {
-  flex: 2;
-
-  ul {
-    padding-left: 0;
-    text-align: right;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .flex-container {
-    flex-flow: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-
-    .copy-wrap {
-      flex-flow: column;
-      width: 100%;
-
-      .main-copy {
-        text-align: inherit;
-        padding: 0;
-      }
-    }
-  }
-}
-
-$bubble-count: 50;
-$sway-type: "sway-left-to-right", "sway-right-to-left";
-
-@function random_range($min, $max) {
-  $rand: random();
-  $random_range: $min + floor($rand * (($max - $min) + 1));
-  @return $random_range;
-}
-
-@function sample($list) {
-  @return nth($list, random(length($list)));
-}
-
-.bubbles {
+body {
+  background: #fff;
+  color: #333;
+  font-family: "Ubuntu", sans-serif;
   position: relative;
-  width: 100%;
-  height: 100vh;
+}
+
+h3 {
+  font-weight: 400;
+}
+
+header {
+  color: #fff;
+  padding-top: 10vw;
+  padding-bottom: 30vw;
+  text-align: center;
+}
+
+main {
+  background: linear-gradient(to bottom, #ffffff 0%, #dddee1 100%);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 10vh 0 80vh;
+  position: relative;
+  text-align: center;
   overflow: hidden;
+
+  // &::after {
+  //   border-right: 2px dashed #0f0f0f;
+  //   content: "";
+  //   position: absolute;
+  //   top: calc(10vh + 1.618em);
+  //   bottom: 0;
+  //   left: 50%;
+  //   width: 2px;
+  //   height: 100%;
+  // }
 }
 
-.bubble {
-  position: absolute;
-  pointer-events: none;
-  left: var(--bubble-left-offset);
-  bottom: -75%;
-  display: block;
-  width: var(--bubble-radius);
-  height: var(--bubble-radius);
-  border-radius: 50%;
-  animation: float-up var(--bubble-float-duration) var(--bubble-float-delay)
-    ease-in infinite;
-
-  &::before {
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: hsla(240, 72%, 52%, 0.3);
-    border-radius: inherit;
-    animation: var(--bubble-sway-type) var(--bubble-sway-duration)
-      var(--bubble-sway-delay) ease-in-out alternate infinite;
-  }
-
-  @for $i from 0 through $bubble-count {
-    &:nth-child(#{$i}) {
-      --bubble-left-offset: #{random_range(0vw, 100vw)};
-      --bubble-radius: #{random_range(1vw, 10vw)};
-      --bubble-float-duration: #{random_range(6s, 12s)};
-      --bubble-sway-duration: #{random_range(4s, 6s)};
-      --bubble-float-delay: #{random_range(0s, 4s)};
-      --bubble-sway-delay: #{random_range(0s, 4s)};
-      --bubble-sway-type: #{sample($sway-type)};
-    }
-  }
+footer {
+  background: #dddee1;
+  padding: 5vh 0;
+  text-align: center;
+  position: relative;
 }
 
-@keyframes float-up {
-  to {
-    transform: translateY(-175vh);
-  }
-}
+small {
+  opacity: 0.5;
+  font-weight: 300;
 
-@keyframes sway-left-to-right {
-  from {
-    transform: translateX(-100%);
-  }
-
-  to {
-    transform: translateX(100%);
-  }
-}
-
-@keyframes sway-right-to-left {
-  from {
-    transform: translateX(100%);
-  }
-
-  to {
-    transform: translateX(-100%);
+  a {
+    color: inherit;
   }
 }
 </style>
