@@ -28,6 +28,7 @@
     </p>
     <div class="">
       <h4>My Work</h4>
+      <PortfolioItems :portfolioCollection="portfolioCollectionConfig" />
       <div>this is going to be item one</div>
       <div>this is going to be item two</div>
       <div>this is going to be item three</div>
@@ -47,8 +48,10 @@
 import linkedinIcon from "@/assets/images/social/icons/linkedin.png";
 import gitHubIcon from "@/assets/images/social/icons/github.png";
 import leetCodeIcon from "@/assets/images/social/icons/leetcode.png";
+
 import { useScrollCurve } from "@/composables/useScrollCurve";
 import SocialLinks from "@/components/SocialLinks/SocialLinks.vue";
+import { portfolioCollectionConfig } from "../config/home/portfolioConfig";
 
 export default {
   name: "Home",
@@ -83,6 +86,7 @@ export default {
           imgAlt: "GitHub Logo",
         },
       ],
+      portfolioCollection: [],
     };
   },
   methods: {

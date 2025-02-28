@@ -1,52 +1,40 @@
 <template>
   <ul class="d-flex">
     <li v-for="(portfolioItem, index) in portfolioCollection" :key="index">
-      <b-card
-        :title="portfolioItem.title"
-        :img-src="portfolioItem.href"
-        :img-alt="portfolioItem.alt"
-        img-top
-        tag="article"
-        style="max-width: 20rem"
-        class="mb-2"
-      >
-        <b-card-text>
-          {{ portfolioItem.description }}
-        </b-card-text>
-
-        <!-- <b-button href="#" variant="primary">Go somewhere</b-button> -->
-      </b-card>
-      <!-- <a
-        target="_blank"
-        :href="portfolioItem.href"
-        :ariaLabel="`${portfolioItem.ariaLabel}`"
-        :class="portfolioItem.class"
-      >
-        <img
-          v-if="portfolioItem.imgSrc"
-          :src="portfolioItem.imgSrc"
-          :alt="portfolioItem?.imgAlt || ''"
-          :title="portfolioItem?.imgTitle || ''"
-        />
-        <span>
-          {{ portfolioItem.description }}
-        </span>
-      </a> -->
+      <a class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img
+              :src="portfolioCollection.imgSrc"
+              :alt="`Logo image of the ${portfolioCollection.title}`"
+            />
+            <!-- style="width: 300px; height: 300px" -->
+          </div>
+          <div class="flip-card-back">
+            <h1>{{ portfolioCollection.title }}</h1>
+            <p>{{ portfolioCollection.description }}</p>
+            <div class="footer">Click the card for more details</div>
+          </div>
+        </div>
+      </a>
     </li>
   </ul>
 </template>
 <script>
 export default {
-  name: "SocialLinks",
+  name: "PortfolioItems",
   props: {
     portfolioCollection: {
       type: Array,
       default: () => {
         return [
           {
-            ariaLabel: "",
-            href: "",
-            imgSrc: "",
+            title: "Test-title",
+            ariaLabel: "test-aria-label",
+            alt: "test-alt",
+            href: "test-hef",
+            imgSrc: "test-imgSrc",
+            description: "test-description",
           },
         ];
       },
@@ -55,6 +43,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+//flip card effect : https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_flip_card
 ul {
   list-style: none;
   padding-top: 25px;
@@ -72,6 +61,47 @@ ul {
       }
     }
   }
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: #2980b9;
+  color: white;
+  transform: rotateY(180deg);
 }
 
 @media only screen and (max-width: 600px) {
