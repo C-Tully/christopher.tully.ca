@@ -4,6 +4,7 @@ import infoTechLogo from "@/assets/images/logos/infotechLogo.png";
 
 export const portfolioCollectionConfig = [
   {
+    company: "S&P Global - Communify Fincentric",
     title: "Software Developer II",
     alt: "S&P Global logo",
     href: "/snp-global",
@@ -12,7 +13,8 @@ export const portfolioCollectionConfig = [
       " As a Software developer I worked on projects that directly influence clients and their finalcial decisions. I led various initives on my way to     securing my Senior status. I helped onboarding new hires, lead project analytics and more!",
   },
   {
-    title: "Greenius",
+    company: "Greenius",
+    title: "Senior Software Developer",
     ariaLabel: "Greenius Logo",
     alt: "Greenius logo",
     href: "/greenius",
@@ -21,7 +23,8 @@ export const portfolioCollectionConfig = [
       "As the Senior Full-Stack developer at Greenius I handled day to day development and helped lead best practice initives.",
   },
   {
-    title: "Info-Tech Research group",
+    company: "Info-Tech Research group",
+    title: "Intermediate Full-Stack Software developer",
     ariaLabel: "Info-Tech Research group",
     alt: "Info-Tech Research group",
     href: "/info-tech-research-group",
