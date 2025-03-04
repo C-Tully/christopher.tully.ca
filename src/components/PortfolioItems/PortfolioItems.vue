@@ -1,20 +1,21 @@
 <template>
   <ul class="d-flex">
     <li v-for="(portfolioItem, index) in portfolioCollection" :key="index">
-      <a class="flip-card">
+      <a class="flip-card card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <img
-              :src="portfolioCollection.imgSrc"
-              :alt="`Logo image of the ${portfolioCollection.title}`"
+              class="card-img-top"
+              :src="portfolioItem.imgSrc"
+              :alt="`Logo image of the ${portfolioItem.title}`"
             />
             <!-- style="width: 300px; height: 300px" -->
           </div>
-          <div class="flip-card-back">
-            <h1>{{ portfolioCollection.title }}</h1>
-            <p>{{ portfolioCollection.description }}</p>
-            <div class="footer">Click the card for more details</div>
+          <div class="flip-card-back card-body">
+            <h1 class="card-title">{{ portfolioItem.title }}</h1>
+            <p>{{ portfolioItem.description }}</p>
           </div>
+          <div class="card-footer">Click the card for more details</div>
         </div>
       </a>
     </li>
@@ -55,9 +56,9 @@ ul {
 
     a {
       img {
-        max-width: 50px;
+        // max-width: 50px;
         background-color: white;
-        border-radius: 15%;
+        // border-radius: 15%;
       }
     }
   }

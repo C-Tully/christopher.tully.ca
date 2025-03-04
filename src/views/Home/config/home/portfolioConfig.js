@@ -1,6 +1,6 @@
-import snpGlobalLogo from "@/assets/images/logo/snpGlobalLogo.png";
-import greeniusLogo from "@/assets/images/logo/greeniusLogo.png";
-import infoTechLogo from "@/assets/images/logo/infoTechLogo.png";
+import snpGlobalLogo from "@/assets/images/logos/snpGlobalLogo.png";
+import greeniusLogo from "@/assets/images/logos/greeniusLogo.png";
+import infoTechLogo from "@/assets/images/logos/infotechLogo.png";
 
 export const portfolioCollectionConfig = [
   {

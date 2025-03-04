@@ -1,6 +1,7 @@
 // import { fn } from "@storybook/test";
 
 import PortfolioItems from "./PortfolioItems.vue";
+import { portfolioCollectionConfig } from "./config/portfolioItemsConfig";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
@@ -24,5 +25,5 @@ const Template = (args) => ({
 // Define a default story
 export const Default = Template.bind({});
 Default.args = {
-  msg: "Welcome to the Home Page!",
+  portfolioCollection: portfolioCollectionConfig,
 };
