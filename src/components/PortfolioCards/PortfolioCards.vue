@@ -1,5 +1,5 @@
 <template>
-  <ul class="d-flex">
+  <ul class="d-flex portfolioCards-wrap">
     <li v-for="(portfolioItem, index) in portfolioCollection" :key="index">
       <div
         ref="cards"
@@ -67,6 +67,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.portfolioCards-wrap {
+  padding: 5vw 0;
+}
 ul {
   list-style: none;
   padding-top: 25px;

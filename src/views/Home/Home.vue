@@ -11,13 +11,48 @@
   </div>
 
   <header>
-    <h1>Hi, I'm <b>Chris Tully</b></h1>
-    <h3>I'm a <u>Software developer</u> with 14 years experience.</h3>
+    <div class="container">
+      <div class="wrapper">
+        <div class="sidebar">
+          <div class="box">
+            <img
+              class="circletag"
+              src="@/assets/images/headshot.png"
+              alt="Image of a person"
+            />
+          </div>
+        </div>
+        <div class="main">
+          <div class="box">
+            <h1>Hi, I'm <b>Chris Tully</b></h1>
+          </div>
+          <div class="box">
+            <h3>I'm a <u>Software developer</u> with 14 years experience.</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="container">
+      <div class="row">
+        <div class="box">
+          <img class="circletag" src="" alt="Image of a person" />
+        </div>
+        <div class="box">
+          <h1>Hi, I'm <b>Chris Tully</b></h1>
+        </div>
+      </div>
+      <div class="full-width">
+        <h3>I'm a <u>Software developer</u> with 14 years experience.</h3>
+      </div>
+    </div> -->
+
+    <!-- <img class="circletag" src="" alt="Image of a person" /> -->
   </header>
 
-  <main>
+  <main class="d-flex">
     <div>
-      <b-img v-bind="mainProps" rounded="circle" alt="Circle image"></b-img>
+      <!-- <b-img v-bind="mainProps" rounded="circle" alt="Circle image"></b-img> -->
     </div>
     <p>
       I specialize in creating user-friendly, accessible interfaces that meet
@@ -99,7 +134,7 @@ export default {
     },
   },
   mounted() {
-    useScrollCurve("curve"); // Call composable inside mounted()
+    useScrollCurve("curve");
   },
 };
 </script>
@@ -108,7 +143,63 @@ export default {
 // @import "https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700";
 @import "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inclusive+Sans:ital@0;1&family=Spectral:wght@300;400;700&display=swap";
 
+.circletag {
+  display: block;
+  width: 200px;
+  height: 200px;
+  background: #fff;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+}
+
+.wrapper {
+  display: flex;
+  width: 80%;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25%;
+  padding: 0 10px;
+
+  .box {
+    justify-content: center;
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.box {
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.box:last-child {
+  border-bottom: none;
+}
+
 h1 {
+  font-size: 7.2vw;
+
   b {
     color: #05f7ff;
   }
@@ -148,12 +239,13 @@ body {
 
 h3 {
   font-weight: 400;
+  text-align: left;
 }
 
 header {
   color: #fff;
   padding-top: 10vw;
-  padding-bottom: 30vw;
+  padding-bottom: 20vw;
   text-align: center;
 }
 
@@ -164,7 +256,9 @@ main {
   position: relative;
   text-align: center;
   overflow: hidden;
-
+  flex-flow: column;
+  // justify-items: center;
+  align-items: center;
   // &::after {
   //   border-right: 2px dashed #0f0f0f;
   //   content: "";
