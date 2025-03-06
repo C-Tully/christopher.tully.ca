@@ -28,7 +28,7 @@
     </p>
     <div class="">
       <h4>My Work</h4>
-      <PortfolioItems :portfolioCollection="portfolioCollectionConfig" />
+      <PortfolioCards :portfolioCollection="portfolioCollectionConfig" />
     </div>
     <div>
       <h5>My Links</h5>
@@ -48,12 +48,14 @@ import leetCodeIcon from "@/assets/images/social/icons/leetcode.png";
 
 import { useScrollCurve } from "@/composables/useScrollCurve";
 import SocialLinks from "@/components/SocialLinks/SocialLinks.vue";
-import { portfolioCollectionConfig } from "./config/home/portfolioConfig";
+import { portfolioCollectionConfig } from "@/components/PortfolioCards/config/portfolioCardsConfig.js";
+import PortfolioCards from "@/components/PortfolioCards/PortfolioCards.vue";
 
 export default {
   name: "Home",
   components: {
     SocialLinks,
+    PortfolioCards,
   },
   data() {
     return {
@@ -84,7 +86,6 @@ export default {
           imgAlt: "GitHub Logo",
         },
       ],
-      portfolioCollection: [],
     };
   },
   methods: {

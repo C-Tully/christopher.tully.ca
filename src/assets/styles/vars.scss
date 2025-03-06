@@ -10,8 +10,13 @@ $primary-background-gradient: linear-gradient(
 
 $primary-font-white: #fafafa;
 $primary-font-blue: #a6cff2;
-$primary-link-blue: #00fbff;
+$primary-link-blue: #141414;
+$primary-font-black: #212424;
+
 $primary-font-family: "Bebas Neue", serif;
+$primary-grey: #c8c3c36f;
+
+$border-grey: #c7c1c1;
 
 body {
   font-family: $primary-font-family;
@@ -37,6 +42,14 @@ h1 {
   line-height: 0.9em;
 }
 
+h3 {
+  font-size: 3em;
+  font-family: $primary-font-family;
+  // font-weight: 400;
+  font-style: normal;
+  // line-height: 0.9em;
+}
+
 :export {
   primary-background-blue: $primary-background-blue;
   primary-background-red: $primary-background-red;
@@ -45,4 +58,7 @@ h1 {
   primary-font-family: $primary-font-family;
   primary-font-white: $primary-font-white;
   primary-link-blue: $primary-link-blue;
+  primary-font-black: $primary-font-black;
+  primary-grey: $primary-grey;
+  border-grey: $border-grey;
 }

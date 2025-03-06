@@ -5,22 +5,26 @@
         ref="cards"
         class="flip-card card"
         :title="`Click to see more details on my time with ${portfolioItem.company}`"
-        @click="manualFlipCard(index)"
-        @keydown.space.prevent="manualFlipCard(index)"
-        @keydown.enter.prevent="manualFlipCard(index)"
+        @click="handleCardFlip(index)"
+        @keydown.space.prevent="handleCardFlip(index)"
+        @keydown.enter.prevent="handleCardFlip(index)"
       >
-        <div class="flip-card-inner" :class="{ flipped: flippedCards[index] }">
+        <div
+          class="flip-card-inner"
+          :class="{ flipped: flippedCardsTracker[index] }"
+        >
           <div class="flip-card-front">
             <img
               class="card-img-top"
               :src="portfolioItem.imgSrc"
               :alt="`Logo image of the ${portfolioItem.title}`"
             />
+            <h3>{{ portfolioItem.industry }}</h3>
           </div>
           <div class="flip-card-back card-body">
-            <h1 class="card-title">
+            <h3 class="card-title">
               {{ portfolioItem.title }} at {{ portfolioItem.company }}
-            </h1>
+            </h3>
             <p>{{ portfolioItem.description }}</p>
             <a class="card-cta" :href="portfolioItem.href"
               >Click the card for more details</a
@@ -36,7 +40,7 @@
 import { ref } from "vue";
 
 export default {
-  name: "PortfolioItems",
+  name: "PortfolioCards",
   props: {
     portfolioCollection: {
       type: Array,
@@ -51,13 +55,13 @@ export default {
     },
   },
   setup() {
-    const flippedCards = ref({}); // Tracks flipped state for each card
+    const flippedCardsTracker = ref({});
 
-    const manualFlipCard = (index) => {
-      flippedCards.value[index] = !flippedCards.value[index];
+    const handleCardFlip = (index) => {
+      flippedCardsTracker.value[index] = !flippedCardsTracker.value[index];
     };
 
-    return { flippedCards, manualFlipCard };
+    return { flippedCardsTracker, handleCardFlip };
   },
 };
 </script>
@@ -71,20 +75,32 @@ ul {
 
   li {
     padding-right: 8px;
+
+    .flip-card-inner {
+      border: 3px dashed $border-grey;
+    }
   }
+}
+
+h3 {
+  padding-top: 8px;
+  color: $primary-font-black;
 }
 
 .card-body {
   .card-title {
     font-size: 15px;
+    font-weight: 800;
+    font-style: underline;
   }
 
   p {
-    font-size: 12px;
+    font-size: 16x;
+    color: black;
   }
 }
 
-/* Flip Effect */
+//flip effect
 .flip-card {
   background-color: transparent;
   width: 300px;
@@ -119,25 +135,50 @@ ul {
   height: 100%;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  padding: 5px;
 }
 
 .flip-card-front {
-  background-color: #bbb;
   color: black;
 }
 
 .flip-card-back {
-  background-color: $primary-background-red;
+  background-color: $primary-grey;
   color: $primary-font-white;
   font-family: $primary-font-family;
   transform: rotateY(180deg);
 }
 
+:deep(.card) {
+  border: none;
+}
+
 /* Mobile Styling */
 @media only screen and (max-width: 600px) {
   .d-flex {
-    padding-left: 0;
-    justify-content: space-between;
+    flex-direction: column;
+    // margin-top: 16px;
+    // flex: 1 1 auto; /* 1 */
+    position: relative;
+    min-width: 1px;
+    margin: 0 auto;
+    z-index: 1;
+    // width: 100vw;
+    // align-content: stretch;
+    padding: 15px 0 15px 0;
+    // justify-content: flex-start;
+    display: flex;
+    justify-content: center;
+    li {
+      margin-top: 16px;
+      max-width: 60vw;
+
+      .flip-card {
+        width: 100%;
+      }
+    }
+    // padding-left: 0;
+    // justify-content: space-between;
   }
 }
 </style>
