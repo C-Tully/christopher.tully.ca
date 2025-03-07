@@ -30,19 +30,27 @@
               <h3>I'm a <u>Software developer</u> with 14 years experience.</h3>
             </div>
           </div>
+          <SocialLinks :linkCollection="socialLinkCollection" />
         </div>
       </div>
     </header>
     <main class="d-flex">
       <div class="summary-wrapper">
-        <h3>Summary</h3>
-        <p>
-          I specialize in creating user-friendly, accessible interfaces that
-          meet modern web standards. My goal is to ensure every project delivers
-          a polished, high-quality end product. With experience across diverse
-          industries, I bring a broad skill set and unique perspectives that set
-          me apart from the rest.
-        </p>
+        <div>
+          <h3>Summary</h3>
+          <p>
+            I specialize in creating user-friendly, accessible interfaces that
+            meet modern web standards. My goal is to ensure every project
+            delivers a polished, high-quality end product. With experience
+            across diverse industries, I bring a broad skill set and unique
+            perspectives that set me apart from the rest.
+          </p>
+        </div>
+        <div class="skills-wrapper">
+          <div v-for="(img, index) in skillsImageCollection" :key="index">
+            <img :src="img.src" :alt="img.alt" />
+          </div>
+        </div>
       </div>
       <div class="work-wrapper">
         <h3>Recent Roles</h3>
@@ -51,11 +59,7 @@
       </div>
       <div class="projects-wrapper">
         <h3>Projects</h3>
-        <!-- TODO:: Add in some projects -->
-      </div>
-      <div>
-        <h5>My Links</h5>
-        <SocialLinks :linkCollection="socialLinkCollection" />
+        <PortfolioCards :portfolioCollection="projectCollectionConfig" />
       </div>
     </main>
     <footer>
@@ -65,14 +69,11 @@
 </template>
 
 <script>
-import linkedinIcon from "@/assets/images/social/icons/linkedin.png";
-import gitHubIcon from "@/assets/images/social/icons/github.png";
-import leetCodeIcon from "@/assets/images/social/icons/leetcode.png";
-
 import { useScrollCurve } from "@/composables/useScrollCurve";
 import SocialLinks from "@/components/SocialLinks/SocialLinks.vue";
 import { portfolioCollectionConfig } from "@/components/PortfolioCards/config/portfolioCardsConfig.js";
 import PortfolioCards from "@/components/PortfolioCards/PortfolioCards.vue";
+import { projectCollectionConfig } from "@/views/config/home/projectConfig";
 
 export default {
   name: "Home",
@@ -83,19 +84,20 @@ export default {
   data() {
     return {
       portfolioCollectionConfig: portfolioCollectionConfig,
+      projectCollectionConfig: projectCollectionConfig,
       modalVisibility: false,
       socialLinkCollection: [
         {
           href: "https://www.linkedin.com/in/christopher-tully-17509b46/",
           ariaLabel: "Click here to check out my LinkedIn Profile.",
-          imgSrc: linkedinIcon,
+          imgSrc: "@/assets/images/social/icons/linkedin.png",
           imgAlt: "LinkedIn Logo",
           class: "linkedIn",
         },
         {
           href: "https://leetcode.com/u/c-tully/",
           ariaLabel: "Click here to check out my leetCode profile",
-          imgSrc: leetCodeIcon,
+          imgSrc: "@/assets/images/social/icons/leetcode.png",
           imgAlt: "leetCode Logo",
           class: "leetCode",
           imgTitle:
@@ -105,8 +107,50 @@ export default {
           href: "https://github.com/C-Tully",
           ariaLabel: "Click here to check out my GitHub profile",
           class: "gitHub",
-          imgSrc: gitHubIcon,
+          imgSrc: "@/assets/images/social/icons/github.png",
           imgAlt: "GitHub Logo",
+        },
+      ],
+      skillsImageCollection: [
+        {
+          src: "@/assets/images/logos/cssLogo.png",
+          alt: "CSS Logo",
+        },
+        {
+          src: "@/assets/images/logos/javaScriptLogo.png",
+          alt: "JavaScript Logo",
+        },
+        {
+          src: "@/assets/images/logos/nodejsLogo.png",
+          alt: "Nodejs Logo",
+        },
+        {
+          src: "@/assets/images/logos/phpLogo.png",
+          alt: "PHP Logo",
+        },
+        {
+          src: "@/assets/images/logos/sassLogo.png",
+          alt: "SASS Logo",
+        },
+        {
+          src: "@/assets/images/logos/sqlLogo.png",
+          alt: "SQL Logo",
+        },
+        {
+          src: "@/assets/images/logos/testCafeLogo.png",
+          alt: "TestCafe Logo",
+        },
+        {
+          src: "@/assets/images/logos/vueLogo.png",
+          alt: "Vuejs Logo",
+        },
+        {
+          src: "@/assets/images/logos/reactLogo.png",
+          alt: "React Logo",
+        },
+        {
+          src: "@/assets/images/logos/typeScriptLogo.png",
+          alt: "TypeScript Logo",
         },
       ],
     };
@@ -244,7 +288,7 @@ main {
 .summary-wrapper,
 .work-wrapper,
 .projects-wrapper {
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 }
 
 footer {
