@@ -68,7 +68,7 @@ export default {
 
 <style lang="scss" scoped>
 .portfolioCards-wrap {
-  padding: 5vw 0;
+  padding: 20px 0;
 }
 ul {
   list-style: none;

@@ -1,79 +1,67 @@
 <template>
-  <div class="svg-container">
-    <!-- SVG generated using: https://codepen.io/anthonydugois/pen/mewdyZ -->
-    <svg viewBox="0 0 800 400" class="svg">
-      <path
-        id="curve"
-        fill="#800014"
-        d="M 800 300 Q 400 350 0 300 L 0 0 L 800 0 L 800 300 Z"
-      ></path>
-    </svg>
+  <div class="page-wrap">
+    <div class="svg-container">
+      <!-- SVG generated using: https://codepen.io/anthonydugois/pen/mewdyZ -->
+      <svg viewBox="0 0 800 400" class="svg">
+        <path
+          id="curve"
+          fill="#800014"
+          d="M 800 300 Q 400 350 0 300 L 0 0 L 800 0 L 800 300 Z"
+        ></path>
+      </svg>
+    </div>
+    <header>
+      <div class="container">
+        <div class="wrapper">
+          <div class="sidebar">
+            <div class="box">
+              <img
+                class="circletag"
+                src="@/assets/images/headshot.png"
+                alt="Image of a person"
+              />
+            </div>
+          </div>
+          <div class="main">
+            <div class="box">
+              <h1>Hi, I'm <b>Chris Tully</b></h1>
+            </div>
+            <div class="box">
+              <h3>I'm a <u>Software developer</u> with 14 years experience.</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="d-flex">
+      <div class="summary-wrapper">
+        <h3>Summary</h3>
+        <p>
+          I specialize in creating user-friendly, accessible interfaces that
+          meet modern web standards. My goal is to ensure every project delivers
+          a polished, high-quality end product. With experience across diverse
+          industries, I bring a broad skill set and unique perspectives that set
+          me apart from the rest.
+        </p>
+      </div>
+      <div class="work-wrapper">
+        <h3>Recent Roles</h3>
+        <p>(See the experience section for more.)</p>
+        <PortfolioCards :portfolioCollection="portfolioCollectionConfig" />
+      </div>
+      <div class="projects-wrapper">
+        <h3>Projects</h3>
+        <!-- TODO:: Add in some projects -->
+      </div>
+      <div>
+        <h5>My Links</h5>
+        <SocialLinks :linkCollection="socialLinkCollection" />
+      </div>
+    </main>
+    <footer>
+      <p>And, the footer.</p>
+    </footer>
   </div>
-
-  <header>
-    <div class="container">
-      <div class="wrapper">
-        <div class="sidebar">
-          <div class="box">
-            <img
-              class="circletag"
-              src="@/assets/images/headshot.png"
-              alt="Image of a person"
-            />
-          </div>
-        </div>
-        <div class="main">
-          <div class="box">
-            <h1>Hi, I'm <b>Chris Tully</b></h1>
-          </div>
-          <div class="box">
-            <h3>I'm a <u>Software developer</u> with 14 years experience.</h3>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- <div class="container">
-      <div class="row">
-        <div class="box">
-          <img class="circletag" src="" alt="Image of a person" />
-        </div>
-        <div class="box">
-          <h1>Hi, I'm <b>Chris Tully</b></h1>
-        </div>
-      </div>
-      <div class="full-width">
-        <h3>I'm a <u>Software developer</u> with 14 years experience.</h3>
-      </div>
-    </div> -->
-
-    <!-- <img class="circletag" src="" alt="Image of a person" /> -->
-  </header>
-
-  <main class="d-flex">
-    <div>
-      <!-- <b-img v-bind="mainProps" rounded="circle" alt="Circle image"></b-img> -->
-    </div>
-    <p>
-      I specialize in creating user-friendly, accessible interfaces that meet
-      modern web standards. My goal is to ensure every project delivers a
-      polished, high-quality end product. With experience across diverse
-      industries, I bring a broad skill set and unique perspectives that set me
-      apart from the rest.
-    </p>
-    <div class="">
-      <h4>My Work</h4>
-      <PortfolioCards :portfolioCollection="portfolioCollectionConfig" />
-    </div>
-    <div>
-      <h5>My Links</h5>
-      <SocialLinks :linkCollection="socialLinkCollection" />
-    </div>
-  </main>
-
-  <footer>
-    <p>And, the footer.</p>
-  </footer>
 </template>
 
 <script>
@@ -140,7 +128,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// @import "https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700";
 @import "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inclusive+Sans:ital@0;1&family=Spectral:wght@300;400;700&display=swap";
 
 .circletag {
@@ -179,16 +166,7 @@ export default {
   }
 }
 
-.main {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
 .box {
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
   display: flex;
   justify-content: flex-start;
 }
@@ -232,6 +210,7 @@ svg {
 
 body {
   background: #fff;
+  // background: linear-gradient(to bottom, #ffffff 0%, #dddee1 100%);
   color: #333;
   font-family: "Ubuntu", sans-serif;
   position: relative;
@@ -250,25 +229,22 @@ header {
 }
 
 main {
-  background: linear-gradient(to bottom, #ffffff 0%, #dddee1 100%);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  padding: 10vh 0 80vh;
+  padding: 50px 0 30vh 0;
   position: relative;
-  text-align: center;
-  overflow: hidden;
   flex-flow: column;
-  // justify-items: center;
+  width: 900px;
+  margin: 0 auto;
   align-items: center;
-  // &::after {
-  //   border-right: 2px dashed #0f0f0f;
-  //   content: "";
-  //   position: absolute;
-  //   top: calc(10vh + 1.618em);
-  //   bottom: 0;
-  //   left: 50%;
-  //   width: 2px;
-  //   height: 100%;
-  // }
+}
+
+.summary-wrapper,
+.work-wrapper,
+.projects-wrapper {
+  margin-bottom: 24px;
 }
 
 footer {
