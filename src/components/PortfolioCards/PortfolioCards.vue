@@ -14,6 +14,10 @@
           :class="{ flipped: flippedCardsTracker[index] }"
         >
           <div class="flip-card-front">
+            <!-- <img
+              :src="getImageUrl(portfolioItem.imgSrc)"
+              :alt="portfolioItem.imgAlt"
+            /> -->
             <img
               class="card-img-top"
               :src="portfolioItem.imgSrc"
@@ -61,7 +65,11 @@ export default {
       flippedCardsTracker.value[index] = !flippedCardsTracker.value[index];
     };
 
-    return { flippedCardsTracker, handleCardFlip };
+    const getImageUrl = (path) => {
+      return new URL(path, import.meta.url).href;
+    };
+
+    return { flippedCardsTracker, handleCardFlip, getImageUrl };
   },
 };
 </script>
@@ -70,6 +78,7 @@ export default {
 .portfolioCards-wrap {
   padding: 20px 0;
 }
+
 ul {
   list-style: none;
   padding-top: 25px;

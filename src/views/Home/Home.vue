@@ -1,7 +1,6 @@
 <template>
   <div class="page-wrap">
     <div class="svg-container">
-      <!-- SVG generated using: https://codepen.io/anthonydugois/pen/mewdyZ -->
       <svg viewBox="0 0 800 400" class="svg">
         <path
           id="curve"
@@ -29,8 +28,8 @@
             <div class="box">
               <h3>I'm a <u>Software developer</u> with 14 years experience.</h3>
             </div>
+            <SocialLinks :linkCollection="socialLinkCollection" />
           </div>
-          <SocialLinks :linkCollection="socialLinkCollection" />
         </div>
       </div>
     </header>
@@ -47,9 +46,11 @@
           </p>
         </div>
         <div class="skills-wrapper">
-          <div v-for="(img, index) in skillsImageCollection" :key="index">
-            <img :src="img.src" :alt="img.alt" />
-          </div>
+          <ul>
+            <li v-for="(img, index) in skillsImageCollection" :key="index">
+              <img class="logo" :src="img.src" :alt="img.alt" />
+            </li>
+          </ul>
         </div>
       </div>
       <div class="work-wrapper">
@@ -73,7 +74,12 @@ import { useScrollCurve } from "@/composables/useScrollCurve";
 import SocialLinks from "@/components/SocialLinks/SocialLinks.vue";
 import { portfolioCollectionConfig } from "@/components/PortfolioCards/config/portfolioCardsConfig.js";
 import PortfolioCards from "@/components/PortfolioCards/PortfolioCards.vue";
-import { projectCollectionConfig } from "@/views/config/home/projectConfig";
+import { projectCollectionConfig } from "@/views/Home/config/projectConfig";
+import { skillsImageConfig } from "@/views/Home/config/skillsConfig";
+
+import linkedInLogoImage from "@/assets/images/social/icons/linkedin.png";
+import leetCodeLogoImage from "@/assets/images/social/icons/leetcode.png";
+import gitHubLogoImage from "@/assets/images/social/icons/github.png";
 
 export default {
   name: "Home",
@@ -90,14 +96,14 @@ export default {
         {
           href: "https://www.linkedin.com/in/christopher-tully-17509b46/",
           ariaLabel: "Click here to check out my LinkedIn Profile.",
-          imgSrc: "@/assets/images/social/icons/linkedin.png",
+          imgSrc: linkedInLogoImage,
           imgAlt: "LinkedIn Logo",
           class: "linkedIn",
         },
         {
           href: "https://leetcode.com/u/c-tully/",
           ariaLabel: "Click here to check out my leetCode profile",
-          imgSrc: "@/assets/images/social/icons/leetcode.png",
+          imgSrc: leetCodeLogoImage,
           imgAlt: "leetCode Logo",
           class: "leetCode",
           imgTitle:
@@ -107,52 +113,11 @@ export default {
           href: "https://github.com/C-Tully",
           ariaLabel: "Click here to check out my GitHub profile",
           class: "gitHub",
-          imgSrc: "@/assets/images/social/icons/github.png",
+          imgSrc: gitHubLogoImage,
           imgAlt: "GitHub Logo",
         },
       ],
-      skillsImageCollection: [
-        {
-          src: "@/assets/images/logos/cssLogo.png",
-          alt: "CSS Logo",
-        },
-        {
-          src: "@/assets/images/logos/javaScriptLogo.png",
-          alt: "JavaScript Logo",
-        },
-        {
-          src: "@/assets/images/logos/nodejsLogo.png",
-          alt: "Nodejs Logo",
-        },
-        {
-          src: "@/assets/images/logos/phpLogo.png",
-          alt: "PHP Logo",
-        },
-        {
-          src: "@/assets/images/logos/sassLogo.png",
-          alt: "SASS Logo",
-        },
-        {
-          src: "@/assets/images/logos/sqlLogo.png",
-          alt: "SQL Logo",
-        },
-        {
-          src: "@/assets/images/logos/testCafeLogo.png",
-          alt: "TestCafe Logo",
-        },
-        {
-          src: "@/assets/images/logos/vueLogo.png",
-          alt: "Vuejs Logo",
-        },
-        {
-          src: "@/assets/images/logos/reactLogo.png",
-          alt: "React Logo",
-        },
-        {
-          src: "@/assets/images/logos/typeScriptLogo.png",
-          alt: "TypeScript Logo",
-        },
-      ],
+      skillsImageCollection: skillsImageConfig,
     };
   },
   methods: {
@@ -254,7 +219,6 @@ svg {
 
 body {
   background: #fff;
-  // background: linear-gradient(to bottom, #ffffff 0%, #dddee1 100%);
   color: #333;
   font-family: "Ubuntu", sans-serif;
   position: relative;
@@ -273,7 +237,6 @@ header {
 }
 
 main {
-  display: flex;
   flex-direction: column;
   flex: 1;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -282,13 +245,17 @@ main {
   flex-flow: column;
   width: 900px;
   margin: 0 auto;
-  align-items: center;
 }
 
 .summary-wrapper,
 .work-wrapper,
 .projects-wrapper {
   margin-bottom: 32px;
+}
+
+.summary-wrapper {
+  flex-direction: column;
+  display: flex;
 }
 
 footer {
@@ -304,6 +271,28 @@ small {
 
   a {
     color: inherit;
+  }
+}
+
+.skills-wrapper {
+  ul {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    list-style: none;
+
+    li {
+      margin: 8px;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .logo {
+    width: 120px;
+    max-height: 120px;
   }
 }
 </style>
