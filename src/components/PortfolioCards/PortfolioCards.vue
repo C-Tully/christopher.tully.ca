@@ -1,8 +1,11 @@
 <template>
   <ul class="d-flex portfolioCards-wrap">
     <li v-for="(portfolioItem, index) in portfolioCollection" :key="index">
-      <div
+      <a
+        role="link"
         ref="cards"
+        tabindex="0"
+        :href="portfolioItem.href"
         class="flip-card card"
         :title="`Click to see more details on my time with ${portfolioItem.company}`"
         @click="handleCardFlip(index)"
@@ -12,12 +15,9 @@
         <div
           class="flip-card-inner"
           :class="{ flipped: flippedCardsTracker[index] }"
+          :aria-hidden="{ flipped: flippedCardsTracker[index] }"
         >
           <div class="flip-card-front">
-            <!-- <img
-              :src="getImageUrl(portfolioItem.imgSrc)"
-              :alt="portfolioItem.imgAlt"
-            /> -->
             <img
               class="card-img-top"
               :src="portfolioItem.imgSrc"
@@ -25,17 +25,15 @@
             />
             <h3>{{ portfolioItem.industry }}</h3>
           </div>
-          <div class="flip-card-back card-body">
-            <h3 class="card-title">
+          <div class="flip-card-back card-body" aria-labelledby="cardTitle">
+            <h3 id="cardTitle" class="card-title">
               {{ portfolioItem.title }} at {{ portfolioItem.company }}
             </h3>
             <p>{{ portfolioItem.description }}</p>
-            <a class="card-cta" :href="portfolioItem.href"
-              >Click the card for more details</a
-            >
+            <p class="card-cta">Click the card for more details</p>
           </div>
         </div>
-      </div>
+      </a>
     </li>
   </ul>
 </template>
@@ -101,13 +99,12 @@ h3 {
 
 .card-body {
   .card-title {
-    font-size: 15px;
-    font-weight: 800;
-    font-style: underline;
+    font-size: 20px;
+    text-decoration: underline;
   }
 
   p {
-    font-size: 16x;
+    font-size: 16px;
     color: black;
   }
 }

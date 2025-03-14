@@ -60,7 +60,16 @@
       </div>
       <div class="projects-wrapper">
         <h3>Projects</h3>
-        <PortfolioCards :portfolioCollection="projectCollectionConfig" />
+        <ul>
+          <li v-for="(item, index) in projectCollectionConfig" :key="index">
+            <div aria-labelledby="projectCardTitle">
+              <img :src="item.githubLink" alt="" />
+              <!-- Note: I might have to add a distinct id here to ensure accessibility -->
+              <h4 id="projectCardTitle">{{ item.name }}</h4>
+              <p>{{ item.description }}</p>
+            </div>
+          </li>
+        </ul>
       </div>
     </main>
     <footer>
@@ -250,7 +259,7 @@ main {
 .summary-wrapper,
 .work-wrapper,
 .projects-wrapper {
-  margin-bottom: 32px;
+  margin-bottom: 6em;
 }
 
 .summary-wrapper {
@@ -287,6 +296,19 @@ small {
       margin: 8px;
       display: flex;
       justify-content: center;
+      // border: 4px solid transparent; /* Prevents layout shift */
+      // box-shadow: 0px 0px 0px 2px #e6f9fe, 0px 0px 0px 3px #005587;
+      // box-shadow: 0px 0px 0px 2px #e6f9fe, 0px 0px 0px 3px #005587;
+
+      // outline: 2px solid $bmo-cerulean !important;
+      // box-shadow: $bmo-blue-box-shadow !important;
+
+      &:focus,
+      &:focus-within {
+        // box-shadow: 0px 0px 0px 2px #e6f9fe, 0px 0px 0px 3px #005587;
+        outline: 2px solid #800014 !important;
+        box-shadow: 0 0 4px 3px rgba(235, 115, 115, 0.35) !important;
+      }
     }
   }
 

@@ -8,15 +8,33 @@ import testCafeImage from "@/assets/images/logos/testCafeLogo.png";
 import vueImage from "@/assets/images/logos/vueLogo.png";
 import reactImage from "@/assets/images/logos/reactLogo.png";
 import typeScriptImage from "@/assets/images/logos/typeScriptLogo.png";
+import vitejsLogo from "@/assets/images/logos/vitejsLogo.png";
+import webpackImage from "@/assets/images/logos/webpackLogo.png";
 
 export const skillsImageConfig = [
+  {
+    src: reactImage,
+    alt: "React Logo",
+  },
+  {
+    src: vueImage,
+    alt: "Vuejs Logo",
+  },
+  {
+    src: jsImage,
+    alt: "JavaScript Logo",
+  },
+  {
+    src: typeScriptImage,
+    alt: "TypeScript Logo",
+  },
   {
     src: cssImage,
     alt: "CSS Logo",
   },
   {
-    src: jsImage,
-    alt: "JavaScript Logo",
+    src: sassImage,
+    alt: "SASS Logo",
   },
   {
     src: nodeImage,
@@ -27,10 +45,6 @@ export const skillsImageConfig = [
     alt: "PHP Logo",
   },
   {
-    src: sassImage,
-    alt: "SASS Logo",
-  },
-  {
     src: sqlImage,
     alt: "SQL Logo",
   },
@@ -39,15 +53,11 @@ export const skillsImageConfig = [
     alt: "TestCafe Logo",
   },
   {
-    src: vueImage,
-    alt: "Vuejs Logo",
+    src: vitejsLogo,
+    alt: "Vitejs Logo",
   },
   {
-    src: reactImage,
-    alt: "React Logo",
-  },
-  {
-    src: typeScriptImage,
-    alt: "TypeScript Logo",
+    src: webpackImage,
+    alt: "Webpack Logo",
   },
 ];
