@@ -1,9 +1,7 @@
 <template>
-  <div class="experience-page-wrap">
+  <div class="social-wrapper">
     <SiteHeader />
-    <main>
-      <h1>This is the Experience Page component</h1>
-    </main>
+    <h1>This is the Social Page component</h1>
     <SiteFooter />
   </div>
 </template>
@@ -12,29 +10,16 @@
 import SiteFooter from "@/components/SiteFooter/SiteFooter.vue";
 import SiteHeader from "@/components/SiteHeader/SiteHeader.vue";
 
+//import SocialLinks from "@/components/SocialLinks/SocialLinks.vue";
+
 export default {
-  name: "Experience",
+  name: "Social",
   props: {
     msg: String,
   },
   components: {
     SiteHeader,
     SiteFooter,
-  },
-  data() {
-    return {
-      activeTab: this.$route?.query?.tab || "snp", // Default to "work"
-    };
-  },
-  watch: {
-    "$route.query.tab"(newTab) {
-      this.activeTab = newTab || "snp";
-    },
-  },
-  methods: {
-    setTab(tab) {
-      this.$router.push({ path: "/experience", query: { tab } });
-    },
   },
 };
 </script>

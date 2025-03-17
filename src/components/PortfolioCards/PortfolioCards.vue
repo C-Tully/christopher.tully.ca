@@ -3,19 +3,18 @@
     <li v-for="(portfolioItem, index) in portfolioCollection" :key="index">
       <a
         role="link"
-        ref="cards"
         tabindex="0"
         :href="portfolioItem.href"
         class="flip-card card"
         :title="`Click to see more details on my time with ${portfolioItem.company}`"
-        @click="handleCardFlip(index)"
-        @keydown.space.prevent="handleCardFlip(index)"
-        @keydown.enter.prevent="handleCardFlip(index)"
+        @click="handleCardClick(index)"
+        @keydown.space.prevent="handleCardClick(index)"
+        @keydown.enter.prevent="handleCardClick(index)"
       >
         <div
           class="flip-card-inner"
           :class="{ flipped: flippedCardsTracker[index] }"
-          :aria-hidden="{ flipped: flippedCardsTracker[index] }"
+          :aria-hidden="flippedCardsTracker[index] ? 'true' : 'false'"
         >
           <div class="flip-card-front">
             <img
@@ -52,22 +51,29 @@ export default {
           company: "Test Company",
           imgSrc: "test-imgSrc",
           description: "test-description",
+          href: "#", // Example href, replace with actual value
+          industry: "Test Industry",
         },
       ],
     },
   },
-  setup() {
+  setup(props) {
     const flippedCardsTracker = ref({});
 
-    const handleCardFlip = (index) => {
-      flippedCardsTracker.value[index] = !flippedCardsTracker.value[index];
+    const handleCardClick = (index) => {
+      if (flippedCardsTracker.value[index]) {
+        redirectUserToExperiencePage(index);
+      } else {
+        // If the card is not flipped, flip it
+        flippedCardsTracker.value[index] = true;
+      }
     };
 
-    const getImageUrl = (path) => {
-      return new URL(path, import.meta.url).href;
+    const redirectUserToExperiencePage = (index) => {
+      console.log(`Card ${index} clicked again. Perform different action.`);
     };
 
-    return { flippedCardsTracker, handleCardFlip, getImageUrl };
+    return { flippedCardsTracker, handleCardClick };
   },
 };
 </script>
@@ -166,16 +172,11 @@ h3 {
 @media only screen and (max-width: 600px) {
   .d-flex {
     flex-direction: column;
-    // margin-top: 16px;
-    // flex: 1 1 auto; /* 1 */
     position: relative;
     min-width: 1px;
     margin: 0 auto;
     z-index: 1;
-    // width: 100vw;
-    // align-content: stretch;
-    padding: 15px 0 15px 0;
-    // justify-content: flex-start;
+    padding: 15px 0;
     display: flex;
     justify-content: center;
     li {
@@ -186,8 +187,6 @@ h3 {
         width: 100%;
       }
     }
-    // padding-left: 0;
-    // justify-content: space-between;
   }
 }
 </style>
