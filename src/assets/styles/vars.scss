@@ -15,6 +15,7 @@ $primary-font-black: #212424;
 
 $primary-font-family: "Bebas Neue", serif;
 $primary-grey: #c8c3c36f;
+$primary-footer-grey: #dddee1;
 $border-grey: #c7c1c1;
 
 body {
@@ -47,6 +48,13 @@ h3 {
   // font-weight: 400;
   font-style: normal;
   // line-height: 0.9em;
+}
+
+footer {
+  background: #dddee1;
+  padding: 5vh 0;
+  text-align: center;
+  position: relative;
 }
 
 :export {

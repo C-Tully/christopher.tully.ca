@@ -12,7 +12,7 @@
     <header>
       <div class="container">
         <div class="wrapper">
-          <div class="sidebar">
+          <div class="headshot-aside">
             <div class="box">
               <img
                 class="circletag"
@@ -34,6 +34,9 @@
       </div>
     </header>
     <main class="d-flex">
+      <sidebar>
+        <SiteNav />
+      </sidebar>
       <div class="summary-wrapper">
         <div>
           <h3>Summary</h3>
@@ -72,17 +75,22 @@
         </ul>
       </div>
     </main>
-    <footer>
+
+    <SiteFooter />
+    <!-- <footer>
       <p>And, the footer.</p>
-    </footer>
+    </footer> -->
   </div>
 </template>
 
 <script>
 import { useScrollCurve } from "@/composables/useScrollCurve";
 import SocialLinks from "@/components/SocialLinks/SocialLinks.vue";
-import { portfolioCollectionConfig } from "@/components/PortfolioCards/config/portfolioCardsConfig.js";
+import SiteNav from "@/components/SiteNav/SiteNav.vue";
 import PortfolioCards from "@/components/PortfolioCards/PortfolioCards.vue";
+import SiteFooter from "@/components/SiteFooter/SiteFooter.vue";
+
+import { portfolioCollectionConfig } from "@/components/PortfolioCards/config/portfolioCardsConfig.js";
 import { projectCollectionConfig } from "@/views/Home/config/projectConfig";
 import { skillsImageConfig } from "@/views/Home/config/skillsConfig";
 
@@ -95,6 +103,8 @@ export default {
   components: {
     SocialLinks,
     PortfolioCards,
+    SiteNav,
+    SiteFooter,
   },
   data() {
     return {
@@ -172,7 +182,7 @@ export default {
   width: 80%;
 }
 
-.sidebar {
+.headshot-aside {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -265,6 +275,16 @@ main {
 .summary-wrapper {
   flex-direction: column;
   display: flex;
+}
+
+sidebar {
+  position: sticky;
+  left: 0;
+  // padding: 30px;
+  // margin: 0 0 60px 20px;
+  // box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  // position: sticky; // Newly Added CSS
+  // top: 0; // Newly added css
 }
 
 footer {

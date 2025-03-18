@@ -1,5 +1,5 @@
 <template>
-  <nav class="nav-wrap" role="navigation">
+  <nav class="nav-wrap" role="navigation" v-if="includeNav">
     <ul>
       <!-- <li v-for="route in filteredRoutes" :key="route.name">
         <router-link :to="route.path" :class="customFontClass">{{
@@ -14,6 +14,21 @@
       </li>
     </ul>
   </nav>
+  <div v-else>
+    <ul>
+      <!-- <li v-for="route in filteredRoutes" :key="route.name">
+        <router-link :to="route.path" :class="customFontClass">{{
+          route.name
+        }}</router-link>
+      </li> -->
+
+      <li v-for="(route, index) in tempRoutes" :key="index">
+        <a :href="route.path">
+          {{ route.name }}
+        </a>
+      </li>
+    </ul>
+  </div>
 </template>
 <script>
 // import { useRouter, useRoute } from "vue-router";
@@ -28,6 +43,10 @@ export default {
         const lowerCaseValue = value.toLowerCase();
         return ["regular", "bold", "light"].includes(lowerCaseValue);
       },
+    },
+    includeNav: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {
