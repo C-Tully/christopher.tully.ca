@@ -1,8 +1,12 @@
 //https://github.com/C-Tully/Resturantur_app
 
-import restaurantImage from "@/assets/images/projects/restaurant.jpg";
+import restaurantImage from "@/assets/images/projects/restaurant.png";
 import vueImage from "@/assets/images/logos/vueLogo.png";
 import christophertullycaFavicon from "@/assets/images/projects/christophertullycaFavicon.png";
+// import laravelLogo from "@/assets/images/projects/laravelLogo.png";
+import questionMarkImg from "@/assets/images/projects/question-mark-pixel-art.png";
+import laravelLogo from "@/assets/images/projects/laravelLogoTest.jpg";
+// laravelLogoTest;
 
 // import computerShowingGraphs from "@/assets/images/logos/computerShowingGraphs.jpg";
 // import surveyImage from "@/assets/images/logos/survey.jpg";
@@ -16,38 +20,33 @@ export const projectCollectionConfig = [
     notes:
       "A practical application of a native php based project. The application shows a MVC pattern and a basic CRSF security system.",
     githubLink: "",
-    links: [],
   },
   {
     name: "Vue2 Component",
     thumbnail: vueImage,
     tags: "Vue2, JavaScript, HTML, CSS, Vuex",
     description: "Standalone Vue2 Component",
-    notes: "",
-    links: [],
+    githubLink: "",
   },
   {
     name: "Vue3 Portfolio site",
     thumbnail: christophertullycaFavicon,
     tags: "Vue3, JavaScript, HTML, CSS",
     description: "This site!",
-    notes: "",
-    links: [],
+    githubLink: "",
   },
   {
     name: "Laravel Portfolio site",
-    thumbnail: "",
+    thumbnail: laravelLogo,
     tags: "Laravel, PHP, Webpack, Composer, Node",
     description: "An older portfolio",
-    notes: "",
-    links: ["https://github.com/C-Tully/portfolio-2020-Laravel", ""],
+    githubLink: "",
   },
   {
     name: "Upcoming project - Uptime reports (name TBD)",
-    thumbnail: "",
+    thumbnail: questionMarkImg,
     tags: "React, Nextjs, Laravel, API, Node, NEW",
     description: "",
-    notes: "",
-    links: [],
+    githubLink: "",
   },
 ];

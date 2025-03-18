@@ -63,14 +63,23 @@
       </div>
       <div class="projects-wrapper">
         <h3>Projects</h3>
+
         <ul>
-          <li v-for="(item, index) in projectCollectionConfig" :key="index">
-            <div aria-labelledby="projectCardTitle">
-              <img :src="item.githubLink" alt="" />
+          <li
+            v-for="(item, index) in projectCollectionConfig"
+            :key="index"
+            class="project-link"
+          >
+            <a
+              target="_blank"
+              aria-labelledby="projectCardTitle"
+              :href="item.githubLink"
+            >
+              <img :src="item.thumbnail" alt="" />
               <!-- Note: I might have to add a distinct id here to ensure accessibility -->
               <h4 id="projectCardTitle">{{ item.name }}</h4>
               <p>{{ item.description }}</p>
-            </div>
+            </a>
           </li>
         </ul>
       </div>
@@ -335,6 +344,43 @@ small {
   .logo {
     width: 120px;
     max-height: 120px;
+  }
+}
+
+.projects-wrapper {
+  ul {
+    display: flex;
+    list-style: none;
+    padding-top: 25px;
+    width: 100%;
+    justify-content: center;
+    gap: 1em;
+    flex-wrap: wrap;
+
+    li {
+      padding-right: 8px;
+      width: 275px;
+      justify-content: center;
+      display: flex;
+    }
+
+    .project-link {
+      &:focus,
+      &:focus-within {
+        // box-shadow: 0px 0px 0px 2px #e6f9fe, 0px 0px 0px 3px #005587;
+        outline: 2px solid #800014 !important;
+        box-shadow: 0 0 4px 3px rgba(235, 115, 115, 0.35) !important;
+      }
+      a:focus {
+        outline: none;
+        border: none;
+      }
+    }
+  }
+  img {
+    max-width: 200px;
+    max-height: 200px;
+    width: 100%;
   }
 }
 </style>
