@@ -1,5 +1,8 @@
 <template>
   <div class="page-wrap">
+    <aside ref="sidebar" class="sidebar">
+      <SiteNav />
+    </aside>
     <div class="svg-container">
       <svg viewBox="0 0 800 400" class="svg">
         <path
@@ -33,10 +36,8 @@
         </div>
       </div>
     </header>
+
     <main class="d-flex">
-      <sidebar>
-        <SiteNav />
-      </sidebar>
       <div class="summary-wrapper">
         <div>
           <h3>Summary</h3>
@@ -84,7 +85,9 @@
         </ul>
       </div>
     </main>
-
+    <!-- <aside class="sidebar">
+      <SiteNav />
+    </aside> -->
     <SiteFooter />
     <!-- <footer>
       <p>And, the footer.</p>
@@ -114,6 +117,13 @@ export default {
     PortfolioCards,
     SiteNav,
     SiteFooter,
+  },
+  mounted() {
+    useScrollCurve("curve");
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  beforeUnmount() {
+    window.removeEventListener("scroll", this.handleScroll);
   },
   data() {
     return {
@@ -146,6 +156,11 @@ export default {
         },
       ],
       skillsImageCollection: skillsImageConfig,
+      scrollY: 0,
+      targetTop: 70, // Initial position in percentage
+      currentTop: 70, // For smooth transition
+      triggerPoint: 200, // Scroll threshold
+      animationFrame: null, // Store requestAnimationFrame ID
     };
   },
   methods: {
@@ -157,9 +172,26 @@ export default {
     toggleModalVisibility() {
       this.modalVisibility = !this.modalVisibility;
     },
-  },
-  mounted() {
-    useScrollCurve("curve");
+    handleScroll() {
+      this.scrollY = window.scrollY;
+      this.targetTop = this.scrollY > this.triggerPoint ? 50 : 70;
+
+      if (!this.animationFrame) {
+        this.smoothTransition();
+      }
+    },
+    smoothTransition() {
+      if (Math.abs(this.currentTop - this.targetTop) < 0.1) {
+        this.currentTop = this.targetTop;
+        this.animationFrame = null;
+        return;
+      }
+
+      this.currentTop += (this.targetTop - this.currentTop) * 0.1;
+      this.$refs.sidebar.style.top = `${this.currentTop}%`;
+
+      this.animationFrame = requestAnimationFrame(this.smoothTransition);
+    },
   },
 };
 </script>
@@ -286,14 +318,32 @@ main {
   display: flex;
 }
 
-sidebar {
-  position: sticky;
-  left: 0;
-  // padding: 30px;
-  // margin: 0 0 60px 20px;
-  // box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  // position: sticky; // Newly Added CSS
-  // top: 0; // Newly added css
+.sidebar {
+  position: fixed;
+  left: 10px;
+  width: 125px;
+  background: white;
+  color: $primary-font-black;
+  padding: 20px;
+  // border-radius: 8px;
+  transition: top 0.3s ease-in-out;
+  top: 70%;
+  transform: translateY(-50%);
+  border: 1px solid $primary-font-black;
+
+  :deep(ul) {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    flex-wrap: wrap;
+    list-style: none !important;
+    padding-left: 0;
+
+    li {
+      border: 1px solid $primary-font-black;
+    }
+  }
 }
 
 footer {
@@ -325,16 +375,9 @@ small {
       margin: 8px;
       display: flex;
       justify-content: center;
-      // border: 4px solid transparent; /* Prevents layout shift */
-      // box-shadow: 0px 0px 0px 2px #e6f9fe, 0px 0px 0px 3px #005587;
-      // box-shadow: 0px 0px 0px 2px #e6f9fe, 0px 0px 0px 3px #005587;
-
-      // outline: 2px solid $bmo-cerulean !important;
-      // box-shadow: $bmo-blue-box-shadow !important;
 
       &:focus,
       &:focus-within {
-        // box-shadow: 0px 0px 0px 2px #e6f9fe, 0px 0px 0px 3px #005587;
         outline: 2px solid #800014 !important;
         box-shadow: 0 0 4px 3px rgba(235, 115, 115, 0.35) !important;
       }
@@ -362,12 +405,12 @@ small {
       width: 275px;
       justify-content: center;
       display: flex;
+      text-align: center;
     }
 
     .project-link {
       &:focus,
       &:focus-within {
-        // box-shadow: 0px 0px 0px 2px #e6f9fe, 0px 0px 0px 3px #005587;
         outline: 2px solid #800014 !important;
         box-shadow: 0 0 4px 3px rgba(235, 115, 115, 0.35) !important;
       }
@@ -380,7 +423,6 @@ small {
   img {
     max-width: 200px;
     max-height: 200px;
-    width: 100%;
   }
 }
 </style>

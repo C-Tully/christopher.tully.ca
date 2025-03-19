@@ -57,7 +57,7 @@ export default {
       ],
     },
   },
-  setup(props) {
+  setup() {
     const flippedCardsTracker = ref({});
 
     const handleCardClick = (index) => {
