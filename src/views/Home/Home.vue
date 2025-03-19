@@ -1,12 +1,49 @@
 <template>
-  <div class="home-wrap bubbles flex-container" role="main">
-    <div>
-      <div class="copy-wrap">
-        <div class="main-copy">
-          <h1>Hi, I'm <b>Chris</b></h1>
-          <p>I'm a <u>Software developer</u> with 14 years experience.</p>
+  <div class="page-wrap">
+    <!-- <aside ref="sidebar" class="sidebar">
+      <SiteNav />
+    </aside> -->
+    <div class="svg-container">
+      <svg
+        viewBox="0 0 800 400"
+        class="svg"
+        preserveAspectRatio="xMidYMid meet"
+      >
+        <path
+          id="curve"
+          fill="#800014"
+          d="M 800 300 Q 400 350 0 300 L 0 0 L 800 0 L 800 300 Z"
+        ></path>
+      </svg>
+    </div>
+    <header>
+      <div class="container">
+        <div class="wrapper">
+          <div class="headshot-aside">
+            <div class="box">
+              <img
+                class="circletag"
+                src="@/assets/images/headshot.png"
+                alt="Image of a person"
+              />
+            </div>
+          </div>
+          <div class="main">
+            <div class="box">
+              <h1>Hi, I'm <b>Chris Tully</b></h1>
+            </div>
+            <div class="box">
+              <h2>I'm a <u>Software developer</u> with 14 years experience.</h2>
+            </div>
+            <SocialLinks :linkCollection="socialLinkCollection" />
+          </div>
         </div>
-        <div class="description-wrap">
+      </div>
+    </header>
+    <main class="d-flex">
+      <div class="summary-wrapper">
+        <div>
+          <h3>Summary</h3>
           <p>
             I specialize in creating user-friendly, accessible interfaces that
             meet modern web standards. My goal is to ensure every project
@@ -14,49 +51,95 @@
             across diverse industries, I bring a broad skill set and unique
             perspectives that set me apart from the rest.
           </p>
-          <p>Stay tuned there's more to come</p>
+        </div>
+        <div class="skills-wrapper">
+          <ul>
+            <li v-for="(img, index) in skillsImageCollection" :key="index">
+              <img class="logo" :src="img.src" :alt="img.alt" />
+            </li>
+          </ul>
         </div>
       </div>
-      <SocialLinks :linkCollection="socialLinkCollection" />
-    </div>
-    <div
-      class="bubble"
-      v-for="n in TOTAL_BUBBLES"
-      :key="n"
-      v-memo="[TOTAL_BUBBLES]"
-      aria-hidden="true"
-      tab-index="-1"
-    ></div>
+      <div class="work-wrapper">
+        <h3>Recent Roles</h3>
+        <p class="mobile-only">Click a card to see more</p>
+        <!-- <p>(See the experience section for more.)</p> -->
+        <PortfolioCards :portfolioCollection="portfolioCollectionConfig" />
+      </div>
+      <div class="projects-wrapper">
+        <h3>Projects</h3>
+
+        <ul>
+          <li
+            v-for="(item, index) in projectCollectionConfig"
+            :key="index"
+            class="project-link"
+          >
+            <a
+              target="_blank"
+              aria-labelledby="projectCardTitle"
+              :href="item.githubLink"
+            >
+              <img :src="item.thumbnail" alt="" />
+              <!-- Note: I might have to add a distinct id here to ensure accessibility -->
+              <h4 id="projectCardTitle">{{ item.name }}</h4>
+              <p>{{ item.description }}</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </main>
+    <SiteFooter />
   </div>
 </template>
 
 <script>
+import { useScrollCurve } from "@/composables/useScrollCurve";
 import SocialLinks from "@/components/SocialLinks/SocialLinks.vue";
-import linkedinIcon from "@/assets/images/social/icons/linkedin.png";
-import gitHubIcon from "@/assets/images/social/icons/github.png";
-import leetCodeIcon from "@/assets/images/social/icons/leetcode.png";
+// import SiteNav from "@/components/SiteNav/SiteNav.vue";
+import PortfolioCards from "@/components/PortfolioCards/PortfolioCards.vue";
+import SiteFooter from "@/components/SiteFooter/SiteFooter.vue";
+
+import { portfolioCollectionConfig } from "@/components/PortfolioCards/config/portfolioCardsConfig.js";
+import { projectCollectionConfig } from "@/views/Home/config/projectConfig";
+import { skillsImageConfig } from "@/views/Home/config/skillsConfig";
+
+import linkedInLogoImage from "@/assets/images/social/icons/linkedin.png";
+import leetCodeLogoImage from "@/assets/images/social/icons/leetcode.png";
+import gitHubLogoImage from "@/assets/images/social/icons/github.png";
 
 export default {
   name: "Home",
   components: {
     SocialLinks,
+    PortfolioCards,
+    // SiteNav,
+    SiteFooter,
+  },
+  mounted() {
+    useScrollCurve("curve");
+    // window.addEventListener("scroll", this.handleScroll);
+  },
+  beforeUnmount() {
+    // window.removeEventListener("scroll", this.handleScroll);
   },
   data() {
     return {
+      portfolioCollectionConfig: portfolioCollectionConfig,
+      projectCollectionConfig: projectCollectionConfig,
       modalVisibility: false,
-      TOTAL_BUBBLES: 59,
       socialLinkCollection: [
         {
           href: "https://www.linkedin.com/in/christopher-tully-17509b46/",
           ariaLabel: "Click here to check out my LinkedIn Profile.",
-          imgSrc: linkedinIcon,
+          imgSrc: linkedInLogoImage,
           imgAlt: "LinkedIn Logo",
           class: "linkedIn",
         },
         {
           href: "https://leetcode.com/u/c-tully/",
           ariaLabel: "Click here to check out my leetCode profile",
-          imgSrc: leetCodeIcon,
+          imgSrc: leetCodeLogoImage,
           imgAlt: "leetCode Logo",
           class: "leetCode",
           imgTitle:
@@ -66,182 +149,341 @@ export default {
           href: "https://github.com/C-Tully",
           ariaLabel: "Click here to check out my GitHub profile",
           class: "gitHub",
-          imgSrc: gitHubIcon,
+          imgSrc: gitHubLogoImage,
           imgAlt: "GitHub Logo",
         },
       ],
+      skillsImageCollection: skillsImageConfig,
+      scrollY: 0,
+      targetTop: 70, // Initial position in percentage
+      currentTop: 70, // For smooth transition
+      triggerPoint: 200, // Scroll threshold
+      animationFrame: null, // Store requestAnimationFrame ID
     };
   },
   methods: {
-    handleOnClick(event) {
-      if (event) {
-        this.toggleModalVisibility();
-      }
+    handleOnClick() {
+      this.toggleModalVisibility();
+      // if (event) {
+      //   this.toggleModalVisibility();
+      // }
     },
     toggleModalVisibility() {
-      return (this.modalVisibility = !this.modalVisibility);
+      this.modalVisibility = !this.modalVisibility;
     },
+    // handleScroll() {
+    //   this.scrollY = window.scrollY;
+    //   this.targetTop = this.scrollY > this.triggerPoint ? 50 : 70;
+
+    //   if (!this.animationFrame) {
+    //     this.smoothTransition();
+    //   }
+    // },
+    // smoothTransition() {
+    //   if (Math.abs(this.currentTop - this.targetTop) < 0.1) {
+    //     this.currentTop = this.targetTop;
+    //     this.animationFrame = null;
+    //     return;
+    //   }
+
+    //   this.currentTop += (this.targetTop - this.currentTop) * 0.1;
+    //   this.$refs.sidebar.style.top = `${this.currentTop}%`;
+
+    //   this.animationFrame = requestAnimationFrame(this.smoothTransition);
+    // },
   },
 };
 </script>
+
 <style lang="scss" scoped>
-.home-wrap {
-  height: 100vh;
+@import "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inclusive+Sans:ital@0;1&family=Spectral:wght@300;400;700&display=swap";
+
+.circletag {
+  display: block;
+  width: 200px;
+  height: 200px;
+  background: #fff;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  margin-right: 5em;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+}
+
+.wrapper {
+  display: flex;
+  width: 80%;
+}
+
+.headshot-aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25%;
+  padding: 0 10px;
+
+  .box {
+    justify-content: center;
+  }
+}
+
+.box {
+  display: flex;
+  justify-content: flex-start;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+*,
+*:after,
+*:before {
   margin: 0;
-  background: $primary-background-blue;
-  background: $primary-background-gradient;
+  padding: 0;
+}
+
+.svg-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: -1;
+}
+
+svg {
+  path {
+    transition: 0.1s;
+  }
+
+  &:hover path {
+    d: path("M 800 300 Q 400 250 0 300 L 0 0 L 800 0 L 800 300 Z");
+  }
+}
+
+body {
+  background: #fff;
+  color: #333;
+  font-family: "Ubuntu", sans-serif;
   position: relative;
 }
 
-.flex-container {
-  position: absolute;
-  top: 25%;
-  z-index: 2;
+h1 {
+  font-size: 7.2vw;
+
+  b {
+    color: #05f7ff;
+  }
+}
+
+h2,
+h3 {
+  font-weight: 400;
+  text-align: left;
+}
+
+header {
+  color: #fff;
+  padding-top: 10vw;
+  padding-bottom: 20vw;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+main {
+  flex-direction: column;
+  flex: 1;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 50px 0 30vh 0;
+  position: relative;
+  flex-flow: column;
+  width: 900px;
+  margin: 0 auto;
+}
+
+.summary-wrapper,
+.work-wrapper,
+.projects-wrapper {
+  margin-bottom: 6em;
+}
+
+.summary-wrapper {
+  flex-direction: column;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 3em;
+}
 
-  .copy-wrap {
-    flex-flow: row;
+.sidebar {
+  position: fixed;
+  left: 10px;
+  width: 125px;
+  background: white;
+  color: $primary-font-black;
+  padding: 20px;
+  // border-radius: 8px;
+  transition: top 0.3s ease-in-out;
+  top: 70%;
+  transform: translateY(-50%);
+  border: 1px solid $primary-font-black;
+
+  :deep(ul) {
     display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    flex-wrap: wrap;
+    list-style: none !important;
+    padding-left: 0;
 
-    .main-copy {
-      display: flex;
-      flex-wrap: nowrap;
-      flex: 4;
-      flex-flow: column;
-      justify-content: flex-start;
-      text-align: right;
-      padding-left: 5em;
-      padding: 0 3em;
-
-      p {
-        color: #ffff;
-      }
-    }
-
-    .description-wrap {
-      flex: 4;
-      text-align: left;
-      color: $primary-font-white;
-    }
-
-    b {
-      font-weight: 700;
+    li {
+      border: 1px solid $primary-font-black;
     }
   }
 }
 
-:deep(.nav-wrap) {
-  flex: 2;
+footer {
+  background: #dddee1;
+  padding: 5vh 0;
+  text-align: center;
+  position: relative;
+}
 
+small {
+  opacity: 0.5;
+  font-weight: 300;
+
+  a {
+    color: inherit;
+  }
+}
+
+.skills-wrapper {
   ul {
-    padding-left: 0;
-    text-align: right;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    list-style: none;
+
+    li {
+      margin: 8px;
+      display: flex;
+      justify-content: center;
+
+      &:focus,
+      &:focus-within {
+        outline: 2px solid #800014 !important;
+        box-shadow: 0 0 4px 3px rgba(235, 115, 115, 0.35) !important;
+      }
+    }
+  }
+
+  .logo {
+    width: 120px;
+    max-height: 120px;
+  }
+}
+
+.projects-wrapper {
+  ul {
+    display: flex;
+    list-style: none;
+    padding-top: 25px;
+    width: 100%;
+    justify-content: center;
+    gap: 1em;
+    flex-wrap: wrap;
+
+    li {
+      padding-right: 8px;
+      width: 275px;
+      justify-content: center;
+      display: flex;
+      text-align: center;
+    }
+
+    .project-link {
+      &:focus,
+      &:focus-within {
+        outline: 2px solid #800014 !important;
+        box-shadow: 0 0 4px 3px rgba(235, 115, 115, 0.35) !important;
+      }
+      a:focus {
+        outline: none;
+        border: none;
+      }
+    }
+  }
+  img {
+    max-width: 200px;
+    max-height: 200px;
   }
 }
 
 @media only screen and (max-width: 600px) {
-  .flex-container {
-    flex-flow: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+  main {
+    width: 100%;
+  }
+  .headshot-aside {
+    display: none;
+  }
 
-    .copy-wrap {
-      flex-flow: column;
-      width: 100%;
-
-      .main-copy {
-        text-align: inherit;
-        padding: 0;
+  header {
+    .container {
+      .wrapper {
+        width: 100%;
+        justify-content: space-around;
       }
     }
   }
-}
 
-$bubble-count: 50;
-$sway-type: "sway-left-to-right", "sway-right-to-left";
-
-@function random_range($min, $max) {
-  $rand: random();
-  $random_range: $min + floor($rand * (($max - $min) + 1));
-  @return $random_range;
-}
-
-@function sample($list) {
-  @return nth($list, random(length($list)));
-}
-
-.bubbles {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.bubble {
-  position: absolute;
-  pointer-events: none;
-  left: var(--bubble-left-offset);
-  bottom: -75%;
-  display: block;
-  width: var(--bubble-radius);
-  height: var(--bubble-radius);
-  border-radius: 50%;
-  animation: float-up var(--bubble-float-duration) var(--bubble-float-delay)
-    ease-in infinite;
-
-  &::before {
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: hsla(240, 72%, 52%, 0.3);
-    border-radius: inherit;
-    animation: var(--bubble-sway-type) var(--bubble-sway-duration)
-      var(--bubble-sway-delay) ease-in-out alternate infinite;
+  h1 {
+    font-size: 2.4em;
   }
 
-  @for $i from 0 through $bubble-count {
-    &:nth-child(#{$i}) {
-      --bubble-left-offset: #{random_range(0vw, 100vw)};
-      --bubble-radius: #{random_range(1vw, 10vw)};
-      --bubble-float-duration: #{random_range(6s, 12s)};
-      --bubble-sway-duration: #{random_range(4s, 6s)};
-      --bubble-float-delay: #{random_range(0s, 4s)};
-      --bubble-sway-delay: #{random_range(0s, 4s)};
-      --bubble-sway-type: #{sample($sway-type)};
+  h2 {
+    font-size: 17px;
+  }
+
+  h3 {
+    text-align: center;
+  }
+
+  .skills-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+
+    ul {
+      li {
+        display: inline-block;
+      }
+    }
+  }
+
+  .work-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    p {
+      text-align: center;
     }
   }
 }
 
-@keyframes float-up {
-  to {
-    transform: translateY(-175vh);
-  }
-}
-
-@keyframes sway-left-to-right {
-  from {
-    transform: translateX(-100%);
-  }
-
-  to {
-    transform: translateX(100%);
-  }
-}
-
-@keyframes sway-right-to-left {
-  from {
-    transform: translateX(100%);
-  }
-
-  to {
-    transform: translateX(-100%);
+@media only screen and (max-width: 400px) {
+  .skills-wrapper ul {
+    justify-content: space-around;
   }
 }
 </style>
