@@ -113,10 +113,10 @@ export default {
   },
   mounted() {
     useScrollCurve("curve");
-    window.addEventListener("scroll", this.handleScroll);
+    // window.addEventListener("scroll", this.handleScroll);
   },
   beforeUnmount() {
-    window.removeEventListener("scroll", this.handleScroll);
+    // window.removeEventListener("scroll", this.handleScroll);
   },
   data() {
     return {
@@ -165,26 +165,26 @@ export default {
     toggleModalVisibility() {
       this.modalVisibility = !this.modalVisibility;
     },
-    handleScroll() {
-      this.scrollY = window.scrollY;
-      this.targetTop = this.scrollY > this.triggerPoint ? 50 : 70;
+    // handleScroll() {
+    //   this.scrollY = window.scrollY;
+    //   this.targetTop = this.scrollY > this.triggerPoint ? 50 : 70;
 
-      if (!this.animationFrame) {
-        this.smoothTransition();
-      }
-    },
-    smoothTransition() {
-      if (Math.abs(this.currentTop - this.targetTop) < 0.1) {
-        this.currentTop = this.targetTop;
-        this.animationFrame = null;
-        return;
-      }
+    //   if (!this.animationFrame) {
+    //     this.smoothTransition();
+    //   }
+    // },
+    // smoothTransition() {
+    //   if (Math.abs(this.currentTop - this.targetTop) < 0.1) {
+    //     this.currentTop = this.targetTop;
+    //     this.animationFrame = null;
+    //     return;
+    //   }
 
-      this.currentTop += (this.targetTop - this.currentTop) * 0.1;
-      this.$refs.sidebar.style.top = `${this.currentTop}%`;
+    //   this.currentTop += (this.targetTop - this.currentTop) * 0.1;
+    //   this.$refs.sidebar.style.top = `${this.currentTop}%`;
 
-      this.animationFrame = requestAnimationFrame(this.smoothTransition);
-    },
+    //   this.animationFrame = requestAnimationFrame(this.smoothTransition);
+    // },
   },
 };
 </script>
@@ -418,5 +418,26 @@ small {
     max-width: 200px;
     max-height: 200px;
   }
+}
+
+@media only screen and (max-width: 600px) {
+  // .d-flex {
+  //   flex-direction: column;
+  //   position: relative;
+  //   min-width: 1px;
+  //   margin: 0 auto;
+  //   z-index: 1;
+  //   padding: 15px 0;
+  //   display: flex;
+  //   justify-content: center;
+  //   li {
+  //     margin-top: 16px;
+  //     max-width: 60vw;
+
+  //     .flip-card {
+  //       width: 100%;
+  //     }
+  //   }
+  // }
 }
 </style>

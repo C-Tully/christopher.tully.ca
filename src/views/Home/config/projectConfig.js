@@ -13,13 +13,11 @@ import laravelLogo from "@/assets/images/projects/laravelLogoTest.jpg";
 
 export const projectCollectionConfig = [
   {
-    name: "Restaurat_app",
-    thumbnail: restaurantImage,
-    tags: "PHP, jQuery, DevOps, HTML, CSS, Project Management, ",
-    description: "PHP Project",
-    notes:
-      "A practical application of a native php based project. The application shows a MVC pattern and a basic CRSF security system.",
-    githubLink: "",
+    name: "Vue3 Portfolio site",
+    thumbnail: christophertullycaFavicon,
+    tags: "Vue3, JavaScript, HTML, CSS",
+    description: "This site!",
+    githubLink: "https://github.com/C-Tully/christopher.tully.ca",
   },
   {
     name: "Vue2 Component",
@@ -29,12 +27,15 @@ export const projectCollectionConfig = [
     githubLink: "",
   },
   {
-    name: "Vue3 Portfolio site",
-    thumbnail: christophertullycaFavicon,
-    tags: "Vue3, JavaScript, HTML, CSS",
-    description: "This site!",
-    githubLink: "",
+    name: "Restaurat_app",
+    thumbnail: restaurantImage,
+    tags: "PHP, jQuery, DevOps, HTML, CSS, Project Management, ",
+    description: "PHP Project",
+    notes:
+      "A practical application of a native php based project. The application shows a MVC pattern and a basic CRSF security system.",
+    githubLink: "https://github.com/C-Tully/Resturantur_app",
   },
+
   {
     name: "Laravel Portfolio site",
     thumbnail: laravelLogo,
