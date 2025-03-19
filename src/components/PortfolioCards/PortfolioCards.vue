@@ -7,9 +7,9 @@
         :href="portfolioItem.href"
         class="flip-card card"
         :title="`Click to see more details on my time with ${portfolioItem.company}`"
-        @click="handleCardClick(index)"
-        @keydown.space.prevent="handleCardClick(index)"
-        @keydown.enter.prevent="handleCardClick(index)"
+        @click="(e) => handleCardClick(e, index)"
+        @keydown.space.prevent="(e) => handleCardClick(e, index)"
+        @keydown.enter.prevent="(e) => handleCardClick(e, index)"
       >
         <div
           class="flip-card-inner"
@@ -29,7 +29,7 @@
               {{ portfolioItem.title }} at {{ portfolioItem.company }}
             </h3>
             <p>{{ portfolioItem.description }}</p>
-            <p class="card-cta">Click the card for more details</p>
+            <!-- <p class="card-cta">Click the card for more details</p> -->
           </div>
         </div>
       </a>
@@ -60,18 +60,21 @@ export default {
   setup() {
     const flippedCardsTracker = ref({});
 
-    const handleCardClick = (index) => {
-      if (flippedCardsTracker.value[index]) {
-        redirectUserToExperiencePage(index);
-      } else {
-        // If the card is not flipped, flip it
-        flippedCardsTracker.value[index] = true;
-      }
+    // eslint-disable-next-line no-unused-vars
+    const handleCardClick = (e, index) => {
+      e.preventDefault();
+
+      // if (flippedCardsTracker.value[index]) {
+      //   redirectUserToExperiencePage(index);
+      // } else {
+      //   // If the card is not flipped, flip it
+      //   flippedCardsTracker.value[index] = true;
+      // }
     };
 
-    const redirectUserToExperiencePage = (index) => {
-      console.log(`Card ${index} clicked again. Perform different action.`);
-    };
+    // const redirectUserToExperiencePage = (index) => {
+    //   console.log(`Card ${index} clicked again. Perform different action.`);
+    // };
 
     return { flippedCardsTracker, handleCardClick };
   },

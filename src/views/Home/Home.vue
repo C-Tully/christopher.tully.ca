@@ -1,8 +1,8 @@
 <template>
   <div class="page-wrap">
-    <aside ref="sidebar" class="sidebar">
+    <!-- <aside ref="sidebar" class="sidebar">
       <SiteNav />
-    </aside>
+    </aside> -->
     <div class="svg-container">
       <svg viewBox="0 0 800 400" class="svg">
         <path
@@ -29,14 +29,13 @@
               <h1>Hi, I'm <b>Chris Tully</b></h1>
             </div>
             <div class="box">
-              <h3>I'm a <u>Software developer</u> with 14 years experience.</h3>
+              <h2>I'm a <u>Software developer</u> with 14 years experience.</h2>
             </div>
             <SocialLinks :linkCollection="socialLinkCollection" />
           </div>
         </div>
       </div>
     </header>
-
     <main class="d-flex">
       <div class="summary-wrapper">
         <div>
@@ -85,20 +84,14 @@
         </ul>
       </div>
     </main>
-    <!-- <aside class="sidebar">
-      <SiteNav />
-    </aside> -->
     <SiteFooter />
-    <!-- <footer>
-      <p>And, the footer.</p>
-    </footer> -->
   </div>
 </template>
 
 <script>
 import { useScrollCurve } from "@/composables/useScrollCurve";
 import SocialLinks from "@/components/SocialLinks/SocialLinks.vue";
-import SiteNav from "@/components/SiteNav/SiteNav.vue";
+// import SiteNav from "@/components/SiteNav/SiteNav.vue";
 import PortfolioCards from "@/components/PortfolioCards/PortfolioCards.vue";
 import SiteFooter from "@/components/SiteFooter/SiteFooter.vue";
 
@@ -115,7 +108,7 @@ export default {
   components: {
     SocialLinks,
     PortfolioCards,
-    SiteNav,
+    // SiteNav,
     SiteFooter,
   },
   mounted() {
@@ -284,6 +277,7 @@ body {
   position: relative;
 }
 
+h2,
 h3 {
   font-weight: 400;
   text-align: left;
