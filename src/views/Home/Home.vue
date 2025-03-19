@@ -4,7 +4,11 @@
       <SiteNav />
     </aside> -->
     <div class="svg-container">
-      <svg viewBox="0 0 800 400" class="svg">
+      <svg
+        viewBox="0 0 800 400"
+        class="svg"
+        preserveAspectRatio="xMidYMid meet"
+      >
         <path
           id="curve"
           fill="#800014"
@@ -58,7 +62,8 @@
       </div>
       <div class="work-wrapper">
         <h3>Recent Roles</h3>
-        <p>(See the experience section for more.)</p>
+        <p class="mobile-only">Click a card to see more</p>
+        <!-- <p>(See the experience section for more.)</p> -->
         <PortfolioCards :portfolioCollection="portfolioCollectionConfig" />
       </div>
       <div class="projects-wrapper">
@@ -157,10 +162,11 @@ export default {
     };
   },
   methods: {
-    handleOnClick(event) {
-      if (event) {
-        this.toggleModalVisibility();
-      }
+    handleOnClick() {
+      this.toggleModalVisibility();
+      // if (event) {
+      //   this.toggleModalVisibility();
+      // }
     },
     toggleModalVisibility() {
       this.modalVisibility = !this.modalVisibility;
@@ -201,6 +207,7 @@ export default {
   -webkit-border-radius: 50%;
   background-position: 50% 50%;
   background-repeat: no-repeat;
+  margin-right: 5em;
 }
 
 .container {
@@ -231,17 +238,9 @@ export default {
 .box {
   display: flex;
   justify-content: flex-start;
-}
 
-.box:last-child {
-  border-bottom: none;
-}
-
-h1 {
-  font-size: 7.2vw;
-
-  b {
-    color: #05f7ff;
+  &:last-child {
+    border-bottom: none;
   }
 }
 
@@ -277,6 +276,14 @@ body {
   position: relative;
 }
 
+h1 {
+  font-size: 7.2vw;
+
+  b {
+    color: #05f7ff;
+  }
+}
+
 h2,
 h3 {
   font-weight: 400;
@@ -288,6 +295,7 @@ header {
   padding-top: 10vw;
   padding-bottom: 20vw;
   text-align: center;
+  flex-wrap: wrap;
 }
 
 main {
@@ -421,23 +429,61 @@ small {
 }
 
 @media only screen and (max-width: 600px) {
-  // .d-flex {
-  //   flex-direction: column;
-  //   position: relative;
-  //   min-width: 1px;
-  //   margin: 0 auto;
-  //   z-index: 1;
-  //   padding: 15px 0;
-  //   display: flex;
-  //   justify-content: center;
-  //   li {
-  //     margin-top: 16px;
-  //     max-width: 60vw;
+  main {
+    width: 100%;
+  }
+  .headshot-aside {
+    display: none;
+  }
 
-  //     .flip-card {
-  //       width: 100%;
-  //     }
-  //   }
-  // }
+  header {
+    .container {
+      .wrapper {
+        width: 100%;
+        justify-content: space-around;
+      }
+    }
+  }
+
+  h1 {
+    font-size: 2.4em;
+  }
+
+  h2 {
+    font-size: 17px;
+  }
+
+  h3 {
+    text-align: center;
+  }
+
+  .skills-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+
+    ul {
+      li {
+        display: inline-block;
+      }
+    }
+  }
+
+  .work-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    p {
+      text-align: center;
+    }
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .skills-wrapper ul {
+    justify-content: space-around;
+  }
 }
 </style>

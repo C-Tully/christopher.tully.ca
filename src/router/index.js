@@ -2,19 +2,18 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import Home from "@/views/Home/Home.vue";
 import NotFound from "@/views/NotFound/NotFound.vue";
-import Experience from "@/views/Experience/Experience.vue";
+// import Experience from "@/views/Experience/Experience.vue";
 // import Skills from "@/views/Skills/Skills.vue";
 
 // import SocialLinks from "@/views/SocialLinks/SocialLinks.vue";
 // import About from "@/views/About/About.vue";
-// import Blog from "@/views/Blog/Blog.vue";
 // import Contact from "@/views/Contact/Contact.vue";
 
-// import Skills from "@/views/Skills/Skills.vue";
+// import Blog from "@/views/Blog/Blog.vue";
 
 const routes = [
   { path: "/", component: Home, name: "Home" },
-  { path: "/experience", component: Experience, name: "Experience" },
+  // { path: "/experience", component: Experience, name: "Experience" },
   {
     path: "/:pathMatch(.*)*", // Catch-all route
     name: "404",

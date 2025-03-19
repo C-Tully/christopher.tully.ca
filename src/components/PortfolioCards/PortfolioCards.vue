@@ -4,6 +4,7 @@
       <a
         role="link"
         tabindex="0"
+        :key="flippedCardsTracker[index]"
         :href="portfolioItem.href"
         class="flip-card card"
         :title="`Click to see more details on my time with ${portfolioItem.company}`"
@@ -57,26 +58,27 @@ export default {
       ],
     },
   },
-  setup() {
-    const flippedCardsTracker = ref({});
-
-    // eslint-disable-next-line no-unused-vars
-    const handleCardClick = (e, index) => {
+  data() {
+    return {
+      flippedCardsTracker: ref([
+        // 0: false,
+      ]),
+    };
+  },
+  methods: {
+    handleCardClick(e, index) {
       e.preventDefault();
 
-      // if (flippedCardsTracker.value[index]) {
-      //   redirectUserToExperiencePage(index);
-      // } else {
-      //   // If the card is not flipped, flip it
-      //   flippedCardsTracker.value[index] = true;
-      // }
-    };
-
-    // const redirectUserToExperiencePage = (index) => {
-    //   console.log(`Card ${index} clicked again. Perform different action.`);
-    // };
-
-    return { flippedCardsTracker, handleCardClick };
+      if (this.flippedCardsTracker.length == 0) {
+        this.flippedCardsTracker[index] = true;
+      } else {
+        this.flippedCardsTracker[index] = !this.flippedCardsTracker[index];
+        for (let i = 0; i < this.flippedCardsTracker.length; i++) {
+          if (i == index) break;
+          this.flippedCardsTracker[i] = false;
+        }
+      }
+    },
   },
 };
 </script>
@@ -184,12 +186,25 @@ h3 {
     justify-content: center;
     li {
       margin-top: 16px;
-      max-width: 60vw;
+      width: 100%;
+
+      a {
+        max-width: 60vw;
+        margin: 0 auto;
+      }
+
+      h3 {
+        font-size: 3em;
+      }
 
       .flip-card {
         width: 100%;
       }
     }
+  }
+
+  .flip-card:hover .flip-card-inner {
+    transform: none;
   }
 }
 </style>

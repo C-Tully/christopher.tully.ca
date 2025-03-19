@@ -2,7 +2,9 @@
   <div class="experience-page-wrap">
     <SiteHeader />
     <main>
-      <h1>This is the Experience Page component</h1>
+      <h1>Work Experience</h1>
+      <p>Content to go here</p>
+      <span>Images?</span>
     </main>
     <SiteFooter />
   </div>
@@ -23,7 +25,7 @@ export default {
   },
   data() {
     return {
-      activeTab: this.$route?.query?.tab || "snp", // Default to "work"
+      activeTab: this.$route?.query?.tab || "snp",
     };
   },
   watch: {
@@ -38,8 +40,6 @@ export default {
   },
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
   margin: 40px 0 0;

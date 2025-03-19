@@ -24,7 +24,7 @@ export const projectCollectionConfig = [
     thumbnail: vueImage,
     tags: "Vue2, JavaScript, HTML, CSS, Vuex",
     description: "Standalone Vue2 Component",
-    githubLink: "",
+    githubLink: "https://github.com/C-Tully/vue2-class-components",
   },
   {
     name: "Restaurat_app",
@@ -41,13 +41,13 @@ export const projectCollectionConfig = [
     thumbnail: laravelLogo,
     tags: "Laravel, PHP, Webpack, Composer, Node",
     description: "An older portfolio",
-    githubLink: "",
+    githubLink: "https://github.com/C-Tully/portfolio-2020-Laravel",
   },
   {
     name: "Upcoming project - Uptime reports (name TBD)",
     thumbnail: questionMarkImg,
-    tags: "React, Nextjs, Laravel, API, Node, NEW",
+    tags: "React, Nextjs, Laravel, API, Node, TypeScript, NEW",
     description: "",
-    githubLink: "",
+    githubLink: "https://github.com/C-Tully/uptime_reports_frontend",
   },
 ];
