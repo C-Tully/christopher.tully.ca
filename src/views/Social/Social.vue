@@ -1,11 +1,7 @@
 <template>
-  <div class="experience-page-wrap">
+  <div class="social-wrapper">
     <SiteHeader />
-    <main>
-      <h1>Work Experience</h1>
-      <p>Content to go here</p>
-      <span>Images?</span>
-    </main>
+    <h1>This is the Social Page component</h1>
     <SiteFooter />
   </div>
 </template>
@@ -14,8 +10,10 @@
 import SiteFooter from "@/components/SiteFooter/SiteFooter.vue";
 import SiteHeader from "@/components/SiteHeader/SiteHeader.vue";
 
+//import SocialLinks from "@/components/SocialLinks/SocialLinks.vue";
+
 export default {
-  name: "Experience",
+  name: "Social",
   props: {
     msg: String,
   },
@@ -23,23 +21,10 @@ export default {
     SiteHeader,
     SiteFooter,
   },
-  data() {
-    return {
-      activeTab: this.$route?.query?.tab || "snp",
-    };
-  },
-  watch: {
-    "$route.query.tab"(newTab) {
-      this.activeTab = newTab || "snp";
-    },
-  },
-  methods: {
-    setTab(tab) {
-      this.$router.push({ path: "/experience", query: { tab } });
-    },
-  },
 };
 </script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
   margin: 40px 0 0;

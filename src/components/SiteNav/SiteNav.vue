@@ -1,16 +1,37 @@
 <template>
-  <nav class="nav-wrap" role="navigation">
+  <nav class="nav-wrap" role="navigation" v-if="includeNav">
     <ul>
-      <li v-for="route in filteredRoutes" :key="route.name">
+      <!-- <li v-for="route in filteredRoutes" :key="route.name">
         <router-link :to="route.path" :class="customFontClass">{{
           route.name
         }}</router-link>
+      </li> -->
+
+      <li v-for="(route, index) in tempRoutes" :key="index">
+        <a :href="route.path">
+          {{ route.name }}
+        </a>
       </li>
     </ul>
   </nav>
+  <div v-else>
+    <ul>
+      <!-- <li v-for="route in filteredRoutes" :key="route.name">
+        <router-link :to="route.path" :class="customFontClass">{{
+          route.name
+        }}</router-link>
+      </li> -->
+
+      <li v-for="(route, index) in tempRoutes" :key="index">
+        <a :href="route.path">
+          {{ route.name }}
+        </a>
+      </li>
+    </ul>
+  </div>
 </template>
 <script>
-import { useRouter, useRoute } from "vue-router";
+// import { useRouter, useRoute } from "vue-router";
 
 export default {
   name: "SiteNav",
@@ -23,34 +44,74 @@ export default {
         return ["regular", "bold", "light"].includes(lowerCaseValue);
       },
     },
+    includeNav: {
+      type: Boolean,
+      default: false,
+    },
   },
-  setup() {
-    const router = useRouter();
-    const route = useRoute(); // Access to current route
-
-    if (route && router) {
-      const allRoutes = router.getRoutes();
-      const filteredRoutes = allRoutes.filter(
-        (r) => r.path !== route.path && r.name !== "404"
-      );
-
-      return (
-        { filteredRoutes } || [
-          {
-            name: "test",
-            path: "/",
-          },
-        ]
-      );
-    }
-
-    return [];
+  data() {
+    return {
+      tempRoutes: [
+        {
+          name: "Home",
+          path: "/",
+        },
+        {
+          name: "About",
+          path: "/",
+        },
+        {
+          name: "Experience",
+          path: "/",
+        },
+        {
+          name: "Skills",
+          path: "/",
+        },
+        {
+          name: "Projects",
+          path: "/",
+        },
+        {
+          name: "Links",
+          path: "/",
+        },
+      ],
+    };
   },
+  // setup() {
+  //   const router = useRouter();
+  //   const route = useRoute(); // Access to current route
+
+  //   if (route && router) {
+  //     const allRoutes = router.getRoutes();
+  //     const filteredRoutes = allRoutes.filter(
+  //       (r) => r.path !== route.path && r.name !== "404"
+  //     );
+
+  //     return (
+  //       { filteredRoutes } || [
+  //         {
+  //           name: "test",
+  //           path: "/",
+  //         },
+  //       ]
+  //     );
+  //   }
+
+  //   return [];
+  // },
 };
 </script>
 <style lang="scss" scoped>
 nav {
+  display: flex;
+
   ul {
+    list-style: none;
+    display: flex;
+    width: 100%;
+
     li {
       a {
         font-size: 20px;
