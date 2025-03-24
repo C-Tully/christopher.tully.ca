@@ -20,6 +20,10 @@ $border-grey: #c7c1c1;
 
 body {
   font-family: $primary-font-family;
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .flex-container {

@@ -348,13 +348,6 @@ main {
   }
 }
 
-footer {
-  background: #dddee1;
-  padding: 5vh 0;
-  text-align: center;
-  position: relative;
-}
-
 small {
   opacity: 0.5;
   font-weight: 300;
