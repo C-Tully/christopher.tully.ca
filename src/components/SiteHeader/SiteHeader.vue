@@ -1,8 +1,14 @@
 <template>
   <header>
-    <div>
-      <img src="" alt="Christopher Tully - Full Stack Developer Logo" />
-      <SiteNav />
+    <div class="container">
+      <div class="row">
+        <img
+          class="banner-logo"
+          src="@/assets/images/bannerLogo.png"
+          alt="Christopher Tully - Full Stack Developer Logo"
+        />
+        <SiteNav includeNav />
+      </div>
     </div>
   </header>
 </template>
@@ -52,26 +58,93 @@ export default {
 <style lang="scss" scoped>
 header {
   width: 100%;
-  background-color: $primary-background-red;
+  // background-color: $primary-background-red;
+  background-color: #dddee1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
 
-  nav {
-    ul {
-      li {
-        a {
-          font-size: 20px;
+  // nav {
+  //   ul {
+  //     li {
+  //       a {
+  //         font-size: 20px;
 
-          &.bold {
-            font-family: "Spectral", serif;
-            font-weight: 700;
-            font-style: normal;
-          }
+  //         &.bold {
+  //           font-family: "Spectral", serif;
+  //           font-weight: 700;
+  //           font-style: normal;
+  //         }
 
-          &:hover {
-            color: $primary-font-white;
-          }
+  //         &:hover {
+  //           // color: $primary-font-white;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+
+  :deep(.row) {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 16px;
+
+    & > * {
+      padding: 0;
+    }
+  }
+
+  :deep(ul) {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    list-style: none !important;
+    padding-left: 0;
+    align-items: flex-end;
+    gap: 8px;
+    margin-bottom: 0;
+
+    li {
+      a {
+        color: $primary-link-blue;
+        background-color: transparent;
+        font-size: 20px;
+        border: none;
+
+        &:hover,
+        &:focus,
+        &:focus-within {
+          color: $primary-red;
+
+          outline: 0 solid #800014 !important;
+          box-shadow: 0 0 4px 3px rgba(235, 115, 115, 0.35) !important;
         }
       }
+      // img {
+      //   border: 1px solid $primary-font-black;
+      //   border-radius: 10px;
+      // }
     }
+  }
+
+  // :deep(.nav-wrap) {
+  //   ul {
+  //     li {
+  //       &:focus,
+  //       &:focus-within {
+  //         outline: 2px solid #800014 !important;
+  //         box-shadow: 0 0 4px 3px rgba(235, 115, 115, 0.35) !important;
+  //       }
+  //     }
+  //   }
+  // }
+
+  .banner-logo {
+    width: 75px;
+    border: 3px solid black;
+    border-radius: 10px;
   }
 }
 
