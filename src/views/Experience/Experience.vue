@@ -15,8 +15,8 @@
           <p>{{ experience.dateRange }}</p>
           <p>
             Roles:
-            <ul>
-              <li v-for="(role, index) in experience.roles" :key="index">
+            <ul class="list-group list-group-horizontal">
+              <li class="list-group-item" v-for="(role, index) in experience.roles" :key="index">
                 {{  role }}
               </li>
             </ul>
@@ -24,11 +24,12 @@
         </div>
         <div class="job-languages">
           <h3>Languages:</h3>
-          <ul >
+          <ul class="list-group list-group-horizontal" >
             <li v-for="(language, index) in experience.languages" :key="index" >
+              <span class="badge d-flex align-items-center p-1 pe-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-pill">
             {{
               language
-            }}
+            }}</span>
             </li>
           </ul>
         </div>
@@ -39,7 +40,10 @@
               v-for="(framework, index) in experience.frameworks"
               :key="index"
             >
+            <span class="badge d-flex align-items-center p-1 pe-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-pill">
               {{ framework }}
+            </span>
+            
             </li>
           </ul>
         </div>
@@ -47,7 +51,7 @@
           <h3>Database management:</h3>
           <ul>
             <li v-for="(database, index) in experience.database" :key="index">
-              {{ database }}
+              <span class="badge d-flex align-items-center p-1 pe-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-pill">{{ database }}</span>
             </li>
           </ul>
         </div>
@@ -55,7 +59,7 @@
           <h3>DevOps:</h3>
           <ul>
             <li v-for="(devOp, index) in experience.devOps" :key="index">
-              {{ devOp }}
+              <span class="badge d-flex align-items-center p-1 pe-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-pill">{{ devOp }}</span>
             </li>
           </ul>
         </div>
@@ -63,7 +67,7 @@
           <h3>Skills:</h3>
           <ul>
             <li v-for="(skill, index) in experience.Skills" :key="index">
-              {{ skill }}
+              <span class="badge d-flex align-items-center p-1 pe-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-pill">{{ skill }}</span>
             </li>
           </ul>
         </div>
