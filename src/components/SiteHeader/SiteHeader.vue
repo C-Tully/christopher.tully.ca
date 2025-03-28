@@ -102,7 +102,9 @@ header {
     flex-wrap: wrap;
     list-style: none !important;
     padding-left: 0;
-    align-items: flex-end;
+    // align-items: flex-end; required for home page?
+    align-items: center;
+    gap: 8px;
     gap: 8px;
     margin-bottom: 0;
 
@@ -142,7 +144,9 @@ header {
   // }
 
   .banner-logo {
-    width: 75px;
+    // width: 75px;
+    width: 40px;
+    margin: 8px;
     border: 3px solid black;
     border-radius: 10px;
   }

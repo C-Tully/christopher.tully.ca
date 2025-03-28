@@ -1,5 +1,6 @@
 export const experienceConfig = [
   {
+    key: "freelance",
     name: "Freelance Developer",
     dateRange: "Present",
     roles: ["Freelance Developer"],
@@ -75,12 +76,15 @@ export const experienceConfig = [
       "As a Free lance developer, all of my skills are available. Do you have a interesting project? Feel free to reachout with details!",
   },
   {
-    name: "IHS Markit",
+    key: "snp",
+    name: " Software Develiper II - S&P Global",
+    aside: "(Communify Fincentric - a division of S&P Global)",
     dateRange: "Aug 2020 - Dec 2024",
     roles: [
       "Support",
       "Scrum master",
       "Accessibility specialist",
+      "Analytics specialist",
       "QA analyst",
       "Software Developer",
       "24/7 Onvsll support",
@@ -137,12 +141,14 @@ export const experienceConfig = [
       "Marketing",
       "Git",
     ],
-    description: "",
+    description:
+      "Bacon ipsum dolor amet prosciutto tenderloin biltong, frankfurter hamburger drumstick buffalo kielbasa strip steak turkey capicola burgdoggen chicken corned beef boudin. Tri-tip chislic turkey cow, cupim pork chop spare ribs kielbasa ham hock rump shankle bacon. Pig t-bone corned beef doner, strip steak filet mignon swine boudin salami shoulder. Leberkas landjaeger turkey ribeye. Ham hock corned beef ground round porchetta kevin, short ribs tongue. Ham capicola frankfurter jowl pancetta biltong.Brisket ball tip drumstick chicken, burgdoggen kielbasa turducken pork belly doner prosciutto hamburger porchetta short ribs pancetta boudin. Leberkas doner ham hock, turkey chislic salami swine flank beef sirloin cow venison. Chicken drumstick jowl, short ribs cow pork belly turducken sirloin venison bresaola shankle. Chislic meatball spare ribs, fatback ground round hamburger porchetta cupim meatloaf tongue ball tip shankle pastrami.",
   },
   {
-    name: "Greenius",
+    key: "greenius",
+    name: "Senior Full Stack Developer - Greenius",
     dateRange: "Feb 2020 - Apr 2020",
-    roles: ["Support", "Senior Software Developer"],
+    roles: ["Support", "Backend", "Frontend"],
     languages: ["PHP", "HTML", "CSS", "SQL", "Ubuntu", "Nodejs"],
     frameworks: ["Native-php", "PHPMyAdmin", "Google Tag manager"],
     skills: [
@@ -159,12 +165,14 @@ export const experienceConfig = [
       "Google Analytics",
       "Git",
     ],
-    description: "",
+    description:
+      "Bacon ipsum dolor amet prosciutto tenderloin biltong, frankfurter hamburger drumstick buffalo kielbasa strip steak turkey capicola burgdoggen chicken corned beef boudin. Tri-tip chislic turkey cow, cupim pork chop spare ribs kielbasa ham hock rump shankle bacon. Pig t-bone corned beef doner, strip steak filet mignon swine boudin salami shoulder. Leberkas landjaeger turkey ribeye. Ham hock corned beef ground round porchetta kevin, short ribs tongue. Ham capicola frankfurter jowl pancetta biltong.Brisket ball tip drumstick chicken, burgdoggen kielbasa turducken pork belly doner prosciutto hamburger porchetta short ribs pancetta boudin. Leberkas doner ham hock, turkey chislic salami swine flank beef sirloin cow venison. Chicken drumstick jowl, short ribs cow pork belly turducken sirloin venison bresaola shankle. Chislic meatball spare ribs, fatback ground round hamburger porchetta cupim meatloaf tongue ball tip shankle pastrami.",
   },
   {
-    name: "Infotech Research Group",
+    key: "infotech",
+    name: "Intermediate Full-Stack Software Developer - Infotech Research Group",
     dateRange: "Nov 2018 - Jan 2020",
-    titles: ["Intermediate Software Developer"],
+    roles: ["Software Developer", "Backend", "Frontend"],
     languages: ["JavaScript", "HTML", "CSS", "Sass", "SQL", "PHP"],
     frameworks: ["Nodejs", "Laravel", "PHPMyAdmin", "PHPUnit"],
     databaseManagement: ["MySQL", "PHPMyAdmin", "Relational databases (RDBMS)"],
@@ -179,12 +187,14 @@ export const experienceConfig = [
       "Planning",
       "OOP",
     ],
-    description: "",
+    description:
+      "Bacon ipsum dolor amet prosciutto tenderloin biltong, frankfurter hamburger drumstick buffalo kielbasa strip steak turkey capicola burgdoggen chicken corned beef boudin. Tri-tip chislic turkey cow, cupim pork chop spare ribs kielbasa ham hock rump shankle bacon. Pig t-bone corned beef doner, strip steak filet mignon swine boudin salami shoulder. Leberkas landjaeger turkey ribeye. Ham hock corned beef ground round porchetta kevin, short ribs tongue. Ham capicola frankfurter jowl pancetta biltong.Brisket ball tip drumstick chicken, burgdoggen kielbasa turducken pork belly doner prosciutto hamburger porchetta short ribs pancetta boudin. Leberkas doner ham hock, turkey chislic salami swine flank beef sirloin cow venison. Chicken drumstick jowl, short ribs cow pork belly turducken sirloin venison bresaola shankle. Chislic meatball spare ribs, fatback ground round hamburger porchetta cupim meatloaf tongue ball tip shankle pastrami.",
   },
   {
-    name: "ProfitDriver Solutions",
+    key: "profitdriver",
+    name: "Senior Web Developer - ProfitDriver Solutions",
     dateRange: "Apr 2018 - Oct 2018",
-    titles: ["Web developer"],
+    roles: ["Web developer", "Frontend", "Backend", "Support"],
     languages: ["jQuery", "HTML", "CSS", "Sass", "SQL", "PHP"],
     frameworks: ["Laravel", "Express", "Bootstrap", "Google Analytics"],
     databaseManagement: ["PHPMyAdmin", "Relational databases (RDBMS)"],
@@ -196,12 +206,14 @@ export const experienceConfig = [
       "OOP",
       "Git",
     ],
-    description: "",
+    description:
+      "Bacon ipsum dolor amet prosciutto tenderloin biltong, frankfurter hamburger drumstick buffalo kielbasa strip steak turkey capicola burgdoggen chicken corned beef boudin. Tri-tip chislic turkey cow, cupim pork chop spare ribs kielbasa ham hock rump shankle bacon. Pig t-bone corned beef doner, strip steak filet mignon swine boudin salami shoulder. Leberkas landjaeger turkey ribeye. Ham hock corned beef ground round porchetta kevin, short ribs tongue. Ham capicola frankfurter jowl pancetta biltong.Brisket ball tip drumstick chicken, burgdoggen kielbasa turducken pork belly doner prosciutto hamburger porchetta short ribs pancetta boudin. Leberkas doner ham hock, turkey chislic salami swine flank beef sirloin cow venison. Chicken drumstick jowl, short ribs cow pork belly turducken sirloin venison bresaola shankle. Chislic meatball spare ribs, fatback ground round hamburger porchetta cupim meatloaf tongue ball tip shankle pastrami.",
   },
   {
-    name: "Arcane",
+    key: "arcane",
+    name: "Various - Arcane",
     dateRange: "Feb 2014 - Oct 2018 ",
-    titles: [
+    roles: [
       "Web Developer",
       "Analytics and Quality developer",
       "Conversion Optizmation Manager",
@@ -244,6 +256,7 @@ export const experienceConfig = [
       "Git",
       "Management",
     ],
-    description: "",
+    description:
+      "Bacon ipsum dolor amet prosciutto tenderloin biltong, frankfurter hamburger drumstick buffalo kielbasa strip steak turkey capicola burgdoggen chicken corned beef boudin. Tri-tip chislic turkey cow, cupim pork chop spare ribs kielbasa ham hock rump shankle bacon. Pig t-bone corned beef doner, strip steak filet mignon swine boudin salami shoulder. Leberkas landjaeger turkey ribeye. Ham hock corned beef ground round porchetta kevin, short ribs tongue. Ham capicola frankfurter jowl pancetta biltong.Brisket ball tip drumstick chicken, burgdoggen kielbasa turducken pork belly doner prosciutto hamburger porchetta short ribs pancetta boudin. Leberkas doner ham hock, turkey chislic salami swine flank beef sirloin cow venison. Chicken drumstick jowl, short ribs cow pork belly turducken sirloin venison bresaola shankle. Chislic meatball spare ribs, fatback ground round hamburger porchetta cupim meatloaf tongue ball tip shankle pastrami.",
   },
 ];
