@@ -4,7 +4,7 @@ import nodeImage from "@/assets/images/logos/nodejsLogo.png";
 import phpImage from "@/assets/images/logos/phpLogo.png";
 import sassImage from "@/assets/images/logos/sassLogo.png";
 import sqlImage from "@/assets/images/logos/sqlLogo.png";
-import testCafeImage from "@/assets/images/logos/testCafeLogo.png";
+import testCafeImage from "@/assets/images/logos/testcafeLogo.png";
 import vueImage from "@/assets/images/logos/vueLogo.png";
 import reactImage from "@/assets/images/logos/reactLogo.png";
 import typeScriptImage from "@/assets/images/logos/typeScriptLogo.png";
