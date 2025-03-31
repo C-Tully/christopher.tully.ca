@@ -1,11 +1,9 @@
 <template>
-  <ul class="d-flex portfolioCards-wrap">
+  <ul class="d-flex portfolioCards-wrap" :class="{ isMobile: isMobile }">
     <li v-for="(portfolioItem, index) in portfolioCollection" :key="index">
-      <a
-        role="link"
+      <button
         tabindex="0"
         :key="flippedCardsTracker[index]"
-        :href="portfolioItem.href"
         class="flip-card card"
         :title="`Click to see more details on my time with ${portfolioItem.company}`"
         @click="(e) => handleCardClick(e, index)"
@@ -14,8 +12,10 @@
       >
         <div
           class="flip-card-inner"
-          :class="{ flipped: flippedCardsTracker[index] }"
-          :aria-hidden="flippedCardsTracker[index] ? 'true' : 'false'"
+          :class="{
+            flipped: flippedCardsTracker[index],
+          }"
+          :aria-hidden="flippedCardsTracker[index] ? 'false' : 'true'"
         >
           <div class="flip-card-front">
             <img
@@ -33,7 +33,7 @@
             <!-- <p class="card-cta">Click the card for more details</p> -->
           </div>
         </div>
-      </a>
+      </button>
     </li>
   </ul>
 </template>
@@ -60,23 +60,26 @@ export default {
   },
   data() {
     return {
-      flippedCardsTracker: ref([
-        // 0: false,
-      ]),
+      flippedCardsTracker: ref([]),
+      isMobile: false,
     };
+  },
+  mounted() {
+    //note: Temp resolution to address mobile bug.
+    this.isMobileSizeCheck();
   },
   methods: {
     handleCardClick(e, index) {
       e.preventDefault();
 
-      if (this.flippedCardsTracker.length == 0) {
-        this.flippedCardsTracker[index] = true;
-      } else {
-        this.flippedCardsTracker[index] = !this.flippedCardsTracker[index];
-        for (let i = 0; i < this.flippedCardsTracker.length; i++) {
-          if (i == index) break;
-          this.flippedCardsTracker[i] = false;
-        }
+      if (this.isMobile) return;
+      this.flippedCardsTracker[index] = !(
+        this.flippedCardsTracker[index] || false
+      );
+    },
+    isMobileSizeCheck() {
+      if (window.innerWidth <= 600) {
+        this.isMobile = true;
       }
     },
   },
@@ -184,11 +187,12 @@ h3 {
     padding: 15px 0;
     display: flex;
     justify-content: center;
+
     li {
       margin-top: 16px;
       width: 100%;
 
-      a {
+      button {
         max-width: 60vw;
         margin: 0 auto;
       }
@@ -205,6 +209,16 @@ h3 {
 
   .flip-card:hover .flip-card-inner {
     transform: none;
+  }
+
+  .isMobile {
+    .flip-card-front {
+      display: none;
+    }
+
+    .flip-card-back {
+      transform: none;
+    }
   }
 }
 </style>

@@ -1,8 +1,5 @@
 <template>
   <div class="page-wrap">
-    <!-- <aside ref="sidebar" class="sidebar">
-      <SiteNav />
-    </aside> -->
     <div class="svg-container">
       <svg
         viewBox="0 0 800 400"
@@ -63,12 +60,10 @@
       <div class="work-wrapper">
         <h3>Recent Roles</h3>
         <p class="mobile-only">Click a card to see more</p>
-        <!-- <p>(See the experience section for more.)</p> -->
         <PortfolioCards :portfolioCollection="portfolioCollectionConfig" />
       </div>
       <div class="projects-wrapper">
         <h3>Projects</h3>
-
         <ul>
           <li
             v-for="(item, index) in projectCollectionConfig"
@@ -81,7 +76,6 @@
               :href="item.githubLink"
             >
               <img :src="item.thumbnail" alt="" />
-              <!-- Note: I might have to add a distinct id here to ensure accessibility -->
               <h4 id="projectCardTitle">{{ item.name }}</h4>
               <p>{{ item.description }}</p>
             </a>
@@ -155,26 +149,16 @@ export default {
       ],
       skillsImageCollection: skillsImageConfig,
       scrollY: 0,
-      targetTop: 70, // Initial position in percentage
-      currentTop: 70, // For smooth transition
-      triggerPoint: 200, // Scroll threshold
-      animationFrame: null, // Store requestAnimationFrame ID
+      targetTop: 70,
+      currentTop: 70,
+      triggerPoint: 200,
+      animationFrame: null,
     };
   },
   methods: {
-    handleOnClick() {
-      this.toggleModalVisibility();
-      // if (event) {
-      //   this.toggleModalVisibility();
-      // }
-    },
-    toggleModalVisibility() {
-      this.modalVisibility = !this.modalVisibility;
-    },
     // handleScroll() {
     //   this.scrollY = window.scrollY;
     //   this.targetTop = this.scrollY > this.triggerPoint ? 50 : 70;
-
     //   if (!this.animationFrame) {
     //     this.smoothTransition();
     //   }
@@ -185,10 +169,8 @@ export default {
     //     this.animationFrame = null;
     //     return;
     //   }
-
     //   this.currentTop += (this.targetTop - this.currentTop) * 0.1;
     //   this.$refs.sidebar.style.top = `${this.currentTop}%`;
-
     //   this.animationFrame = requestAnimationFrame(this.smoothTransition);
     // },
   },
@@ -431,7 +413,9 @@ small {
 @media only screen and (max-width: 600px) {
   main {
     width: 100%;
+    padding: 0 16px;
   }
+
   .headshot-aside {
     display: none;
   }
@@ -463,6 +447,8 @@ small {
     width: 100%;
 
     ul {
+      justify-content: space-around;
+
       li {
         display: inline-block;
       }
@@ -478,12 +464,6 @@ small {
     p {
       text-align: center;
     }
-  }
-}
-
-@media only screen and (max-width: 400px) {
-  .skills-wrapper ul {
-    justify-content: space-around;
   }
 }
 </style>
