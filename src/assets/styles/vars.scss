@@ -12,7 +12,7 @@ $background-white: #fff;
 $primary-font-white: #fafafa;
 $primary-font-blue: #a6cff2;
 $primary-link-blue: #141414;
-$primary-font-black: #212424;
+$primary-black: #212424;
 
 $primary-font-family: "Bebas Neue", serif;
 $primary-grey: #c8c3c36f;
@@ -22,7 +22,6 @@ $border-black: 1px solid rgba(0, 0, 0, 0.2);
 
 body {
   font-family: $primary-font-family;
-
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -73,7 +72,7 @@ footer {
   primary-font-family: $primary-font-family;
   primary-font-white: $primary-font-white;
   primary-link-blue: $primary-link-blue;
-  primary-font-black: $primary-font-black;
+  primary-black: $primary-black;
   primary-grey: $primary-grey;
   border-grey: $border-grey;
   background-white: $background-white;

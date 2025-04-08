@@ -125,7 +125,7 @@ header {
         }
       }
       // img {
-      //   border: 1px solid $primary-font-black;
+      //   border: 1px solid $primary-black;
       //   border-radius: 10px;
       // }
     }

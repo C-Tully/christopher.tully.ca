@@ -307,12 +307,12 @@ main {
   left: 10px;
   width: 125px;
   background: $background-white;
-  color: $primary-font-black;
+  color: $primary-black;
   padding: 20px;
   transition: top 0.3s ease-in-out;
   top: 70%;
   transform: translateY(-50%);
-  border: 1px solid $primary-font-black;
+  border: 1px solid $primary-black;
 
   :deep(ul) {
     display: flex;
@@ -324,7 +324,7 @@ main {
     padding-left: 0;
 
     li {
-      border: 1px solid $primary-font-black;
+      border: 1px solid $primary-black;
     }
   }
 }

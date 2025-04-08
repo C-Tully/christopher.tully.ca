@@ -20,9 +20,8 @@
         </a>
       </li>
     </ul>
-    isMobile?? {{ isMobile }}
+
     <button
-      v-if="isMobile"
       class="hamburger-menu"
       @click="toggleMobileAside"
       aria-label="Click to toggle the mobile navigation menu"
@@ -46,6 +45,7 @@
   <transition name="slide">
     <aside
       v-if="mobileAsideFlag"
+      ref="mobileAside"
       class="mobile-aside"
       :ariaExpanded="mobileAsideFlag ? 'true' : 'false'"
     >
@@ -132,17 +132,39 @@ export default {
     };
   },
   computed: {
-    // Using the composable for screen size tracking
-    ...useScreenSize(), // This provides `isMobile` as a reactive value
+    ...useScreenSize(),
   },
   methods: {
     toggleMobileAside() {
       this.mobileAsideFlag = !this.mobileAsideFlag;
     },
+    closeAsideIfClickedOutside(event) {
+      console.log("event::", event);
+      ///Problem:: Auto triggering on click of mobile button.
+      // Check if the click was outside of the mobile aside
+      if (
+        this.mobileAsideFlag === true &&
+        this.$refs.mobileAside &&
+        !this.$refs.mobileAside.contains(event.target)
+      ) {
+        // this.mobileAsideFlag = false;
+      }
+    },
+  },
+  mounted() {
+    document.addEventListener("click", this.closeAsideIfClickedOutside);
+    //document needs to be adjust likely...
+  },
+  beforeUnmount() {
+    document.removeEventListener("click", this.closeAsideIfClickedOutside);
   },
 };
 </script>
 <style lang="scss" scoped>
+.hamburger-menu {
+  display: none;
+}
+
 nav {
   display: flex;
 
@@ -210,21 +232,66 @@ nav {
 
 .slide-enter-to,
 .slide-leave-from {
-  transform: translateX(55%); // 100% - 35% width = visible portion
+  transform: translateX(55%);
 }
 
 .hamburger-menu {
-  background-image: url("@/assets/images/hamburgerMenuIcon.svg");
+  background: url("@/assets/images/hamburgerMenuIcon.svg") no-repeat center /
+    contain;
   width: 32px;
   margin-right: 16px;
-  background-repeat: no-repeat;
-  background-position: center;
-  // background-size: 32px 32px; // or `contain` if you want it to scale
-  background-size: contain;
   cursor: pointer;
   border: none;
   background-color: transparent;
+  display: flex;
 }
+
+// .mobile-aside {
+//   position: fixed;
+//   top: 0;
+//   right: 0;
+//   width: 40vw;
+//   height: 100vh;
+//   background-color: $primary-red;
+//   z-index: 999;
+//   box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+//   padding: 1rem;
+//   display: flex;
+//   flex-flow: column;
+
+//   div:first-child {
+//     flex-flow: column;
+//     align-items: flex-start;
+//     padding: 16px 8px 0 8px;
+
+//     button {
+//       display: flex;
+//       margin-left: auto;
+//     }
+//   }
+
+//   ul {
+//     flex-flow: column;
+//     align-items: flex-start;
+//     padding: 16px 0 0 8px;
+
+//     li {
+//       width: 100%;
+//       margin-bottom: 16px 0;
+
+//       a {
+//         color: $primary-font-white;
+//         text-decoration: none;
+
+//         &:hover,
+//         &:active {
+//           color: white !important;
+//           border-bottom: 1px solid white !important;
+//         }
+//       }
+//     }
+//   }
+// }
 
 .mobile-aside {
   position: fixed;
@@ -237,27 +304,26 @@ nav {
   box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
   padding: 1rem;
   display: flex;
-  flex-flow: column;
+  flex-direction: column;
 
-  div:first-child {
-    flex-flow: column;
+  > div:first-child {
+    flex-direction: column;
     align-items: flex-start;
-    padding: 16px 8px 0 8px;
+    padding: 16px 8px 0;
 
     button {
-      display: flex;
       margin-left: auto;
     }
   }
 
   ul {
-    flex-flow: column;
+    flex-direction: column;
     align-items: flex-start;
     padding: 16px 0 0 8px;
 
     li {
       width: 100%;
-      margin-bottom: 16px 0;
+      margin-bottom: 16px;
 
       a {
         color: $primary-font-white;
@@ -266,7 +332,7 @@ nav {
         &:hover,
         &:active {
           color: white !important;
-          border-bottom: 1px solid white !important;
+          border-bottom: 1px solid $background-white !important;
         }
       }
     }
@@ -276,18 +342,14 @@ nav {
 .close {
   $size: 32px;
   $borderSize: 2px;
-  // $borderColor: rgba(white, 1);
-  $borderColor: rgba(black, 0);
+  $borderColor: rgba($primary-black, 0);
   $speed: 0.5s;
   width: $size;
   height: $size;
   position: relative;
-  // background: #455a64;
-  background: white;
-
+  background: $background-white;
   border-radius: 50%;
-  box-shadow: 0 0 20px -5px rgba(white, 0.5);
-  // box-shadow: 0 0 20px -5px rgba(black, 0);
+  box-shadow: 0 0 20px -5px rgba($background-white, 0.5);
   transition: 0.25s ease-in-out;
   cursor: pointer;
   animation: fade-in $speed ease-out 0.25s both;
@@ -300,7 +362,6 @@ nav {
   }
   .circle {
     path {
-      // stroke: $borderColor;
       stroke: transparent;
       fill: none;
       stroke-width: $borderSize/2;
@@ -311,11 +372,6 @@ nav {
           stroke-dasharray: 0 100;
         }
       }
-
-      &:active {
-        // s: white !important;
-        // border-bottom: 1px solid white !important;
-      }
     }
   }
   span {
@@ -323,9 +379,8 @@ nav {
     width: ($size/4) - 2px;
     height: $borderSize;
     // background: $borderColor;
-    // background: black;
-    background: green;
-    // box-shadow: 0 0 20px -5px rgba(green, 0.5);
+    background: $primary-black;
+    // background: red;
     border-radius: 20px;
     position: absolute;
     $padding: $size/3;
@@ -366,25 +421,13 @@ nav {
     }
   }
   &:hover {
-    // background: #37474f;
-    background: black;
+    // background: $primary-footer-grey;
+    background: transparent;
+
     span {
       width: ($size/4);
-      color: white;
+      background-color: $primary-font-white;
     }
   }
 }
 </style>
-
-<!-- /** 
-* Todo:: BootstrapVue isn't working.
-     <b-navbar variant="faded" type="light">
-        <b-navbar-brand
-          v-for="route in filteredRoutes"
-          :key="route.path"
-          href="#"
-        >
-          {{ route.name }}
-        </b-navbar-brand>
-      </b-navbar>
-*/ -->

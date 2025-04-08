@@ -109,7 +109,7 @@ ul {
 
 h3 {
   padding-top: 8px;
-  color: $primary-font-black;
+  color: $primary-black;
 }
 
 .card-body {
