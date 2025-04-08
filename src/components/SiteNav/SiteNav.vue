@@ -20,7 +20,9 @@
         </a>
       </li>
     </ul>
+    isMobile?? {{ isMobile }}
     <button
+      v-if="isMobile"
       class="hamburger-menu"
       @click="toggleMobileAside"
       aria-label="Click to toggle the mobile navigation menu"
@@ -80,6 +82,8 @@
 <script>
 // import { useRouter, useRoute } from "vue-router";
 
+import { useScreenSize } from "@/composables/isMobileCheck";
+
 export default {
   name: "SiteNav",
   props: {
@@ -127,34 +131,15 @@ export default {
       mobileAsideFlag: false,
     };
   },
+  computed: {
+    // Using the composable for screen size tracking
+    ...useScreenSize(), // This provides `isMobile` as a reactive value
+  },
   methods: {
     toggleMobileAside() {
-      console.log("toggle::");
       this.mobileAsideFlag = !this.mobileAsideFlag;
     },
   },
-  // setup() {
-  //   const router = useRouter();
-  //   const route = useRoute(); // Access to current route
-
-  //   if (route && router) {
-  //     const allRoutes = router.getRoutes();
-  //     const filteredRoutes = allRoutes.filter(
-  //       (r) => r.path !== route.path && r.name !== "404"
-  //     );
-
-  //     return (
-  //       { filteredRoutes } || [
-  //         {
-  //           name: "test",
-  //           path: "/",
-  //         },
-  //       ]
-  //     );
-  //   }
-
-  //   return [];
-  // },
 };
 </script>
 <style lang="scss" scoped>

@@ -146,10 +146,6 @@ export default {
       this.activeView = newTab || "snp";
     },
   },
-  mounted() {
-    console.log("mounted::");
-    console.log("active Tab::", this.activeView);
-  },
   methods: {
     setTab(tab) {
       this.$router.push({ path: "/experience", query: { tab } });
