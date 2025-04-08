@@ -5,6 +5,7 @@
       <div class="row page-title">
         <h1>Work Experience</h1>
       </div>
+
       <div class="row job-container">
         <div
           class="job-item"
@@ -14,99 +15,101 @@
             active: isActiveExperienceFlag(experience.key),
           }"
         >
-          <div class="job-meta-wrap">
-            <div class="job-title">
-              <h2>{{ experience.name }}</h2>
-              <p>{{ experience.dateRange }}</p>
+          <div class="view-wrap" v-if="activeView == experience.key">
+            <div class="job-meta-wrap">
+              <div class="job-title">
+                <h2>{{ experience.name }}</h2>
+                <p>{{ experience.dateRange }}</p>
+              </div>
+              <div class="job-roles">
+                <h3 class="d-inline-block">Roles:</h3>
+                <ul class="list-group list-group-horizontal">
+                  <li
+                    class=""
+                    v-for="(role, index) in experience.roles"
+                    :key="index"
+                  >
+                    <span
+                      class="badge d-flex align-items-center p-1 pe-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle"
+                    >
+                      {{ role }}
+                    </span>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div class="job-roles">
-              <h3 class="d-inline-block">Roles:</h3>
+            <div class="job-languages">
+              <h3 class="d-inline-block">Languages:</h3>
               <ul class="list-group list-group-horizontal">
                 <li
-                  class=""
-                  v-for="(role, index) in experience.roles"
+                  v-for="(language, index) in experience.languages"
                   :key="index"
                 >
                   <span
-                    class="badge d-flex align-items-center p-1 pe-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle"
+                    class="badge d-flex align-items-center p-1 pe-2 text-success-emphasis bg-primary-subtle border border-primary-subtle"
                   >
-                    {{ role }}
+                    {{ language }}
                   </span>
                 </li>
               </ul>
             </div>
-          </div>
-          <div class="job-languages">
-            <h3 class="d-inline-block">Languages:</h3>
-            <ul class="list-group list-group-horizontal">
-              <li
-                v-for="(language, index) in experience.languages"
-                :key="index"
-              >
-                <span
-                  class="badge d-flex align-items-center p-1 pe-2 text-success-emphasis bg-primary-subtle border border-primary-subtle"
+            <div class="job-frameworks">
+              <h3>Frameworks:</h3>
+              <ul class="list-group list-group-horizontal">
+                <li
+                  v-for="(framework, index) in experience.frameworks"
+                  :key="index"
                 >
-                  {{ language }}
-                </span>
-              </li>
-            </ul>
-          </div>
-          <div class="job-frameworks">
-            <h3>Frameworks:</h3>
-            <ul class="list-group list-group-horizontal">
-              <li
-                v-for="(framework, index) in experience.frameworks"
-                :key="index"
-              >
-                <span
-                  class="badge bg-success-subtle border border-success-subtle text-success-emphasis"
+                  <span
+                    class="badge bg-success-subtle border border-success-subtle text-success-emphasis"
+                  >
+                    {{ framework }}
+                  </span>
+                </li>
+              </ul>
+            </div>
+            <div class="job-database">
+              <h3>Database management:</h3>
+              <ul class="list-group list-group-horizontal">
+                <li
+                  v-for="(database, index) in experience.databaseManagement"
+                  :key="index"
                 >
-                  {{ framework }}
-                </span>
-              </li>
-            </ul>
-          </div>
-          <div class="job-database">
-            <h3>Database management:</h3>
-            <ul class="list-group list-group-horizontal">
-              <li
-                v-for="(database, index) in experience.databaseManagement"
-                :key="index"
-              >
-                <span
-                  class="badge bg-warning-subtle border border-warning-subtle text-warning-emphasis"
-                >
-                  {{ database }}
-                </span>
-              </li>
-            </ul>
-          </div>
-          <div class="job-devops">
-            <h3>DevOps:</h3>
-            <ul class="list-group list-group-horizontal">
-              <li v-for="(devOp, index) in experience.devOps" :key="index">
-                <span
-                  class="badge bg-info-subtle border border-info-subtle text-info-emphasis"
-                >
-                  {{ devOp }}
-                </span>
-              </li>
-            </ul>
-          </div>
-          <div class="job-skills">
-            <h3>Skills:</h3>
-            <ul class="list-group list-group-horizontal">
-              <li v-for="(skill, index) in experience.skills" :key="index">
-                <span
-                  class="badge d-flex align-items-center p-1 pe-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle"
-                  >{{ skill }}</span
-                >
-              </li>
-            </ul>
-          </div>
-          <div class="job-description">
-            <h3>Description:</h3>
-            <p>{{ experience.description }}</p>
+                  <span
+                    class="badge bg-warning-subtle border border-warning-subtle text-warning-emphasis"
+                  >
+                    {{ database }}
+                  </span>
+                </li>
+              </ul>
+            </div>
+            <div class="job-devops">
+              <h3>DevOps:</h3>
+              <ul class="list-group list-group-horizontal">
+                <li v-for="(devOp, index) in experience.devOps" :key="index">
+                  <span
+                    class="badge bg-info-subtle border border-info-subtle text-info-emphasis"
+                  >
+                    {{ devOp }}
+                  </span>
+                </li>
+              </ul>
+            </div>
+            <div class="job-skills">
+              <h3>Skills:</h3>
+              <ul class="list-group list-group-horizontal">
+                <li v-for="(skill, index) in experience.skills" :key="index">
+                  <span
+                    class="badge d-flex align-items-center p-1 pe-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle"
+                    >{{ skill }}</span
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="job-description">
+              <h3>Description:</h3>
+              <p>{{ experience.description }}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -138,11 +141,14 @@ export default {
       loading: false,
     };
   },
-
   watch: {
     "$route.query.tab"(newTab) {
-      this.activeTab = newTab || "snp";
+      this.activeView = newTab || "snp";
     },
+  },
+  mounted() {
+    console.log("mounted::");
+    console.log("active Tab::", this.activeView);
   },
   methods: {
     setTab(tab) {
@@ -245,5 +251,11 @@ a {
   //   min-width: 100px;
   //   justify-content: center;
   // }
+}
+
+.view-wrap {
+  div {
+    margin: 24px 0;
+  }
 }
 </style>

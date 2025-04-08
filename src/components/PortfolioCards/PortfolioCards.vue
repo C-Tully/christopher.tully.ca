@@ -6,6 +6,7 @@
         :key="flippedCardsTracker[index]"
         class="flip-card card"
         :title="`Click to see more details on my time with ${portfolioItem.company}`"
+        :ariaLabel="`Click to see more details on my time with ${portfolioItem.company}`"
         @click="(e) => handleCardClick(e, index)"
         @keydown.space.prevent="(e) => handleCardClick(e, index)"
         @keydown.enter.prevent="(e) => handleCardClick(e, index)"
