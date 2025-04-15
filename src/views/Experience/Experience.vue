@@ -168,8 +168,7 @@ h2 {
   margin-bottom: 0;
 }
 
-h3 {
-  // margin: 40px 0 0;
+h3 {  
   font-size: 1.45em;
 }
 
@@ -236,17 +235,6 @@ a {
   flex-flow: row;
   flex-wrap: wrap;
   gap: 8px;
-
-  .list-group-item {
-    // margin: 0;
-    // border: none;
-    // padding: 0;
-  }
-
-  // .rounded-pill {
-  //   min-width: 100px;
-  //   justify-content: center;
-  // }
 }
 
 .view-wrap {
