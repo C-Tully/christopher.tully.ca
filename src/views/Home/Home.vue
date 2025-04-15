@@ -184,7 +184,7 @@ export default {
   display: block;
   width: 200px;
   height: 200px;
-  background: #fff;
+  background: $background-white;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   background-position: 50% 50%;
@@ -252,7 +252,7 @@ svg {
 }
 
 body {
-  background: #fff;
+  background: $background-white;
   color: #333;
   font-family: "Ubuntu", sans-serif;
   position: relative;
@@ -273,7 +273,7 @@ h3 {
 }
 
 header {
-  color: #fff;
+  color: $background-white;
   padding-top: 10vw;
   padding-bottom: 20vw;
   text-align: center;
@@ -283,7 +283,7 @@ header {
 main {
   flex-direction: column;
   flex: 1;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: $border-black;
   padding: 50px 0 30vh 0;
   position: relative;
   flex-flow: column;
@@ -306,14 +306,13 @@ main {
   position: fixed;
   left: 10px;
   width: 125px;
-  background: white;
-  color: $primary-font-black;
+  background: $background-white;
+  color: $primary-black;
   padding: 20px;
-  // border-radius: 8px;
   transition: top 0.3s ease-in-out;
   top: 70%;
   transform: translateY(-50%);
-  border: 1px solid $primary-font-black;
+  border: 1px solid $primary-black;
 
   :deep(ul) {
     display: flex;
@@ -325,16 +324,9 @@ main {
     padding-left: 0;
 
     li {
-      border: 1px solid $primary-font-black;
+      border: 1px solid $primary-black;
     }
   }
-}
-
-footer {
-  background: #dddee1;
-  padding: 5vh 0;
-  text-align: center;
-  position: relative;
 }
 
 small {

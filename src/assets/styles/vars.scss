@@ -1,5 +1,5 @@
 $primary-background-blue: #00008b;
-$primary-background-red: #800014;
+$primary-red: #800014;
 $primary-red-oppsite: #548000;
 $primary-background-gradient: linear-gradient(
   90deg,
@@ -7,19 +7,24 @@ $primary-background-gradient: linear-gradient(
   rgba(46, 46, 221, 1) 54%,
   rgba(12, 12, 131, 1) 100%
 );
+$background-white: #fff;
 
 $primary-font-white: #fafafa;
 $primary-font-blue: #a6cff2;
 $primary-link-blue: #141414;
-$primary-font-black: #212424;
+$primary-black: #212424;
 
 $primary-font-family: "Bebas Neue", serif;
 $primary-grey: #c8c3c36f;
 $primary-footer-grey: #dddee1;
 $border-grey: #c7c1c1;
+$border-black: 1px solid rgba(0, 0, 0, 0.2);
 
 body {
   font-family: $primary-font-family;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .flex-container {
@@ -48,6 +53,10 @@ h3 {
   font-style: normal;
 }
 
+p {
+  margin: 0;
+}
+
 footer {
   background: #dddee1;
   padding: 5vh 0;
@@ -57,13 +66,15 @@ footer {
 
 :export {
   primary-background-blue: $primary-background-blue;
-  primary-background-red: $primary-background-red;
+  primary-red: $primary-red;
   primary-background-gradient: $primary-background-gradient;
   primary-font-blue: $primary-font-blue;
   primary-font-family: $primary-font-family;
   primary-font-white: $primary-font-white;
   primary-link-blue: $primary-link-blue;
-  primary-font-black: $primary-font-black;
+  primary-black: $primary-black;
   primary-grey: $primary-grey;
   border-grey: $border-grey;
+  background-white: $background-white;
+  border-black: $border-black;
 }
