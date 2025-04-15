@@ -1,9 +1,7 @@
 <template>
   <footer>
     <small>&copy;Copyright {{ currentYear }}, Christopher Tully</small>
-    <div class="nav-list">
-      <SiteNav :includeNav="false" />
-    </div>
+    <div class="nav-list"></div>
   </footer>
 </template>
 <script>

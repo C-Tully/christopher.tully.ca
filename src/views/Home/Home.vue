@@ -1,8 +1,5 @@
 <template>
   <div class="page-wrap">
-    <!-- <aside ref="sidebar" class="sidebar">
-      <SiteNav />
-    </aside> -->
     <div class="svg-container">
       <svg
         viewBox="0 0 800 400"
@@ -63,12 +60,10 @@
       <div class="work-wrapper">
         <h3>Recent Roles</h3>
         <p class="mobile-only">Click a card to see more</p>
-        <!-- <p>(See the experience section for more.)</p> -->
         <PortfolioCards :portfolioCollection="portfolioCollectionConfig" />
       </div>
       <div class="projects-wrapper">
         <h3>Projects</h3>
-
         <ul>
           <li
             v-for="(item, index) in projectCollectionConfig"
@@ -81,7 +76,6 @@
               :href="item.githubLink"
             >
               <img :src="item.thumbnail" alt="" />
-              <!-- Note: I might have to add a distinct id here to ensure accessibility -->
               <h4 id="projectCardTitle">{{ item.name }}</h4>
               <p>{{ item.description }}</p>
             </a>
@@ -155,26 +149,16 @@ export default {
       ],
       skillsImageCollection: skillsImageConfig,
       scrollY: 0,
-      targetTop: 70, // Initial position in percentage
-      currentTop: 70, // For smooth transition
-      triggerPoint: 200, // Scroll threshold
-      animationFrame: null, // Store requestAnimationFrame ID
+      targetTop: 70,
+      currentTop: 70,
+      triggerPoint: 200,
+      animationFrame: null,
     };
   },
   methods: {
-    handleOnClick() {
-      this.toggleModalVisibility();
-      // if (event) {
-      //   this.toggleModalVisibility();
-      // }
-    },
-    toggleModalVisibility() {
-      this.modalVisibility = !this.modalVisibility;
-    },
     // handleScroll() {
     //   this.scrollY = window.scrollY;
     //   this.targetTop = this.scrollY > this.triggerPoint ? 50 : 70;
-
     //   if (!this.animationFrame) {
     //     this.smoothTransition();
     //   }
@@ -185,10 +169,8 @@ export default {
     //     this.animationFrame = null;
     //     return;
     //   }
-
     //   this.currentTop += (this.targetTop - this.currentTop) * 0.1;
     //   this.$refs.sidebar.style.top = `${this.currentTop}%`;
-
     //   this.animationFrame = requestAnimationFrame(this.smoothTransition);
     // },
   },
@@ -202,7 +184,7 @@ export default {
   display: block;
   width: 200px;
   height: 200px;
-  background: #fff;
+  background: $background-white;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   background-position: 50% 50%;
@@ -270,7 +252,7 @@ svg {
 }
 
 body {
-  background: #fff;
+  background: $background-white;
   color: #333;
   font-family: "Ubuntu", sans-serif;
   position: relative;
@@ -291,7 +273,7 @@ h3 {
 }
 
 header {
-  color: #fff;
+  color: $background-white;
   padding-top: 10vw;
   padding-bottom: 20vw;
   text-align: center;
@@ -301,7 +283,7 @@ header {
 main {
   flex-direction: column;
   flex: 1;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: $border-black;
   padding: 50px 0 30vh 0;
   position: relative;
   flex-flow: column;
@@ -324,14 +306,13 @@ main {
   position: fixed;
   left: 10px;
   width: 125px;
-  background: white;
-  color: $primary-font-black;
+  background: $background-white;
+  color: $primary-black;
   padding: 20px;
-  // border-radius: 8px;
   transition: top 0.3s ease-in-out;
   top: 70%;
   transform: translateY(-50%);
-  border: 1px solid $primary-font-black;
+  border: 1px solid $primary-black;
 
   :deep(ul) {
     display: flex;
@@ -343,16 +324,9 @@ main {
     padding-left: 0;
 
     li {
-      border: 1px solid $primary-font-black;
+      border: 1px solid $primary-black;
     }
   }
-}
-
-footer {
-  background: #dddee1;
-  padding: 5vh 0;
-  text-align: center;
-  position: relative;
 }
 
 small {
@@ -431,7 +405,9 @@ small {
 @media only screen and (max-width: 600px) {
   main {
     width: 100%;
+    padding: 0 16px;
   }
+
   .headshot-aside {
     display: none;
   }
@@ -463,6 +439,8 @@ small {
     width: 100%;
 
     ul {
+      justify-content: space-around;
+
       li {
         display: inline-block;
       }
@@ -478,12 +456,6 @@ small {
     p {
       text-align: center;
     }
-  }
-}
-
-@media only screen and (max-width: 400px) {
-  .skills-wrapper ul {
-    justify-content: space-around;
   }
 }
 </style>
